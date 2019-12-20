@@ -1,0 +1,40 @@
+version: '3.4'
+services:
+  master:
+    image: redis:latest
+    container_name: redis-master
+    restart: always
+    environment :
+      - appendonly=yes # 打开redis AOF持久化配置
+      - requirepass=1234 # 设置redis密码
+    command: redis-server
+#    network_mode: "host"
+    ports:
+      - 6379:6379
+
+  slave1:
+    image: redis:latest
+    container_name: redis-slave-1
+    restart: always
+    environment :
+      - appendonly=yes # 打开redis AOF持久化配置
+      - requirepass=1234 # 设置redis密码
+      - masterauth 1234
+    command: redis-server --slaveof 192.168.0.1 6379
+#    network_mode: "host"
+    ports:
+      - 6380:6379
+
+
+  slave2:
+    image: redis:latest
+    container_name: redis-slave-2
+    restart: always
+    environment :
+      - appendonly=yes # 打开redis AOF持久化配置
+      - requirepass=1234 # 设置redis密码
+      - masterauth 1234
+    command: redis-server --slaveof 192.168.0.1 6379
+#    network_mode: "host"
+    ports:
+      - 6381:6379
