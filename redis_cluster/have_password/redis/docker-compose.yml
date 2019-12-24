@@ -25,7 +25,7 @@ services:
       - dir=/data
       - appendonly=yes # 打开redis AOF持久化配置
       - requirepass=1234 # 设置redis密码
-      - masterauth 1234
+      - masterauth=1234
     command: redis-server --slaveof 112.74.58.15 56379
     ports:
       - 56380:6379
@@ -43,7 +43,7 @@ services:
       - dir=/data
       - appendonly=yes # 打开redis AOF持久化配置
       - requirepass=1234 # 设置redis密码
-      - masterauth 1234
+      - masterauth=1234
     command: redis-server --slaveof 112.74.58.15 56379
     ports:
       - 56381:6379
