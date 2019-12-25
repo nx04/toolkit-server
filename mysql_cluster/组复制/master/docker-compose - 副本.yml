@@ -1,10 +1,10 @@
 version: '3.1'
 
-services:          
-  mysql_read:
+services:
+  mysql_master:
     image: mysql:latest
     restart: always
-    container_name: mysql_read
+    container_name: mysql_master
     environment:
       MYSQL_ROOT_PASSWORD: 123456
     command:
@@ -15,8 +15,8 @@ services:
       --lower_case_table_names=1
       --max_allowed_packet=128M;
     ports:
-      - 3002:3306
+      - 53300:3306
     volumes:
-      - ./config/my.cnf:/etc/my.cnf
+      - ./my.cnf:/etc/my.cnf
       - ./data:/var/lib/mysql
       - ./init:/docker-entrypoint-initdb.d/
