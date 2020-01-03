@@ -26,7 +26,7 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: 112.74.58.15
       KAFKA_ADVERTISED_PORT: 59092
-      KAFKA_ZOOKEEPER_CONNECT: "zoo1:52181,zoo2:52182"
+      KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181,zoo2:2181"
       KAFKA_BROKER_ID: 1
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1 # 默认备份份数，仅指自动创建的topics
       KAFKA_CREATE_TOPICS: "MUSIC_SCORE:5:1"
@@ -43,7 +43,7 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: 112.74.58.15
       KAFKA_ADVERTISED_PORT: 59093
-      KAFKA_ZOOKEEPER_CONNECT: "zoo1:52181,zoo2:52182"
+      KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181,zoo2:2181"
       KAFKA_BROKER_ID: 2
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_CREATE_TOPICS: "MUSIC_SCORE:5:1"
@@ -65,7 +65,7 @@ services:
       - zoo1
       - zoo2
     environment:
-      ZK_HOSTS: zoo1:52181,zoo2:52182
+      ZK_HOSTS: zoo1:2181,zoo2:2181
       KAFKA_BROKERS: kafka1:59092,kafka2:59093
       APPLICATION_SECRET: letmein
       KM_ARGS: -Djava.net.preferIPv4Stack=true
