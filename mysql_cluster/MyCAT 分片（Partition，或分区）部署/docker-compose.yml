@@ -11,7 +11,7 @@ services:
     volumes:
       - ./config/server.xml:/mycat/conf/server.xml:ro
       - ./config/schema.xml:/mycat/conf/schema.xml:ro
-      - ./config/rule.xml:/mycat/conf/schema.xml:ro
+      - ./config/rule.xml:/mycat/conf/rule.xml:ro
       - ./config/partition-range-mod.txt:/mycat/conf/partition-range-mod.txt:ro
       - ./config/autopartition-long.txt:/mycat/conf/autopartition-long.txt:ro
       - ./config/partition-hash-int.txt:/mycat/conf/partition-hash-int.txt:ro
