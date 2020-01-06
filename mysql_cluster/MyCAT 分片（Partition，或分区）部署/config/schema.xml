@@ -2,6 +2,9 @@
 <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
 <mycat:schema xmlns:mycat="http://io.mycat/">
     <!-- 配置 逻辑表 信息信息-->
+	<schema name="test_auto_sharding_long" checkSQLschema="false" sqlMaxLimit="100">
+        <table name="user_account" primaryKey="id" dataNode="dn0,dn1,dn2" rule="auto-sharding-long" />
+    </schema>
 	<schema name="testdb" checkSQLschema="false" sqlMaxLimit="100">
 		<table name="user_info" dataNode="dn$0-11"  rule="sharding-by-month"   primaryKey="id"/>
 		<table name="user_account" dataNode="dn$0-3"  rule="mod-long"   primaryKey="id"/>
