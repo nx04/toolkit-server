@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+	<!-- mydb 是 mycat 的逻辑库名称，链接需要用的 -->
+	<schema name="mydb" checkSQLschema="false" sqlMaxLimit="100" dataNode="dn_1" />
+	<!--
+    dataNode：节点中各属性说明；
+		name：指定逻辑数据节点名称；
+		dataHost：指定逻辑数据节点物理主机节点名称；
+		database：指定物理主机节点上。如果一个节点上有多个库，可使用表达式db$0-99，表示指定0-99这100个数据库；
+	-->
+	<dataNode name="dn_1" dataHost="dh_1" database="mydb" />
+	<!--
+    dataHost 节点中各属性说明：
+		name：物理主机节点名称；
+        maxCon：指定物理主机服务最大支持1000个连接；
+        minCon：指定物理主机服务最小保持10个连接；
+        writeType：指定写入类型；
+            0，只在 writeHost 节点写入；
+            1，在所有节点都写入。慎重开启，多节点写入顺序为默认写入根据配置顺序，第一个挂掉切换另一个；
+        dbType：指定数据库类型；
+        dbDriver：指定数据库驱动；
+        balance：指定物理主机服务的负载模式；
+            0，不开启读写分离机制，所有读操作都发送到当前可用的 writeHost 上；
+            1，全部的 readHost 与 stand by writeHost 参与 select 语句的负载均衡，简单的说，当双主双从模式( M1->S1，M2->S2，并且M1与 M2互为主备)，正常情况下，M2,S1,S2都参与select语句的负载均衡；
+            2，所有的 readHost 与 writeHost 都参与 select 语句的负载均衡，也就是说，当系统的写操作压力不大的情况下，所有主机都可以承担负载均衡；
+			3，所有读请求随机的分发到 wiriterHost 对应的 readhost 执行， writerHost 不负担读压力；
+		switchType：指的是切换的模式，目前的取值也有4种：
+			-1，表示不自动切换；
+			1，默认值，表示自动切换
+			2，基于 MySQL 主从同步的状态决定是否切换,心跳语句为 show slave status
+			3，基于 MySQL galary cluster 的切换机制（适合集群）（1.4.1），心跳语句为 show status like 'wsrep%'；
+		slaveThreshold：slave读的安全边界，如果 Seconds_Behind_Master 大于这个值，这台 slave 会被临时剔除，以免被读；
+	-->
+	<dataHost name="dh_1" maxCon="1000" minCon="10" balance="1" writeType="0" dbType="mysql" dbDriver="native" switchType="-1" slaveThreshold="100">
+		<heartbeat>select user()</heartbeat>
+		<!-- 可以配置多个主从 -->
+		<!--
+		host：一个主机标识，便于区分，不必和真实主机名一致；
+		url：后端实例连接地址；
+		user：连接账户；
+		password：连接密码；
+		-->
+		<writeHost host="mysql_master" url="112.74.58.15:53300" user="root" password="123456">
+			<!-- 可以配置多个从库 -->
+			<readHost host="mysql_slave1" url="112.74.58.15:53001" user="root" password="123456" />
+			<readHost host="mysql_slave2" url="112.74.58.15:53002" user="root" password="123456" />
+		</writeHost>
+	</dataHost>
+
+</mycat:schema>
