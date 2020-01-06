@@ -3,6 +3,7 @@ version: '3.1'
 services:
   mycat_ms:
     build: ./build
+    image: mycat_ms:latest
     restart: always
     container_name: mycat_ms_c
     ports:
