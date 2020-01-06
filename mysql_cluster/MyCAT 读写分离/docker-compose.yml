@@ -1,10 +1,10 @@
 version: '3.1'
 
 services:
-  mycat:
+  mycat_ms:
     build: ./build
     restart: always
-    container_name: mycat_c
+    container_name: mycat_ms_c
     ports:
       - 58066:8066
       - 59066:9066

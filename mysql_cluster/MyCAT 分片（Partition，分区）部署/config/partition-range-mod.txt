@@ -1,0 +1,7 @@
+# range start-end ,data node group size
+#代表有 5 个分片节点
+0-200M=5
+200M1-400M=1
+400M1-600M=4
+600M1-800M=4
+800M1-1000M=6

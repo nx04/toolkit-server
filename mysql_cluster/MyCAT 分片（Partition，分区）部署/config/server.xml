@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mycat:server SYSTEM "server.dtd">
+<mycat:server xmlns:mycat="http://io.mycat/">
+	<system>
+	<property name="useSqlStat">0</property>  <!-- 1为开启实时统计、0为关闭 -->
+	<property name="useGlobleTableCheck">0</property>  <!-- 1为开启全加班一致性检测、0为关闭 -->
+		<property name="sequnceHandlerType">2</property>
+		<!--默认为type 0: DirectByteBufferPool | type 1 ByteBufferArena-->
+		<property name="processorBufferPoolType">0</property>
+		<!--分布式事务开关，0为不过滤分布式事务，1为过滤分布式事务（如果分布式事务内只涉及全局表，则不过滤），2为不过滤分布式事务,但是记录分布式事务日志-->
+		<property name="handleDistributedTransactions">0</property>
+		
+			<!--
+			off heap for merge/order/group/limit      1开启   0关闭
+		-->
+		<property name="useOffHeapForMerge">1</property>
+
+		<!--
+			单位为m
+		-->
+		<property name="memoryPageSize">1m</property>
+
+		<!--
+			单位为k
+		-->
+		<property name="spillsFileBufferSize">1k</property>
+
+		<property name="useStreamOutput">0</property>
+
+		<!--
+			单位为m
+		-->
+		<property name="systemReserveMemorySize">384m</property>
+		<!--是否采用zookeeper协调切换  -->
+		<property name="useZKSwitch">true</property>
+	</system>
+	
+	<!-- 关键在这，配置一下用户的用户名 密码 数据库 -->
+	<user name="root">
+		<property name="password">root123456</property>
+		<property name="schemas">testdb</property>
+		
+		<!-- 相应的 表级 DML 权限设置 -->
+		<!-- 		
+		<privileges check="false">
+			<schema name="TESTDB" dml="0110" >
+				<table name="tb01" dml="0000"></table>
+				<table name="tb02" dml="1111"></table>
+			</schema>
+		</privileges>		
+		 -->
+	</user>
+
+	<user name="user">
+		<property name="password">user123456</property>
+		<property name="schemas">testdb</property>
+		<property name="readOnly">true</property>
+	</user>
+</mycat:server>
