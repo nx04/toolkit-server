@@ -9,7 +9,7 @@ services:
       ZOO_MY_ID: 1
     ports:
       - "52181:2181"
-    container_name: zookeeper1
+    container_name: zookeeper_c1
   zoo2:
     image: zookeeper:3.5.6
     restart: unless-stopped
@@ -18,7 +18,7 @@ services:
       ZOO_MY_ID: 2
     ports:
       - "52182:2181"
-    container_name: zookeeper2
+    container_name: zookeeper_c2
   kafka1:
     image: wurstmeister/kafka:2.12-2.4.0
     ports:
@@ -34,8 +34,6 @@ services:
       - zoo1
       - zoo2
     container_name: kafka_c1
-
-
   kafka2:
     image: wurstmeister/kafka:2.12-2.4.0
     ports:
