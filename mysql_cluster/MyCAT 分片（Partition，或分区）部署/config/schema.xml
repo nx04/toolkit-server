@@ -26,7 +26,7 @@
 	<dataNode name="dn11" dataHost="dh0" database="testdb11" />
 
     <!-- 配置 主从读写分析节点信息-->
-	<dataHost name="dh0" maxCon="1000" minCon="10" balance="3" writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
+	<dataHost name="dh0" maxCon="1000" minCon="10" balance="3" writeType="0" dbType="mysql" dbDriver="jdbc" switchType="1"  slaveThreshold="100">
 		<heartbeat>select user()</heartbeat>
 		<writeHost host="mysql_master" url="112.74.58.15:53300" user="root" password="123456">
 			<!-- 可以配置多个从库 -->
