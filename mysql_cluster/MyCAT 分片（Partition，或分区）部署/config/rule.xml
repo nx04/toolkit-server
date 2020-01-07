@@ -93,6 +93,13 @@
 	    </rule>
     </tableRule>
 	
+	<tableRule name="direct-by-substring">  
+		<rule>  
+			<columns>user_id</columns>  
+			<algorithm>direct-by-substring</algorithm>  
+		</rule>  
+	</tableRule>
+	
 	<!-- #配置中配置了开始日期，分区天数，即默认从开始日期算起，分隔10天一个分区-->
 	<function name="sharding-by-date" class="io.mycat.route.function.PartitionByDate">
 		<property name="dateFormat">yyyy-MM-dd</property>
@@ -169,6 +176,13 @@
 	<!-- 思想源自Google公开论文，比传统一致性哈希更省资源速度更快数据迁移量更少 -->
 	<function name="jump-consistent-hash" class="io.mycat.route.function.PartitionByJumpConsistentHash">
 		<property name="totalBuckets">3</property>
+	</function>
+	
+	<function name="direct-by-substring" class="io.mycat.route.function.PartitionDirectBySubString">
+		<property name="startIndex">0</property>
+		<property name="size">2</property>
+		<property name="partitionCount">3</property>
+		<property name="defaultPartition">0</property>
 	</function>
 	
 	<function name="func1" class="io.mycat.route.function.PartitionByLong">
