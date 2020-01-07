@@ -5,11 +5,11 @@
 	<schema name="test_auto_sharding_long" checkSQLschema="true" sqlMaxLimit="100">
         <table name="user_account" primaryKey="id" dataNode="dn0,dn1,dn2" rule="auto-sharding-long" />
     </schema>
-	<!--schema name="testdb" checkSQLschema="true" sqlMaxLimit="100">
+	<schema name="testdb" checkSQLschema="true" sqlMaxLimit="100">
 		<table name="user_info" dataNode="dn$0-11"  rule="sharding-by-month"   primaryKey="id"/>
 		<table name="user_account" dataNode="dn$0-3"  rule="mod-long"   primaryKey="id"/>
 
-	</schema-->
+	</schema>
 	
     <!-- 配置 数据节点信息信息-->
 	<dataNode name="dn0" dataHost="data_host_0" database="testdb0" />
