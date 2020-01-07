@@ -148,7 +148,7 @@
 	<!-- 该分片算法用根据提供的小时数进行分片，splitOneDay参数用于配置将一天分成多少个分片，最多24个，最少1个。该参数的合法值为0～24，否则抛出异常信息：invalid splitOnDay param -->
 	<function name="latestMonth"
 		class="io.mycat.route.function.LatestMonthPartion">
-		<property name="splitOneDay">24</property>
+		<property name="splitOneDay">3</property>
 	</function>
 	
 	<!-- #配置中配置了开始日期，即默认从开始日期算起，分隔1个月一个分区-->
