@@ -5,7 +5,7 @@
 	<schema name="test_auto_sharding_long" checkSQLschema="true" sqlMaxLimit="100">
         <table name="user_account" primaryKey="id" dataNode="dn0,dn1,dn2" rule="auto-sharding-long" />
         <table name="user_login_history" primaryKey="id" dataNode="dn$3-5" rule="sharding-by-date" />
-        <table name="call_history" primaryKey="id" dataNode="dn$6-8" rule="latest-month-calldate" />
+        <table name="user_call_history" primaryKey="id" dataNode="dn$6-8" rule="latest-month-calldate" />
     </schema>
 	<schema name="testdb" checkSQLschema="true" sqlMaxLimit="100">
 		<table name="user_info" dataNode="dn$0-11"  rule="sharding-by-month"   primaryKey="id"/>
