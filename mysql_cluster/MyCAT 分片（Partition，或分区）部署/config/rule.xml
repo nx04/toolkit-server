@@ -18,7 +18,7 @@
 
 	<tableRule name="sharding-by-intfile">
 		<rule>
-			<columns>sharding_id</columns>
+			<columns>area_id</columns>
 			<algorithm>hash-int</algorithm>
 		</rule>
 	</tableRule>
