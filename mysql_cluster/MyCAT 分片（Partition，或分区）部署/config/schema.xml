@@ -11,6 +11,7 @@
 	<schema name="test_two" checkSQLschema="true" sqlMaxLimit="100">
 		<table name="order_place" dataNode="dn$0-2"  rule="sharding-by-intfile"   primaryKey="id"/>
 		<table name="order_user" dataNode="dn$3-5"  rule="direct-by-substring"   primaryKey="id"/>
+		<table name="order_list" dataNode="dn$6-8"  rule="mod-long"   primaryKey="id"/>
 
 	</schema>
 	
