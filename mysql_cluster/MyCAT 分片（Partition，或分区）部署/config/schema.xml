@@ -12,21 +12,21 @@
 	</schema-->
 	
     <!-- 配置 数据节点信息信息-->
-	<dataNode name="dn0" dataHost="dh0" database="testdb0" />
-	<dataNode name="dn1" dataHost="dh0" database="testdb1" />
-	<dataNode name="dn2" dataHost="dh0" database="testdb2" />
-	<dataNode name="dn3" dataHost="dh0" database="testdb3" />
-	<dataNode name="dn4" dataHost="dh0" database="testdb4" />
-	<dataNode name="dn5" dataHost="dh0" database="testdb5" />
-	<dataNode name="dn6" dataHost="dh0" database="testdb6" />
-	<dataNode name="dn7" dataHost="dh0" database="testdb7" />
-	<dataNode name="dn8" dataHost="dh0" database="testdb8" />
-	<dataNode name="dn9" dataHost="dh0" database="testdb9" />
-	<dataNode name="dn10" dataHost="dh0" database="testdb10" />
-	<dataNode name="dn11" dataHost="dh0" database="testdb11" />
+	<dataNode name="dn0" dataHost="data_host_0" database="testdb0" />
+	<dataNode name="dn1" dataHost="data_host_0" database="testdb1" />
+	<dataNode name="dn2" dataHost="data_host_0" database="testdb2" />
+	<dataNode name="dn3" dataHost="data_host_0" database="testdb3" />
+	<dataNode name="dn4" dataHost="data_host_0" database="testdb4" />
+	<dataNode name="dn5" dataHost="data_host_0" database="testdb5" />
+	<dataNode name="dn6" dataHost="data_host_0" database="testdb6" />
+	<dataNode name="dn7" dataHost="data_host_0" database="testdb7" />
+	<dataNode name="dn8" dataHost="data_host_0" database="testdb8" />
+	<dataNode name="dn9" dataHost="data_host_0" database="testdb9" />
+	<dataNode name="dn10" dataHost="data_host_0" database="testdb10" />
+	<dataNode name="dn11" dataHost="data_host_0" database="testdb11" />
 
     <!-- 配置 主从读写分析节点信息-->
-	<dataHost name="dh0" maxCon="1000" minCon="10" balance="3" writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
+	<dataHost name="data_host_0" maxCon="1000" minCon="10" balance="3" writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
 		<heartbeat>select user()</heartbeat>
 		<writeHost host="mysql_master" url="112.74.58.15:53300" user="root" password="123456">
 			<!-- 可以配置多个从库 -->
