@@ -26,12 +26,12 @@
 	<dataNode name="dn11" dataHost="data_host_0" database="testdb11" />
 
     <!-- 配置 主从读写分析节点信息-->
-	<dataHost name="data_host_0" maxCon="1000" minCon="10" balance="3" writeType="0" dbType="mysql" dbDriver="native" switchType="1"  slaveThreshold="100">
+	<dataHost name="data_host_0" maxCon="1000" minCon="10" balance="3" writeType="0" dbType="mysql" dbDriver="jdbc" switchType="1"  slaveThreshold="100">
 		<heartbeat>select user()</heartbeat>
-		<writeHost host="mysql_master" url="112.74.58.15:53300" user="root" password="123456">
+		<writeHost host="mysql_master" url="jdbc:mysql://112.74.58.15:53300?useSSL=false&amp;serverTimezone=UTC" user="root" password="123456">
 			<!-- 可以配置多个从库 -->
-			<readHost host="mysql_slave1" url="112.74.58.15:53001" user="root" password="123456" />
-			<readHost host="mysql_slave2" url="112.74.58.15:53002" user="root" password="123456" />
+			<readHost host="mysql_slave1" url="jdbc:mysql://112.74.58.15:53001?useSSL=false&amp;serverTimezone=UTC" user="root" password="123456" />
+			<readHost host="mysql_slave2" url="jdbc:mysql://112.74.58.15:53002?useSSL=false&amp;serverTimezone=UTC" user="root" password="123456" />
 		</writeHost>
 	</dataHost>
 </mycat:schema>

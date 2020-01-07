@@ -16,4 +16,5 @@ services:
       - ./config/partition-range-mod.txt:/mycat/conf/partition-range-mod.txt:ro
       - ./config/autopartition-long.txt:/mycat/conf/autopartition-long.txt:ro
       - ./config/partition-hash-int.txt:/mycat/conf/partition-hash-int.txt:ro
+      - ./lib/mysql-connector-java-8.0.16.jar:/mycat/lib/mysql-connector-java-8.0.16.jar:ro
       - ./logs/:/mycat/logs/:rw
