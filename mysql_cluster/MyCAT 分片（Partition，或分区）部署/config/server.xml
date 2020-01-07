@@ -41,7 +41,7 @@
 	<!-- 关键在这，配置一下用户的用户名 密码 数据库 -->
 	<user name="root">
 		<property name="password">root123456</property>
-		<property name="schemas">test_auto_sharding_long,testdb</property>
+		<property name="schemas">test_one,test_two</property>
 		
 		<!-- 相应的 表级 DML 权限设置 -->
 		<!-- 		
@@ -56,7 +56,7 @@
 
 	<user name="user">
 		<property name="password">user123456</property>
-		<property name="schemas">test_auto_sharding_long,testdb</property>
+		<property name="schemas">test_one,test_two</property>
 		<property name="readOnly">true</property>
 	</user>
 </mycat:server>
