@@ -9,7 +9,7 @@
 		<table name="user_info" dataNode="dn$0-11"  rule="sharding-by-month"   primaryKey="id"/>
     </schema>
 	<schema name="test_two" checkSQLschema="true" sqlMaxLimit="100">
-		<table name="order_account" dataNode="dn$0-3"  rule="mod-long"   primaryKey="id"/>
+		<table name="order_place" dataNode="dn$0-3"  rule="sharding-by-intfile"   primaryKey="id"/>
 
 	</schema>
 	

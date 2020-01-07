@@ -120,6 +120,7 @@
 		<property name="count">2</property>
 	</function>
 	
+	<!-- 枚举分片 -->
 	<function name="hash-int"
 		class="io.mycat.route.function.PartitionByFileMap">
 		<property name="mapFile">partition-hash-int.txt</property>
