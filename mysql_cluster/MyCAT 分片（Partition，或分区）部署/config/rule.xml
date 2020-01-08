@@ -100,12 +100,12 @@
 		</rule>  
 	</tableRule>
 	
-	<tableRule name="sharding-by-stringhash">  
+	<!--tableRule name="sharding-by-stringhash">  
 		<rule>  
 			<columns>order_no</columns>  
 			<algorithm>sharding-by-stringhash</algorithm>  
 		</rule>  
-	</tableRule>
+	</tableRule-->
 	
 	<!-- #配置中配置了开始日期，分区天数，即默认从开始日期算起，分隔10天一个分区-->
 	<function name="sharding-by-date" class="io.mycat.route.function.PartitionByDate">
@@ -192,11 +192,11 @@
 		<property name="defaultPartition">0</property>
 	</function>
 	
-	<function name="sharding-by-stringhash" class="io.mycat.route.function.PartitionByString">
+	<!--function name="sharding-by-stringhash" class="io.mycat.route.function.PartitionByString">
 		<property name="partitionLength">512</property> 
 		<property name="partitionCount">3</property>
 		<property name="hashSlice">-6:0</property>
-	</function>
+	</function-->
 	
 	<function name="func1" class="io.mycat.route.function.PartitionByLong">
 		<property name="partitionCount">8</property>
