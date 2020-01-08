@@ -3,17 +3,16 @@
 <mycat:schema xmlns:mycat="http://io.mycat/">
     <!-- 配置 逻辑表 信息信息-->
 	<schema name="test_one" checkSQLschema="true" sqlMaxLimit="100">
-        <table name="user_account" primaryKey="id" dataNode="dn0,dn1,dn2" rule="auto-sharding-long" />
-        <table name="user_login_history" primaryKey="id" dataNode="dn$3-5" rule="sharding-by-date" />
-        <table name="user_call_history" primaryKey="id" dataNode="dn$6-8" rule="latest-month-calldate" />
-		<table name="user_info" dataNode="dn$0-11"  rule="sharding-by-month"   primaryKey="id"/>
+        <table name="user_account" dataNode="dn0,dn1,dn2" rule="auto-sharding-long" primaryKey="id" />
+        <table name="user_login_history" dataNode="dn$3-5" rule="sharding-by-date" primaryKey="id" />
+        <table name="user_call_history" dataNode="dn$6-8" rule="latest-month-calldate" primaryKey="id" />
+		<table name="user_info" dataNode="dn$0-11" rule="sharding-by-month" primaryKey="id"/>
     </schema>
 	<schema name="test_two" checkSQLschema="true" sqlMaxLimit="100">
-		<table name="order_place" dataNode="dn$0-2"  rule="sharding-by-intfile"   primaryKey="id"/>
-		<table name="order_user" dataNode="dn$3-5"  rule="direct-by-substring"   primaryKey="id"/>
-		<table name="order_list" dataNode="dn$6-8"  rule="mod-long"   primaryKey="id"/>
-		<table name="order_detail" dataNode="dn$9-11"  rule="sharding-by-stringhash"   primaryKey="id"/>
-
+		<table name="order_place" dataNode="dn$0-2" rule="sharding-by-intfile" primaryKey="id" />
+		<table name="order_user" dataNode="dn$3-5" rule="direct-by-substring" primaryKey="id" />
+		<table name="order_list" dataNode="dn$6-8" rule="mod-long"   primaryKey="id" />
+		<table name="order_detail" dataNode="dn$9-11" rule="sharding-by-stringhash" primaryKey="id" />
 	</schema>
 	
     <!-- 配置 数据节点信息信息-->
