@@ -13,6 +13,7 @@
 		<table name="order_user" dataNode="dn$3-5" rule="direct-by-substring" primaryKey="id" />
 		<table name="order_list" dataNode="dn$6-8" rule="mod-long"   primaryKey="id" />
 		<!--table name="order_detail" dataNode="dn$9-11" rule="sharding-by-stringhash" primaryKey="id" /-->
+		<table name="order_list" dataNode="dn$6-8" rule="sharding-by-murmur"   primaryKey="id" />
 	</schema>
 	
     <!-- 配置 数据节点信息信息-->

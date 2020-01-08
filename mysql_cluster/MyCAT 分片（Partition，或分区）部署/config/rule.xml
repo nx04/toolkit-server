@@ -116,7 +116,7 @@
 	
 	<!-- 一致性 hash：一致性 hash 预算有效解决了分布式数据的扩容问题 -->
 	<function name="murmur" class="io.mycat.route.function.PartitionByMurmurHash">
-		<!-- 默认是0 -->
+		<!-- hash 种子值 -->
 		<property name="seed">0</property>
 		<!-- 要分片的数据库节点数量，必须指定，否则没法分片 -->
 		<property name="count">2</property>
