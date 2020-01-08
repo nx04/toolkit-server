@@ -16,6 +16,14 @@
 		<table name="order_list_murmur" dataNode="dn$6-8" rule="sharding-by-murmur"   primaryKey="id" />
 	</schema>
 	
+	<schema name="test_three" checkSQLschema="true" sqlMaxLimit="100">
+		<table name="order_place" dataNode="dn$0-2" rule="auto-sharding-rang-mod" primaryKey="id" />
+		<table name="order_user" dataNode="dn$3-5" rule="direct-by-substring" primaryKey="id" />
+		<table name="order_list" dataNode="dn$6-8" rule="mod-long"   primaryKey="id" />
+		<!--table name="order_detail" dataNode="dn$9-11" rule="sharding-by-stringhash" primaryKey="id" /-->
+		<table name="order_list_murmur" dataNode="dn$6-8" rule="sharding-by-murmur"   primaryKey="id" />
+	</schema>
+	
     <!-- 配置 数据节点信息信息-->
 	<dataNode name="dn0" dataHost="data_host_0" database="testdb0" />
 	<dataNode name="dn1" dataHost="data_host_0" database="testdb1" />

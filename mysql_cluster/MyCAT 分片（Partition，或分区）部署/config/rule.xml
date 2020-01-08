@@ -177,6 +177,7 @@
 	<!-- 优点可以避免扩容时的数据迁移，又可以一定程度上避免范围分片的热点问题。综合了范围分片和求模分片的优点，分片组内使用求模可以保证组内数据比较均匀，分片组之间是范围分片，可以兼顾范围查询。 -->
 	<function name="rang-mod" class="io.mycat.route.function.PartitionByRangeMod">
 		<property name="mapFile">partition-range-mod.txt</property>
+		<property name="defaultNode">0</property>
 	</function>
 	
 	<!-- 跳增一致性哈希分片 -->
