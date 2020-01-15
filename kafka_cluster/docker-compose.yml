@@ -20,7 +20,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181"
       KAFKA_BROKER_ID: 1
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1 # 默认备份份数，仅指自动创建的topics
-      KAFKA_CREATE_TOPICS: "MUSIC_SCORE:5:1,MUSIC_FEATURE:5:1"
+      KAFKA_CREATE_TOPICS: "MUSIC_SCORE:10:1,MUSIC_FEATURE:10:1"
     depends_on:
       - zoo1
     container_name: kafka_c1

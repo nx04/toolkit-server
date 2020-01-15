@@ -9,8 +9,8 @@ kafka-topics.sh --zookeeper 112.74.58.15:2181 --describe
 
 # 修改主题
 # 注意分区不能减少，只能增加
-kafka-topics.sh --zookeeper 112.74.58.15:2181 --alter --partitions 6 --topic test_xiaonina
+kafka-topics.sh --zookeeper 112.74.58.15:2181 --alter --partitions 10 --topic test_xiaonina
 
 # 增加主题
 # 注意 replication-factor不能大于borkers的数量
-kafka-topics.sh --create --zookeeper 112.74.58.15:2181 --replication-factor 2 --partitions 3 --topic test_cn    
+kafka-topics.sh --create --zookeeper 112.74.58.15:2181 --replication-factor 2 --partitions 10 --topic test_cn    
