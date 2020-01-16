@@ -4,7 +4,7 @@ cd /opt/kafka_2.12-2.4.0/bin
 # 主题列表
 kafka-topics.sh --zookeeper 112.74.58.15:2181 --list
 
-# 描述
+# 详细描述
 kafka-topics.sh --zookeeper 112.74.58.15:2181 --describe
 
 # 修改主题
