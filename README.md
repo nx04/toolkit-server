@@ -1,7 +1,5 @@
 # docker 部署
 
-## 软件要求
-+ CentOS Linux release 7.6.1810 (Core)
-+ Docker version 19.03.2, build 6a30dfc
-+ docker-compose version 1.24.1, build 4667896b
+ + centos 系统下 docker 的安装及 docker-compose 的安装
+ + 基于 docker 和 docker-compose 进行项目部署
 
