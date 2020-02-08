@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  mycat_web:
+    build: ./build
+    image: mycat_web:1.0.0
+    restart: always
+    container_name: mycat_web_c
+    ports:
+      - 58082:8082
+    volumes:
+      - ./mycat.properties:/mycat-web/mycat-web/WEB-INF/classes/mycat.properties:ro
