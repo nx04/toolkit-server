@@ -7,10 +7,18 @@ services:
     environment:
       - logfile=/data/redis.log
       - dir=/data
-    command: redis-server /data/redis.conf
+      - port=58002
+      - protected-mode=no
+      - appendonly=yes
+      - cluster-enabled=yes
+      - cluster-config-file=nodes-58002.conf
+      - cluster-node-timeout=5000
+      - cluster-announce-ip=112.74.58.15
+      - cluster-announce-port=58002
+      - cluster-announce-bus-port=57002
+    command: redis-server
     ports:
       - 58002:58002
     volumes:
       - ./timezone:/etc/timezone
       - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-      - ./redis.conf:/data/redis.conf
