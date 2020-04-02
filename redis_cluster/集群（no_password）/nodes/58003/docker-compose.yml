@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+  nodes_58003:
+    image: redis:latest
+    container_name: nodes_58003
+    restart: always
+    environment:
+      - logfile=/data/redis.log
+      - dir=/data
+    command: redis-server /etc/redis/redis.conf
+    ports:
+      - 58003:58003
+    volumes:
+      - ./timezone:/etc/timezone
+      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
+      - ./redis.conf:/etc/redis/redis.conf
