@@ -7,10 +7,10 @@ services:
     environment:
       - logfile=/data/redis.log
       - dir=/data
-    command: redis-server /etc/redis/redis.conf
+    command: redis-server /data/redis.conf
     ports:
       - 58001:58001
     volumes:
       - ./timezone:/etc/timezone
       - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-      - ./redis.conf:/etc/redis/redis.conf
+      - ./redis.conf:/data/redis.conf
