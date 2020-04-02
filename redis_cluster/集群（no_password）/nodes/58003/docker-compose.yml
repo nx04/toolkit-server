@@ -4,20 +4,10 @@ services:
     image: redis:latest
     container_name: nodes_58003
     restart: always
-    environment:
-      - logfile=/data/redis.log
-      - dir=/data
-      - protected-mode=no
-      - appendonly=yes
-      - cluster-enabled=yes
-      - cluster-config-file=nodes-58003.conf
-      - cluster-node-timeout=5000
-      - cluster-announce-ip=112.74.58.15
-      - cluster-announce-port=58003
-      - cluster-announce-bus-port=57003
-    command: redis-server
+    command: redis-server /etc/redis.conf
     ports:
       - 58003:6379
     volumes:
+      - ./redis.conf:/etc/redis.conf
       - ./timezone:/etc/timezone
       - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
