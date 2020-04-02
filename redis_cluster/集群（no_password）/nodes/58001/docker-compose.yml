@@ -7,7 +7,6 @@ services:
     environment:
       - logfile=/data/redis.log
       - dir=/data
-      - port=58001
       - protected-mode=no
       - appendonly=yes
       - cluster-enabled=yes
@@ -18,7 +17,7 @@ services:
       - cluster-announce-bus-port=57001
     command: redis-server
     ports:
-      - 58001:58001
+      - 58001:6379
     volumes:
       - ./timezone:/etc/timezone
       - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
