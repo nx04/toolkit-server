@@ -1,5 +1,6 @@
 version: '3.4'
 services:
+
   nodes_58001:
     image: redis:latest
     container_name: nodes_58001
@@ -19,6 +20,7 @@ services:
     volumes:
       - ./timezone:/etc/timezone
       - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
+   
    nodes_58002:
     image: redis:latest
     container_name: nodes_58002
@@ -38,6 +40,7 @@ services:
     volumes:
       - ./timezone:/etc/timezone
       - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
+  
   nodes_58003:
     image: redis:latest
     container_name: nodes_58003
