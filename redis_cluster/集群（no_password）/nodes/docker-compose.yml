@@ -1,8 +1,8 @@
 version: '3.4'
 services:
-  nodes-58001:
+  nodes_58001:
     image: redis:latest
-    container_name: nodes-58001
+    container_name: nodes_58001
     restart: always
     environment:
       - logfile=/data/redis.log
@@ -19,9 +19,9 @@ services:
     volumes:
       - ./timezone:/etc/timezone
       - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-   nodes-58002:
+   nodes_58002:
     image: redis:latest
-    container_name: nodes-58002
+    container_name: nodes_58002
     restart: always
     environment:
       - logfile=/data/redis.log
@@ -38,9 +38,9 @@ services:
     volumes:
       - ./timezone:/etc/timezone
       - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-  nodes-58003:
+  nodes_58003:
     image: redis:latest
-    container_name: nodes-58003
+    container_name: nodes_58003
     restart: always
     environment:
       - logfile=/data/redis.log
