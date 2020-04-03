@@ -1,0 +1,7 @@
+进入容器执行shell文件完成集群连接
+docker exec -it 容器id bash
+
+chmow +x /home/rabbitmq.sh
+./home/rabbitmq.sh
+
+这样就完成了rabbitmq集群服务器的配置,超级简单吧!

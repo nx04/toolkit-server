@@ -1,0 +1,72 @@
+version: '3.1'
+
+services:
+  srv_rabbitmq1:
+    #容器名称
+    container_name: con_rabbitmq1
+    #镜像名称
+    image: rabbitmq:latest
+    #总是重启后启动
+    restart: always
+    #端口映射
+    ports:
+      - 4369:4369
+      - 5671:5671
+      - 25672:25672
+      - 5672:5672
+      - 15671:15672
+    #挂载
+    volumes:
+      - ./data:/var/lib/rabbitmq
+      - ./rabbitmq.sh:/home/rabbitmq.sh
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+      RABBITMQ_NODENAME: rabbitmq1
+      RABBITMQ_ERLANG_COOKIE: CURIOAPPLICATION
+  srv_rabbitmq2:
+    #容器名称
+    container_name: con_rabbitmq2
+    #镜像名称
+    image: rabbitmq:latest
+    #总是重启后启动
+    restart: always
+    #端口映射
+    ports:
+      - 4369:4369
+      - 5671:5671
+      - 25672:25672
+      - 5672:5672
+      - 15671:15672
+    #挂载
+    volumes:
+      - ./data:/var/lib/rabbitmq
+      - ./rabbitmq.sh:/home/rabbitmq.sh
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+      RABBITMQ_NODENAME: rabbitmq2
+      RABBITMQ_ERLANG_COOKIE: CURIOAPPLICATION
+  srv_rabbitmq3:
+    #容器名称
+    container_name: con_rabbitmq3
+    #镜像名称
+    image: rabbitmq:latest
+    #总是重启后启动
+    restart: always
+    #端口映射
+    ports:
+      - 4369:4369
+      - 5671:5671
+      - 25672:25672
+      - 5672:5672
+      - 15671:15672
+    #挂载
+    volumes:
+      - ./data:/var/lib/rabbitmq
+      - ./rabbitmq.sh:/home/rabbitmq.sh
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+      RABBITMQ_NODENAME: rabbitmq3
+      RABBITMQ_ERLANG_COOKIE: CURIOAPPLICATION
