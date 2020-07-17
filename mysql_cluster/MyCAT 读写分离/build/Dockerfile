@@ -1,7 +1,7 @@
 FROM java:8-jre
 
 MAINTAINER <xiaonian xiaonian0430@163.com>
-LABEL Description="Ê¹ÓÃ mycat ×ö mysql Êý¾Ý¿âµÄ¶ÁÐ´·ÖÀë"
+LABEL Description="Ê¹ï¿½ï¿½ mycat ï¿½ï¿½ mysql ï¿½ï¿½ï¿½Ý¿ï¿½Ä¶ï¿½Ð´ï¿½ï¿½ï¿½ï¿½"
 
 ENV MYCAT_PROJECT_NAME Mycat-server-1.6.7.4-release-20200105164103-linux.tar.gz
 ENV MYCAT_HOME=/mycat
@@ -9,7 +9,7 @@ ENV PATH=$PATH:$MYCAT_HOME/bin
 
 USER root
 
-RUN wget http://dl.mycat.io/1.6.7.4/Mycat-server-1.6.7.4-release/Mycat-server-1.6.7.4-release-20200105164103-linux.tar.gz -O mycat.tar.gz \
+RUN wget https://github.com/MyCATApache/Mycat-Server/releases/download/Mycat-server-1675-release/Mycat-server-1.6.7.5-release-20200422133810-linux.tar.gz -O mycat.tar.gz \
 	&& mkdir -p mycat \
 	&& tar -xf mycat.tar.gz -C mycat --strip-components=1 \
 	&& rm mycat.tar.gz
