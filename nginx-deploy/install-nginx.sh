@@ -22,6 +22,10 @@ cd /usr/local/nginx && mkdir conf.d
 # ./configure: error: SSL modules require the OpenSSL library.
 # yum install openssl-devel
 
+# 问题3
+# gzip 需要依赖 zlib 库
+# yum install zlib
+
 # 列出所有端口
 netstat -ntlp
 
