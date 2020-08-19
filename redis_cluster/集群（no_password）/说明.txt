@@ -1,0 +1,186 @@
+redis最开始使用主从模式做集群，若master宕机需要手动配置slave转为master；后来为了高可用提出来哨兵模式，该模式下有一个哨兵监视master和slave，若master宕机可自动将slave转为master，但它也有一个问题，就是不能动态扩充；所以在3.x提出cluster集群模式。
+
+Redis-Cluster采用无中心结构，每个节点保存数据和整个集群状态,每个节点都和其他所有节点连接。
+
+其结构特点：
+1、所有的redis节点彼此互联(PING-PONG机制),内部使用二进制协议优化传输速度和带宽。
+2、节点的fail是通过集群中超过半数的节点检测失效时才生效。
+3、客户端与redis节点直连,不需要中间proxy层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可。
+4、redis-cluster把所有的物理节点映射到[0-16383]slot上（不一定是平均分配）,cluster 负责维护node<->slot<->value。
+5、Redis集群预分好16384个桶，当需要在 Redis 集群中放置一个 key-value 时，根据 CRC16(key) mod 16384的值，决定将一个key放到哪个桶中。
+
+1 redis集群的搭建
+
+集群中至少应该有奇数个节点，所以至少有三个节点，每个节点至少有一个备份节点，所以下面使用6节点（主节点、备份节点由redis-cluster集群确定）
+
+
+1.0 需要升级 gcc ，否则安装出现错误
+yum -y install centos-release-scl  # 升级到gcc 9.1版本
+yum -y install devtoolset-9-gcc devtoolset-9-gcc-c++ devtoolset-9-binutils
+scl enable devtoolset-9 bash
+
+# 以上为临时启用，如果要长期使用gcc 9.1的话
+echo "source /opt/rh/devtoolset-9/enable" >>/etc/profile
+
+1.1 安装redis
+
+wget http://download.redis.io/releases/redis-6.0.6.tar.gz
+
+tar -zxvf redis-6.0.6.tar.gz
+
+cd redis-6.0.6
+
+make
+
+make install PREFIX=/usr/local/redis
+
+1.2 配置文件
+
+创建目录redis-cluster并在此目录下再创建7000 7001 7002 7003 7004 7005共6个目录，在7000中创建配置文件redis.conf，内容如下：
+
+mkdir redis-cluster
+mkdir 7000
+mkdir 7001
+mkdir 7002
+mkdir 7003
+mkdir 7004
+mkdir 7005
+
+cd redis-cluster/7000
+
+vi redis.conf
+
+daemonize yes #后台启动
+port 7000 #修改端口号，从7000到7005
+cluster-enabled yes #开启cluster，去掉注释
+cluster-config-file nodes_7000.conf #自动生成
+cluster-node-timeout 15000 #节点通信时间
+appendonly yes #持久化方式
+
+protected-mode no
+bind 0.0.0.0
+daemonize yes
+port 7000
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 15000
+appendonly yes
+
+cd 7000
+redis-server redis.conf
+cd ..
+cd 7001
+redis-server redis.conf
+cd ..
+cd 7002
+redis-server redis.conf
+cd ..
+cd 7003
+redis-server redis.conf
+cd ..
+cd 7004
+redis-server redis.conf
+cd ..
+cd 7005
+redis-server redis.conf
+cd ..
+
+1.3 使用redis-trib.rb创建集群
+
+./redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1
+
+./redis-cli --cluster create 116.85.36.177:7000 116.85.36.177:7001 116.85.36.177:7002 116.85.36.177:7003 116.85.36.177:7004 116.85.36.177:7005 --cluster-replicas 1
+
+
+1.4 测试节点 
+[root@localhost redis]# ./redis-cli -c -p 7000
+127.0.0.1:7000> set name 12
+-> Redirected to slot [5798] located at 127.0.0.1:7001
+OK
+127.0.0.1:7001> set name1 12
+-> Redirected to slot [12933] located at 127.0.0.1:7002
+OK
+127.0.0.1:7002> set name2 12
+-> Redirected to slot [742] located at 127.0.0.1:7000
+OK
+127.0.0.1:7000> get name
+-> Redirected to slot [5798] located at 127.0.0.1:7001
+"12"
+127.0.0.1:7001> get name1
+-> Redirected to slot [12933] located at 127.0.0.1:7002
+"12"
+127.0.0.1:7002> get name2
+-> Redirected to slot [742] located at 127.0.0.1:7000
+"12"
+
+1.5 现在模拟将7002节点挂掉，按照redis-cluster原理会选举会将 7002的从节点7004选举为主节点。
+
+ps -ef | grep redis
+
+root     15192     1  0 11:17 ?        00:00:00 ../../bin/redis-server *:7000 [cluster]
+root     16262     1  0 11:18 ?        00:00:00 ../../bin/redis-server *:7001 [cluster]
+root     16579     1  0 11:18 ?        00:00:00 ../../bin/redis-server *:7002 [cluster]
+root     16720     1  0 11:18 ?        00:00:00 ../../bin/redis-server *:7003 [cluster]
+root     16824     1  0 11:18 ?        00:00:00 ../../bin/redis-server *:7004 [cluster]
+root     16947     1  0 11:18 ?        00:00:00 ../../bin/redis-server *:7005 [cluster]
+
+kill 16579
+
+./redis-cli --cluster check 127.0.0.1:7001
+
+可以看到集群连接不了7002节点，而7004有原来的S转换为M节点，代替了原来的7002节点。我们可以获取name值：
+
+[root@10-255-0-167 bin]# ./redis-cli -c -p 7001
+127.0.0.1:7001> get name
+"12"
+127.0.0.1:7001> get name1
+-> Redirected to slot [12933] located at 127.0.0.1:7004
+"12"
+127.0.0.1:7004> get name2
+-> Redirected to slot [742] located at 127.0.0.1:7000
+"12"
+
+现在我们将7002节点恢复，看是否会自动加入集群中以及充当的M还是S节点。
+[root@localhost redis-cluster]# cd 7002
+[root@localhost 7002]# ../../bin/redis-server redis.conf 
+[root@localhost 7002]# ./redis-cli --cluster check 127.0.0.1:7001
+
+再check一下7002节点，可以看到7002节点变成了7004的从节点
+
+
+在本例中我们先增加两个节点：主节点7006和从节点7007，并给7006分配4096个slots，设置7007为7006的从节点，然后再将这两个节点从集群中删除，一定要先删除主节点，再删除从节点，要不然故障转移会生效。
+
+(1) 新增节点
+./redis-cli --cluster add-node 127.0.0.1:7006 127.0.0.1:7000  # 第一次节点为新增的节点  第二个节点为集群中的节点
+
+(2)为主节点7006分配虚拟槽
+./redis-cli --cluster reshard 127.0.0.1:7000
+
+至此主节点已经添加完毕了，我们的集群由三主三从变成了四主三从。
+
+（3）添加从节点7007
+./redis-cli --cluster add-node 127.0.0.1:7007 127.0.0.1:7000
+
+7007还是一个Master节点，而且没有拥有自己的slot槽。那么我们接下来要让它变成从节点。
+
+redis-cli -p 7007
+
+cluster replicate 52d169e7011ccdf10f99c1d83f92409dcc37ab55  //后面的字符串为节点7006的节点ID
+
+（4） 删除节点
+(a) 删除从节点
+# 第一个参数是任意一个节点的地址,第二个节点是你想要移除的节点地址。
+./redis-cli --cluster del-node 127.0.0.1:7000 7007的ID
+
+（b） 删除主节点
+将主节点7006的slots分配到其他主节点上
+./redis-cli --cluster reshard 127.0.0.1:7006
+
+删除节点
+./redis-cli --cluster del-node 127.0.0.1:7000 7006的ID
+
+最后登录查看集群又恢复到了三主三从的结构了，只是从刚开始的均匀分配变成了7000端口的主节点多了4096个slots。
+
+
+均衡slot 
+./redis-cli --cluster  rebalance 127.0.0.1:7000
