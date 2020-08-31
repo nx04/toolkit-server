@@ -1,0 +1,13 @@
+version : '2'
+services :
+    php :
+        build : ./php
+        ports :
+            - "127.0.0.1:9800:9000"
+        volumes :
+            - ./php/php.ini:/usr/local/etc/php/php.ini:ro #php配置文件
+        networks:
+            - php-net
+        container_name : php_test
+networks: # 创建网络
+    php-net:
