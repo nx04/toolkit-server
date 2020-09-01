@@ -1,6 +1,5 @@
 FROM java:8-jre
 
-ENV MYCAT_PROJECT_NAME Mycat-server-1.6.7.5-release-20200422133810-linux.tar.gz
 ENV MYCAT_HOME=/mycat
 ENV PATH=$PATH:$MYCAT_HOME/bin
 
