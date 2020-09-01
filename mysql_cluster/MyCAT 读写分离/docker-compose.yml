@@ -1,10 +1,10 @@
 version: '3.1'
 
 services:
-  mycat_ms:
-    image: mycat:1.6.7.5
+  wr_server:
+    image: xioanian/mycat:1.6.7.5
     restart: always
-    container_name: mycat_ms_c
+    container_name: wr_container
     ports:
       - 58066:8066
       - 59066:9066
