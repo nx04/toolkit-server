@@ -2,8 +2,7 @@ version: '3.1'
 
 services:
   mycat_ms:
-    build: ./build
-    image: mycat_mysql_ms:latest
+    image: mycat:1.6.7.5
     restart: always
     container_name: mycat_ms_c
     ports:

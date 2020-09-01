@@ -1,0 +1,1 @@
+docker build -t="xioanian/mycat:1.6.7.5" .

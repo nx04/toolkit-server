@@ -1,0 +1,11 @@
+# 首次需要清空data目录
+#rm -rf ./data/*
+
+# 启动脚本
+docker-compose up -d
+
+# 重启
+docker-compose restart
+
+# 停止脚本
+docker-compose stop

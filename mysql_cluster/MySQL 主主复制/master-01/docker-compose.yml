@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   mysql_master_01:
-    image: mysql:latest
+    image: mysql:8.0.21
     restart: always
     container_name: mysql_master_01
     environment:
