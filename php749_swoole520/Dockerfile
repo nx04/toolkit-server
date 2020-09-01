@@ -5,7 +5,8 @@ USER root
 ENV TZ "Asia/Shanghai"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN yum -y install gcc-c++ make autoconf wget 
+RUN yum -y install gcc-c++ make autoconf
+RUN yum -y install wget zip unzip git
 RUN yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel
 
 # https://github.com/nghttp2/nghttp2/releases/download/v1.41.0/nghttp2-1.41.0.tar.gz
@@ -40,5 +41,12 @@ RUN wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/281efaa0-ec27-11ea-9d
     && make && make install \
     && echo "extension=swoole.so" > /usr/local/php749/lib/php.ini
 
+RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
+    && php composer-setup.php \
+    && php -r "unlink('composer-setup.php');" \
+    && mv composer.phar /usr/local/bin/composer \
+    && chmod +x /usr/local/bin/composer
+
 WORKDIR /usr/src/myapp
+
 CMD [ "php", "-m" ]
