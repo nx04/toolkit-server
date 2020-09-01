@@ -5,7 +5,7 @@ USER root
 ENV TZ "Asia/Shanghai"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel
+RUN yum -y install wget openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel
 
 RUN wget https://github.com/nghttp2/nghttp2/releases/download/v1.41.0/nghttp2-1.41.0.tar.gz \
     && tar zxvf nghttp2-1.41.0.tar.gz \
