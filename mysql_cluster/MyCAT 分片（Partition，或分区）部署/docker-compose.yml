@@ -1,14 +1,13 @@
 version: '3.1'
 
 services:
-  mycat_partition:
-    build: ./build
-    image: mycat_for_mysql_partition:latest
+  partition_server:
+    image: xioanian/mycat:1.6.7.5
     restart: always
-    container_name: mycat_partition_c
+    container_name: partition_container
     ports:
-      - 58066:8066
-      - 59066:9066
+      - 58061:8066
+      - 59061:9066
     volumes:
       - ./config/server.xml:/mycat/conf/server.xml:ro
       - ./config/schema.xml:/mycat/conf/schema.xml:ro
