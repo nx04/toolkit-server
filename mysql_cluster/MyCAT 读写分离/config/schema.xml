@@ -2,7 +2,7 @@
 <!DOCTYPE mycat:schema SYSTEM "schema.dtd">
 <mycat:schema xmlns:mycat="http://io.mycat/">
 	<!-- mydb 是 mycat 的逻辑库名称，链接需要用的 -->
-	<schema name="mydb" checkSQLschema="false" sqlMaxLimit="100" dataNode="dn_1" />
+	<schema name="mydb" checkSQLschema="true" sqlMaxLimit="100" dataNode="dn_1" />
 	<!--
     dataNode：节点中各属性说明；
 		name：指定逻辑数据节点名称；

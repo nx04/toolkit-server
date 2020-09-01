@@ -13,7 +13,8 @@ yum install docker-ce docker-ce-cli containerd.io
 systemctl start docker
 systemctl enable  docker
 cp daemon.json "/etc/docker/daemon.json"
-service docker restart
+systemctl daemon-reload
+systemctl restart docker
 docker version
 
 

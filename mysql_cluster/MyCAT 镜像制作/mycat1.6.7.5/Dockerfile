@@ -5,7 +5,7 @@ ENV PATH=$PATH:$MYCAT_HOME/bin
 
 USER root
 
-RUN wget https://github.com/MyCATApache/Mycat-Server/releases/download/Mycat-server-1675-release/Mycat-server-1.6.7.5-release-20200422133810-linux.tar.gz -O mycat.tar.gz \
+RUN wget http://dl.mycat.org.cn/1.6.7.5/2020-4-10/Mycat-server-1.6.7.5-release-20200410174409-linux.tar.gz -O mycat.tar.gz \
 	&& mkdir -p mycat \
 	&& tar -xf mycat.tar.gz -C mycat --strip-components=1 \
 	&& rm mycat.tar.gz

@@ -78,7 +78,7 @@
 	
 	<!-- 读写都可用的用户 -->
 	<user name="root">
-		<property name="password">_mypassword</property>
+		<property name="password">123456</property>
 		<property name="schemas">mydb</property>
 
 		<!-- 表级 DML 权限设置 -->
