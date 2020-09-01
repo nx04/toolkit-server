@@ -1,9 +1,0 @@
-version : '2'
-services :
-    php :
-        image: php749_swoole520:1.0.1
-        build : ./php
-        container_name : php_test
-        volumes:
-            - /home/test/sts-server:/usr/src/myapp
-        command: "php easyswoole start produce"

@@ -31,7 +31,7 @@ RUN wget https://github.com/swoole/swoole-src/archive/v4.5.2.tar.gz \
     && phpize \
     && ./configure --enable-openssl --enable-sockets --enable-http2 --enable-mysqlnd --with-php-config=/usr/local/php749/bin/php-config \
     && make && make install \
-    && echo "extension=swoole.so" > /usr/local/php749/lib/php.ini、
+    && echo "extension=swoole.so" > /usr/local/php749/lib/php.ini
 
 WORKDIR /usr/src/myapp
 CMD [ "php", "-m" ]
