@@ -7,10 +7,10 @@ services:
     hostname: kafka1
     container_name: kafka1
     ports:
-      - 9092:9092
+      - 9091:9092
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka1
-      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_BROKER_ID: 1
+      KAFKA_LISTENERS: PLAINTEXT://:9092
       KAFKA_ZOOKEEPER_CONNECT: zoo1:2181,zoo2:2181,zoo3:2181
     volumes:
       - ./kafka1/logs:/kafka
@@ -20,7 +20,7 @@ services:
       - zoo3
     networks:
       br17218:
-        ipv4_address: 172.18.0.14
+        ipv4_address: 172.18.90.91
 
   kafka2:
     image: wurstmeister/kafka:2.12-2.5.0
@@ -28,10 +28,10 @@ services:
     hostname: kafka2
     container_name: kafka2
     ports:
-      - 9093:9093
+      - 9092:9092
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka2
-      KAFKA_ADVERTISED_PORT: 9093
+      KAFKA_BROKER_ID: 2
+      KAFKA_LISTENERS: PLAINTEXT://:9092
       KAFKA_ZOOKEEPER_CONNECT: zoo1:2181,zoo2:2181,zoo3:2181
     volumes:
       - ./kafka2/logs:/kafka
@@ -41,7 +41,7 @@ services:
       - zoo3
     networks:
       br17218:
-        ipv4_address: 172.18.0.15
+        ipv4_address: 172.18.90.92
 
   kafka3:
     image: wurstmeister/kafka:2.12-2.5.0
@@ -49,10 +49,10 @@ services:
     hostname: kafka3
     container_name: kafka3
     ports:
-      - 9094:9094
+      - 9093:9092
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka3
-      KAFKA_ADVERTISED_PORT: 9094
+      KAFKA_BROKER_ID: 3
+      KAFKA_LISTENERS: PLAINTEXT://:9092
       KAFKA_ZOOKEEPER_CONNECT: zoo1:2181,zoo2:2181,zoo3:2181
     volumes:
       - ./kafka3/logs:/kafka
@@ -62,7 +62,7 @@ services:
       - zoo3
     networks:
       br17218:
-        ipv4_address: 172.18.0.16
+        ipv4_address: 172.18.90.93
 
 networks:
   br17218:

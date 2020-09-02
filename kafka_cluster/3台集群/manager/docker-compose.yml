@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  kafka-manager:
+    image: sheepkiller/kafka-manager:stable
+    restart: unless-stopped
+    container_name: kafka-manager
+    hostname: kafka-manager
+    ports:
+      - "9010:9000"
+    external_links:   # 连接本compose文件以外的container
+      - kafka1
+      - kafka2
+      - kafka3
+      - zoo1
+      - zoo2
+      - zoo3
+    environment:
+      ZK_HOSTS: zoo1:2181,zoo2:2181,zoo3:2181                 ## 修改:宿主机IP
+      TZ: CST-8
+    networks:
+      br17218:
+        ipv4_address: 172.18.90.10
+
+networks:
+  br17218:
+    external:
+      name: br17218
