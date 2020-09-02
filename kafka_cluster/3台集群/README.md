@@ -6,6 +6,13 @@ cd zookeeper
 docker-compose up -d
 ```
 
+## 查看zookeeper 状态
+```
+docker exec -it zoo1 /zookeeper-3.4.14/bin/zkServer.sh status
+docker exec -it zoo2 /zookeeper-3.4.14/bin/zkServer.sh status
+docker exec -it zoo3 /zookeeper-3.4.14/bin/zkServer.sh status
+```
+
 ## kafka
 ```
 cd kafka

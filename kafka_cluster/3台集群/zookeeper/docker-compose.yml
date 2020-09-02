@@ -7,7 +7,7 @@ services:
     hostname: zoo1
     container_name: zoo1
     ports:
-      - 2181:2181
+      - 12181:2181
     volumes:
       - "./zoo1/data:/data"
       - "./zoo1/datalog:/datalog"
@@ -24,7 +24,7 @@ services:
     hostname: zoo2
     container_name: zoo2
     ports:
-      - 2182:2181
+      - 12182:2181
     volumes:
       - "./zoo2/data:/data"
       - "./zoo2/datalog:/datalog"
@@ -41,7 +41,7 @@ services:
     hostname: zoo3
     container_name: zoo3
     ports:
-      - 2183:2181
+      - 12183:2181
     volumes:
       - "./zoo3/data:/data"
       - "./zoo3/datalog:/datalog"
