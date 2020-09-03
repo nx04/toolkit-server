@@ -2,9 +2,11 @@ FROM centos:centos7.6.1810
 
 USER root
 
+# 时区设置
 ENV TZ "Asia/Shanghai"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# 编译工具及相关依赖程序
 RUN yum -y install gcc-c++ make autoconf
 RUN yum -y install wget zip unzip git
 RUN yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel
@@ -41,12 +43,14 @@ RUN wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/281efaa0-ec27-11ea-9d
     && make && make install \
     && echo "extension=swoole.so" > /usr/local/php749/lib/php.ini
 
+# https://www.phpcomposer.com/
 RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
     && mv composer.phar /usr/local/bin/composer \
     && chmod +x /usr/local/bin/composer
 
+# app 项目目录
 WORKDIR /usr/src/myapp
 
 CMD [ "php", "-m" ]
