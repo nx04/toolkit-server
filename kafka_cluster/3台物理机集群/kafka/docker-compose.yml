@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  kafka_server:
+    image: wurstmeister/kafka:2.12-2.5.0
+    restart: always
+    hostname: kafka_server
+    container_name: kafka_server
+    ports:
+      - 19091:19091
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://172.18.90.91:29091,OUTSIDE://116.85.13.36:19091
+      KAFKA_LISTENERS: INSIDE://:29091,OUTSIDE://:19091
+      KAFKA_ZOOKEEPER_CONNECT: 10.255.0.156:12181,10.255.0.162:12181,10.255.0.164:12181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+    volumes:
+      - ./kafka_server/logs:/kafka
+    networks:
+      br17218:
+        ipv4_address: 172.18.90.91
+
+networks:
+  br17218:
+    external:
+      name: br17218
