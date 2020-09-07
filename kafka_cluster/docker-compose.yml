@@ -25,3 +25,14 @@ services:
     depends_on:
       - zookeeper_server
     container_name: kafka_container
+  kafka-manager:
+      image: sheepkiller/kafka-manager:latest
+      restart: always
+      container_name: kafa-manager_c
+      hostname: kafka-manager
+      ports:
+        - "59000:9000"
+      depends_on:
+        - zookeeper_server
+      environment:
+        ZK_HOSTS: zookeeper_server:2181
