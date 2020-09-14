@@ -29,19 +29,19 @@ RUN wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/f1617d10-ec23-11ea-81
 RUN wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/b3443f90-f637-11ea-8ff1-d5dcf8779628.gz -O php-7.4.10.tar.gz \
     && tar zxvf php-7.4.10.tar.gz \
     && cd php-7.4.10 \
-    && ./configure --prefix /usr/local/php749 --with-openssl --with-openssl-dir --enable-sockets --enable-mysqlnd --enable-mbstring --with-curl \
+    && ./configure --prefix /usr/local/php74 --with-openssl --with-openssl-dir --enable-sockets --enable-mysqlnd --enable-mbstring --with-curl \
     && make && make install \
-    && ln -s /usr/local/php749/bin/php /bin/php \
-    && ln -s /usr/local/php749/bin/phpize /bin/phpize
+    && ln -s /usr/local/php74/bin/php /bin/php \
+    && ln -s /usr/local/php74/bin/phpize /bin/phpize
 
 # https://github.com/swoole/swoole-src/archive/v4.5.3.tar.gz
 RUN wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/281efaa0-ec27-11ea-9dfb-6da8e309e0d8.gz -O swoole-src-4.5.3.tar.gz \
     && tar zxvf swoole-src-4.5.3.tar.gz \
     && cd swoole-src-4.5.3 \
     && phpize \
-    && ./configure --enable-openssl --enable-sockets --enable-http2 --enable-mysqlnd --with-php-config=/usr/local/php749/bin/php-config \
+    && ./configure --enable-openssl --enable-sockets --enable-http2 --enable-mysqlnd --with-php-config=/usr/local/php74/bin/php-config \
     && make && make install \
-    && echo "extension=swoole.so" > /usr/local/php749/lib/php.ini
+    && echo "extension=swoole.so" > /usr/local/php74/lib/php.ini
 
 # https://www.phpcomposer.com/
 RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
