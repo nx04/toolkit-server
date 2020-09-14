@@ -25,10 +25,10 @@ RUN wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/f1617d10-ec23-11ea-81
     && ./configure --libdir=/lib64 \
     && make && make install
 
-# https://www.php.net/distributions/php-7.4.9.tar.gz
-RUN wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/f16d3ce0-ec23-11ea-8a36-ebb87efcf8c0.gz -O php-7.4.9.tar.gz \
-    && tar zxvf php-7.4.9.tar.gz \
-    && cd php-7.4.9 \
+# https://www.php.net/distributions/php-7.4.10.tar.gz
+RUN wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/b3443f90-f637-11ea-8ff1-d5dcf8779628.gz -O php-7.4.10.tar.gz \
+    && tar zxvf php-7.4.10.tar.gz \
+    && cd php-7.4.10 \
     && ./configure --prefix /usr/local/php749 --with-openssl --with-openssl-dir --enable-sockets --enable-mysqlnd --enable-mbstring --with-curl \
     && make && make install \
     && ln -s /usr/local/php749/bin/php /bin/php \

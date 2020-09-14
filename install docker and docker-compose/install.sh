@@ -19,8 +19,8 @@ docker version
 
 
 # install docker-compose
-# https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)
-curl -L "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/57e661c0-ed89-11ea-81ea-f115fe74321c.2" -o "/usr/local/bin/docker-compose"
+# https://github.com/docker/compose/releases/download/1.27.2/docker-compose-$(uname -s)-$(uname -m)
+curl -L "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/225ee520-f637-11ea-8a36-ebb87efcf8c0.2" -o "/usr/local/bin/docker-compose"
 chmod +x /usr/local/bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version
