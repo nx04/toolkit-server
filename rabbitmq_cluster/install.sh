@@ -5,7 +5,7 @@ yum -y install gcc gcc-c++ glibc-devel make kernel-devel m4 ncurses-devel openss
 
 # 安装 make 4.3
 # http://ftp.gnu.org/gnu/make/make-4.3.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/make/make-4.3.tar.gz -O make-4.3.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/make/make-4.3.tar.gz
 tar -xzvf make-4.3.tar.gz
 cd make-4.3
 ./configure --prefix=/usr/local/make
@@ -15,7 +15,7 @@ ln -s /usr/local/make/bin/make /usr/bin/make
 
 # 安装 erlang
 # http://erlang.org/download/otp_src_23.1.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/erlang/otp_src_23.1.tar.gz -O otp_src_23.1.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/erlang/otp_src_23.1.tar.gz
 tar -xzvf otp_src_23.1.tar.gz
 cd otp_src_23.1
 ./configure --prefix=/usr/local/erlang --with-ssl --enable-threads --enable-smp-support --enable-kernel-poll --enable-hipe 
@@ -25,10 +25,10 @@ source /etc/profile
 
 # 安装 rabbitmq
 # https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.9/rabbitmq-server-generic-unix-3.8.9.tar.xz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/rabbitmq/rabbitmq-server-generic-unix-3.8.9.tar.xz -O rabbitmq-server-3.8.9.tar.xz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/rabbitmq/rabbitmq-server-generic-unix-3.8.9.tar.xz
 xz -d rabbitmq-server-3.8.9.tar.xz
 tar -xvf rabbitmq-server-3.8.9.tar
-mv ./rabbitmq-server-3.8.9 /usr/local/rabbitmq
+mv ./rabbitmq_server-3.8.9 /usr/local/rabbitmq
 echo 'export PATH=$PATH:/usr/local/rabbitmq/sbin' >> /etc/profile
 source /etc/profile
 # 创建配置目录
