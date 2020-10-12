@@ -11,9 +11,10 @@ rm -f make-4.3.tar.gz
 cd make-4.3
 ./configure --prefix=/usr/local/make
 make && make install
-mv /usr/bin/make make.bak
-ln -s /usr/local/make/bin/make /usr/bin/make
+cd ../
 rm -rf make-4.3
+mv /usr/bin/make /usr/bin/make.bak
+ln -s -f /usr/local/make/bin/make /usr/bin/make
 
 # 安装 erlang
 # http://erlang.org/download/otp_src_23.1.tar.gz
@@ -23,20 +24,23 @@ rm -f otp_src_23.1.tar.gz
 cd otp_src_23.1
 ./configure --prefix=/usr/local/erlang --with-ssl --enable-threads --enable-smp-support --enable-kernel-poll --enable-hipe 
 make && make install
-echo 'export PATH=$PATH:/usr/local/erlang/bin' >> /etc/profile
-source /etc/profile
+cd ../
 rm -rf otp_src_23.1
+ln -s -f /usr/local/erlang/bin/erl /usr/bin/erl
 
 # 安装 rabbitmq
 # https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.9/rabbitmq-server-generic-unix-3.8.9.tar.xz
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/rabbitmq/rabbitmq-server-generic-unix-3.8.9.tar.xz
 xz -d rabbitmq-server-generic-unix-3.8.9.tar.xz
 tar -xvf rabbitmq-server-generic-unix-3.8.9.tar
+rm -f rabbitmq-server-generic-unix-3.8.9.tar
 mv ./rabbitmq_server-3.8.9 /usr/local/rabbitmq
-echo 'export PATH=$PATH:/usr/local/rabbitmq/sbin' >> /etc/profile
-source /etc/profile
+ln -s -f /usr/local/rabbitmq/sbin/rabbitmq-env /usr/bin/rabbitmq-env
+ln -s -f /usr/local/rabbitmq/sbin/rabbitmq-plugins /usr/bin/rabbitmq-plugins
+ln -s -f /usr/local/rabbitmq/sbin/rabbitmq-server /usr/bin/rabbitmq-server
+ln -s -f /usr/local/rabbitmq/sbin/rabbitmqctl /usr/bin/rabbitmqctl
 # 创建配置目录
-mkdir /etc/rabbitmq
+mkdir -p /etc/rabbitmq
 
 # 安装插件 rabbitmq_delayed_meaage_exchange
 # https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez
