@@ -1,0 +1,1 @@
+docker build -t="xiaonian/php:7.4" .
