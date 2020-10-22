@@ -7,3 +7,6 @@ docker-compose restart
 
 # 停止脚本
 docker-compose stop
+
+# 进入容器
+docker exec -it 容器id bash

@@ -1,14 +1,8 @@
-#!/bin/bash
+# 编译器和工具
+yum install -y gcc gcc-c++
+yum install -y make cmake autoconf
 
-yum remove docker \
-    docker-client \
-    docker-client-latest \
-    docker-common \
-    docker-latest \
-    docker-latest-logrotate \
-    docker-logrotate \
-    docker-engine
-
+yum remove docker*
 yum install -y curl yum-utils
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 #yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo

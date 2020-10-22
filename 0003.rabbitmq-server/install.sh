@@ -1,8 +1,20 @@
-# rabbitmq server 安装
+# 编译器和工具
+yum install -y gcc gcc-c++
+yum install -y make cmake autoconf
+
+# openssl
+# OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。
+yum install -y openssl openssl-devel
 
 # 安装依赖
-yum -y install gcc gcc-c++ glibc-devel make kernel-devel m4 
-yum -y install ncurses-devel openssl-devel xmlto perl wget gtk2-devel binutils-devel xz
+yum install -y glibc-devel kernel-devel m4 
+yum install -y ncurses-devel xmlto perl gtk2-devel binutils-devel
+
+# wget 是Linux中的一个下载文件的工具 
+# tar 解压工具
+# curl 客户端（client）的 URL 工具
+# xz 格式解压工具
+yum install -y wget tar curl xz
 
 # 安装 make 4.3
 # http://ftp.gnu.org/gnu/make/make-4.3.tar.gz
@@ -13,8 +25,7 @@ cd make-4.3
 make && make install
 mv /usr/bin/make /usr/bin/make.bak
 ln -s -f /usr/local/make/bin/make /usr/bin/make
-cd ../
-rm -rf make-4.3 make-4.3.tar.gz
+cd ../ && rm -rf make-4.3 make-4.3.tar.gz
 
 # 安装 erlang
 # http://erlang.org/download/otp_src_23.1.tar.gz
@@ -24,8 +35,7 @@ cd otp_src_23.1
 ./configure --prefix=/usr/local/erlang --with-ssl --enable-threads --enable-smp-support --enable-kernel-poll --enable-hipe 
 make && make install
 ln -s -f /usr/local/erlang/bin/erl /usr/bin/erl
-cd ../
-rm -rf otp_src_23.1 otp_src_23.1.tar.gz
+cd ../ && rm -rf otp_src_23.1 otp_src_23.1.tar.gz
 
 # 安装 rabbitmq
 # https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.9/rabbitmq-server-generic-unix-3.8.9.tar.xz
