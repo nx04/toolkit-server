@@ -1,6 +1,5 @@
 # 编译器和工具
-yum install -y gcc gcc-c++
-yum install -y make cmake autoconf
+yum install -y gcc gcc-c++ make cmake autoconf
 
 yum remove docker*
 yum install -y curl yum-utils
@@ -15,7 +14,7 @@ yum install -y docker-ce docker-ce-cli containerd.io
 # start docker
 systemctl start docker
 systemctl enable  docker
-cp daemon.json "/etc/docker/daemon.json"
+cp -rf daemon.json "/etc/docker/daemon.json"
 systemctl daemon-reload
 systemctl restart docker
 docker version

@@ -9,3 +9,5 @@
  - rabbitmq
  - php
  - python
+
+ 全部基于centos 7

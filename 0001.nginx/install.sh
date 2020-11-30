@@ -1,6 +1,5 @@
 # 编译器和工具
-yum install -y gcc gcc-c++
-yum install -y make cmake autoconf
+yum install -y gcc gcc-c++ make cmake autoconf
 
 # 第三方的开发包
 # 1）pcre
@@ -22,17 +21,18 @@ yum install -y openssl openssl-devel
 # tar解压工具
 yum install -y wget tar
 
+# Stable version
 # http://nginx.org/download/nginx-1.18.0.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/nginx/nginx-1.18.0.tar.gz -o nginx.tar.gz
-tar -zxvf nginx.tar.gz
-cd nginx
-./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_spdy_module --with-pcre --with-http_gzip_static_module --with-http_realip_module
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/nginx/nginx-1.18.0.tar.gz
+tar -zxvf nginx-1.18.0.tar.gz
+cd nginx-1.18.0
+./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-http_gzip_static_module --with-http_v2_module
 make && make install
 ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
-cd ../ && rm -rf nginx nginx.tar.gz
+cd ../ && rm -rf nginx-1.18.0 nginx-1.18.0.tar.gz
 
 # 配置文件
-cd /usr/local/nginx && mkdir conf.d
+cd /usr/local/nginx && mkdir -rf conf.d
 
 # 列出所有端口
 netstat -ntlp
