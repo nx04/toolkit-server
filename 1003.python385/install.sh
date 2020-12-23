@@ -17,7 +17,8 @@ yum -y install libsndfile readline-devel xz-devel tk-devel gdbm-devel
 
 # python
 # https://www.python.org/ftp/python/3.9.0/Python-3.9.0.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/python/Python-3.9.0.tgz -O Python-3.9.0.tgz \
+# https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/python/Python-3.9.0.tgz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/e58f4860-44c9-11eb-8a36-ebb87efcf8c0.tgz -O Python-3.9.0.tgz \
     && tar zxvf Python-3.9.0.tgz \
     && cd Python-3.9.0 \
     && ./configure --prefix /usr/local/python390 \
