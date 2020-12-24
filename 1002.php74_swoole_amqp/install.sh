@@ -32,8 +32,12 @@ tar zxvf php-7.4.11.tar.gz
 cd php-7.4.11
 ./configure --prefix /usr/local/php74 --with-openssl --with-openssl-dir --enable-sockets --enable-mysqlnd --enable-mbstring --with-curl
 make && make install
-ln -s /usr/local/php74/bin/php /bin/php
-ln -s /usr/local/php74/bin/phpize /bin/phpize
+ln -s -f /usr/local/php74/bin/php /bin/php
+ln -s -f /usr/local/php74/bin/php /usr/bin
+ln -s -f /usr/local/php74/bin/php /usr/local/bin
+ln -s -f /usr/local/php74/bin/phpize /bin/phpize
+ln -s -f /usr/local/php74/bin/phpize /usr/bin/phpize
+ln -s -f /usr/local/php74/bin/phpize /usr/local/bin/phpize
 cd ../
 rm -rf php-7.4.11 php-7.4.11.tar.gz
 

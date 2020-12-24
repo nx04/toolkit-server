@@ -24,7 +24,9 @@ cd make-4.3
 ./configure --prefix=/usr/local/make
 make && make install
 mv /usr/bin/make /usr/bin/make.bak
+ln -s -f /usr/local/make/bin/make /bin/make
 ln -s -f /usr/local/make/bin/make /usr/bin/make
+ln -s -f /usr/local/make/bin/make /usr/local/bin/make
 cd ../ && rm -rf make-4.3 make-4.3.tar.gz
 
 # 安装 erlang
@@ -34,7 +36,9 @@ tar -xzvf otp_src_23.1.tar.gz
 cd otp_src_23.1
 ./configure --prefix=/usr/local/erlang --with-ssl --enable-threads --enable-smp-support --enable-kernel-poll --enable-hipe 
 make && make install
+ln -s -f /usr/local/erlang/bin/erl /bin/erl
 ln -s -f /usr/local/erlang/bin/erl /usr/bin/erl
+ln -s -f /usr/local/erlang/bin/erl /usr/local/bin/erl
 cd ../ && rm -rf otp_src_23.1 otp_src_23.1.tar.gz
 
 # 安装 rabbitmq

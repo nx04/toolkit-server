@@ -25,5 +25,6 @@ docker version
 # curl -L "https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/docker-compose/docker-compose-Linux-x86_64-1.27.4" -o "/usr/local/bin/docker-compose"
 curl -L "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/93595250-44c6-11eb-b997-9918a5dda011.4" -o "/usr/local/bin/docker-compose"
 chmod +x /usr/local/bin/docker-compose
+ln -s -f /usr/local/bin/docker-compose /bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version

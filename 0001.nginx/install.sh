@@ -28,7 +28,9 @@ tar -zxvf nginx-1.18.0.tar.gz
 cd nginx-1.18.0
 ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-http_gzip_static_module --with-http_v2_module
 make && make install
+ln -s -f /usr/local/nginx/sbin/nginx /bin/nginx
 ln -s -f /usr/local/nginx/sbin/nginx /usr/bin/nginx
+ln -s -f /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
 cd ../ && rm -rf nginx-1.18.0 nginx-1.18.0.tar.gz
 
 # 配置文件
