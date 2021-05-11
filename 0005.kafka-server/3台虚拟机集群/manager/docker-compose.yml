@@ -7,9 +7,9 @@ services:
     container_name: kafka-manager
     hostname: kafka-manager
     ports:
-      - "9010:9000"
+      - "59000:9000"
     environment:
-      ZK_HOSTS: 10.255.0.156:12181,10.255.0.156:12182,10.255.0.156:12183
+      ZK_HOSTS: 8.135.88.179:52181,8.135.88.179:52182,8.135.88.179:52183
       TZ: CST-8
     networks:
       br17218:

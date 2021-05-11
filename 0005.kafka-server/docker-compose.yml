@@ -15,7 +15,7 @@ services:
     ports:
       - "59092:9092"
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: 112.74.58.15
+      KAFKA_ADVERTISED_HOST_NAME: 8.135.88.179
       KAFKA_ADVERTISED_PORT: 59092
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper_server:2181"
       KAFKA_BROKER_ID: 1
@@ -25,11 +25,10 @@ services:
     depends_on:
       - zookeeper_server
     container_name: kafka_container
-  kafka-manager:
+  manager_server:
       image: sheepkiller/kafka-manager:latest
       restart: always
-      container_name: kafa-manager_c
-      hostname: kafka-manager
+      container_name: manager_container
       ports:
         - "59000:9000"
       depends_on:

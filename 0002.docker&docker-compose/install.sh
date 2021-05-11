@@ -4,12 +4,7 @@ yum install -y gcc gcc-c++ make cmake autoconf
 yum remove docker*
 yum install -y curl yum-utils
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-#yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install -y docker-ce docker-ce-cli containerd.io
-
-#安装指定版本的 docker 如下
-#yum list docker-ce --showduplicates | sort -r
-#yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io
 
 # start docker
 systemctl start docker
@@ -21,9 +16,9 @@ docker version
 
 
 # install docker-compose
-# https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)
-# curl -L "https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/docker-compose/docker-compose-Linux-x86_64-1.27.4" -o "/usr/local/bin/docker-compose"
-curl -L "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/93595250-44c6-11eb-b997-9918a5dda011.4" -o "/usr/local/bin/docker-compose"
+# https://github.com/docker/compose/releases
+# https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/74a40d60-e737-4973-b6cd-8702ac1d00ea.2 -O /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose

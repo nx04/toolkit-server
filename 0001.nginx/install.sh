@@ -1,6 +1,10 @@
 # 编译器和工具
 yum install -y gcc gcc-c++ make cmake autoconf
 
+# wget是Linux中的一个下载文件的工具 
+# tar解压工具
+yum install -y wget tar
+
 # 第三方的开发包
 # 1）pcre
 # PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。
@@ -17,24 +21,22 @@ yum install -y zlib zlib-devel
 # nginx不仅支持http协议，还支持https（即在ssl协议上传输http），所以需要在linux安装openssl库。
 yum install -y openssl openssl-devel
 
-# wget是Linux中的一个下载文件的工具 
-# tar解压工具
-yum install -y wget tar
-
 # Stable version
-# http://nginx.org/download/nginx-1.18.0.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/nginx/nginx-1.18.0.tar.gz
-tar -zxvf nginx-1.18.0.tar.gz
-cd nginx-1.18.0
+# http://nginx.org/download/nginx-1.20.0.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/1327fb61-60e3-40e2-8b1a-ee5526968ffb.gz -O nginx-release.tar.gz
+rm -rf nginx-release
+mkdir -p nginx-release
+tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1
+cd nginx-release
 ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-http_gzip_static_module --with-http_v2_module
 make && make install
 ln -s -f /usr/local/nginx/sbin/nginx /bin/nginx
 ln -s -f /usr/local/nginx/sbin/nginx /usr/bin/nginx
 ln -s -f /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
-cd ../ && rm -rf nginx-1.18.0 nginx-1.18.0.tar.gz
+cd ../ && rm -rf nginx-release nginx-release.tar.gz
 
 # 配置文件
-cd /usr/local/nginx && mkdir -rf conf.d
+mkdir -p /usr/local/nginx/conf.d
 
 # 列出所有端口
 netstat -ntlp
