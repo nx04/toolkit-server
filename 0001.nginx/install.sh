@@ -22,10 +22,9 @@ yum install -y zlib zlib-devel
 yum install -y openssl openssl-devel
 
 # Stable version
-# http://nginx.org/download/nginx-1.20.0.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/1327fb61-60e3-40e2-8b1a-ee5526968ffb.gz -O nginx-release.tar.gz
-rm -rf nginx-release
-mkdir -p nginx-release
+# https://nginx.org/download/nginx-1.20.1.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/640aa0dd-9ffe-4216-9898-33a77c974023.gz -O nginx-release.tar.gz
+rm -rf nginx-release && mkdir -p nginx-release
 tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1
 cd nginx-release
 ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-http_gzip_static_module --with-http_v2_module

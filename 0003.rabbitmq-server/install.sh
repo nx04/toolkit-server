@@ -18,47 +18,50 @@ yum install -y wget tar curl xz
 
 # 安装 make 4.3
 # http://ftp.gnu.org/gnu/make/make-4.3.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/make/make-4.3.tar.gz
-tar -xzvf make-4.3.tar.gz
-cd make-4.3
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/63fbe139-c2d7-4600-9140-93a1e6575524.gz -O make-release.tar.gz
+rm -rf make-release && mkdir -p make-release
+tar -zxvf make-release.tar.gz -C ./make-release --strip-components 1
+cd make-release
 ./configure --prefix=/usr/local/make
 make && make install
 mv /usr/bin/make /usr/bin/make.bak
 ln -s -f /usr/local/make/bin/make /bin/make
 ln -s -f /usr/local/make/bin/make /usr/bin/make
 ln -s -f /usr/local/make/bin/make /usr/local/bin/make
-cd ../ && rm -rf make-4.3 make-4.3.tar.gz
+cd ../ && rm -rfmake-release make-release.tar.gz
 
 # 安装 erlang
-# http://erlang.org/download/otp_src_23.1.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/erlang/otp_src_23.1.tar.gz
-tar -xzvf otp_src_23.1.tar.gz
-cd otp_src_23.1
+# https://erlang.org/download/otp_src_24.0.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/c70623d1-478b-469e-8cb7-23fcc9c2fc8e.gz -O erlang-release.tar.gz
+rm -rf erlang-release && mkdir -p erlang-release
+tar -zxvf erlang-release.tar.gz -C ./erlang-release --strip-components 1
+cd erlang-release
 ./configure --prefix=/usr/local/erlang --with-ssl --enable-threads --enable-smp-support --enable-kernel-poll --enable-hipe 
 make && make install
 ln -s -f /usr/local/erlang/bin/erl /bin/erl
 ln -s -f /usr/local/erlang/bin/erl /usr/bin/erl
 ln -s -f /usr/local/erlang/bin/erl /usr/local/bin/erl
-cd ../ && rm -rf otp_src_23.1 otp_src_23.1.tar.gz
+cd ../ && rm -rf erlang-release erlang-release.tar.gz
 
 # 安装 rabbitmq
-# https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.9/rabbitmq-server-generic-unix-3.8.9.tar.xz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/rabbitmq/rabbitmq-server-generic-unix-3.8.9.tar.xz
-xz -d rabbitmq-server-generic-unix-3.8.9.tar.xz
-tar -xvf rabbitmq-server-generic-unix-3.8.9.tar
-mv ./rabbitmq_server-3.8.9 /usr/local/rabbitmq
+# https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.22/rabbitmq-server-generic-unix-3.8.22.tar.xz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/6a3a012b-664c-4dc1-80e1-0f6f20823edc.xz -O rabbitmq-release.tar.xz
+xz -d rabbitmq-release.tar.xz
+rm -rf rabbitmq-release && mkdir -p rabbitmq-release
+tar -xvf rabbitmq-release.tar -C ./rabbitmq-release --strip-components 1
+mv ./rabbitmq-release /usr/local/rabbitmq
 ln -s -f /usr/local/rabbitmq/sbin/rabbitmq-env /usr/bin/rabbitmq-env
 ln -s -f /usr/local/rabbitmq/sbin/rabbitmq-plugins /usr/bin/rabbitmq-plugins
 ln -s -f /usr/local/rabbitmq/sbin/rabbitmq-server /usr/bin/rabbitmq-server
 ln -s -f /usr/local/rabbitmq/sbin/rabbitmqctl /usr/bin/rabbitmqctl
 # 创建配置目录
 mkdir -p /etc/rabbitmq
-rm -f rabbitmq-server-generic-unix-3.8.9.tar
+rm -f rabbitmq-release.tar
 
 # 安装插件 rabbitmq_delayed_meaage_exchange
-# https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.8.0/rabbitmq_delayed_message_exchange-3.8.0.ez
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/rabbitmq/rabbitmq_delayed_message_exchange-3.8.0.ez
-mv rabbitmq_delayed_message_exchange-3.8.0.ez /usr/local/rabbitmq/plugins/
+# https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/3.9.0/rabbitmq_delayed_message_exchange-3.9.0.ez
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/d821992c-7351-4c66-be45-db657f8f9dd0.ez -O rabbitmq_delayed_message_exchang.ez
+mv rabbitmq_delayed_message_exchange.ez /usr/local/rabbitmq/plugins/
 # 启动delayed_message插件
 rabbitmq-plugins enable rabbitmq_delayed_message_exchange
 

@@ -5,59 +5,72 @@ yum -y install gcc-c++ make autoconf cmake
 yum -y install wget zip unzip git
 yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel
 
-# 安装 nghttp2
-# https://github.com/nghttp2/nghttp2/releases/download/v1.41.0/nghttp2-1.41.0.tar.gz
-# wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/f1779d20-ec23-11ea-81ea-f115fe74321c.gz -O nghttp2-1.41.0.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/66449250-44c8-11eb-97b7-0dc4655d6e68.gz -O nghttp2-1.41.0.tar.gz
-tar zxvf nghttp2-1.41.0.tar.gz
-cd nghttp2-1.41.0
-./configure
-make && make install
-cd ../
-rm -rf nghttp2-1.41.0 nghttp2-1.41.0.tar.gz
+# 资源列表
+# https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz
+oniguruma_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/91ebb0f5-0966-48ad-9a37-63bffe297dea.gz"
+
+# https://github.com/madler/zlib/archive/refs/tags/v1.2.11.tar.gz
+zlib_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/a788bd58-ec24-4eb9-b23d-164d86b70315.gz"
+
+# https://www.php.net/distributions/php-7.4.19.tar.gz
+php_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/2d44ef55-5591-49d3-8dc6-8ec3c5179bab.gz"
+
+# https://github.com/swoole/swoole-src/archive/refs/tags/v4.6.6.tar.gz
+swoole_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/75b868b9-4c39-4fb2-b69a-37d550c42f41.gz"
 
 # 安装 oniguruma
-# https://github.com/kkos/oniguruma/releases/download/v6.9.5/onig-6.9.5.tar.gz
-# wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/f1617d10-ec23-11ea-81ea-f115fe74321c.gz -O onig-6.9.5.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/92ffd5c0-44c8-11eb-bd01-97bc1429a9ff.gz -O onig-6.9.5.tar.gz
-tar zxvf onig-6.9.5.tar.gz
-cd onig-6.9.5
-./configure --libdir=/lib64
+wget $oniguruma_src -O oniguruma-release.tar.gz
+rm -rf oniguruma-release
+mkdir -p oniguruma-release
+tar -zxvf oniguruma-release.tar.gz -C ./oniguruma-release --strip-components 1
+cd oniguruma-release
+./configure --prefix /usr/local/oniguruma-release --libdir=/lib64
 make && make install
 cd ../
-rm -rf onig-6.9.5 onig-6.9.5.tar.gz
+rm -rf oniguruma-release oniguruma-release.tar.gz
 
-# 安装 php7.4
-# https://www.php.net/distributions/php-7.4.11.tar.gz
-# wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/php/php-7.4.11.tar.gz -O php-7.4.11.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/ba2ef680-44c8-11eb-bf0a-894cbc80c40a.gz -O php-7.4.11.tar.gz
-tar zxvf php-7.4.11.tar.gz
-cd php-7.4.11
-./configure --prefix /usr/local/php74 --with-openssl --with-openssl-dir --enable-sockets --enable-mysqlnd --enable-mbstring --with-curl
+# 安装 zlib
+wget $zlib_src -O zlib-release.tar.gz
+rm -rf zlib-release
+mkdir -p zlib-release
+tar -zxvf zlib-release.tar.gz -C ./zlib-release --strip-components 1
+cd zlib-release
+./configure --prefix /usr/local/zlib-release
 make && make install
-ln -s -f /usr/local/php74/bin/php /bin/php
-ln -s -f /usr/local/php74/bin/php /usr/bin
-ln -s -f /usr/local/php74/bin/php /usr/local/bin
-ln -s -f /usr/local/php74/bin/phpize /bin/phpize
-ln -s -f /usr/local/php74/bin/phpize /usr/bin/phpize
-ln -s -f /usr/local/php74/bin/phpize /usr/local/bin/phpize
 cd ../
-rm -rf php-7.4.11 php-7.4.11.tar.gz
+rm -rf zlib-release zlib-release.tar.gz
+
+# 安装 php
+wget $php_src -O php-release.tar.gz
+rm -rf php-release
+mkdir -p php-release
+tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
+cd php-release
+./configure --prefix /usr/local/php-release --with-openssl --with-openssl-dir --enable-sockets --enable-mysqlnd --enable-mbstring --with-curl  --with-zlib=/usr/local/zlib-release
+make && make install
+ln -s -f /usr/local/php-release/bin/php /bin/php
+ln -s -f /usr/local/php-release/bin/php /usr/bin
+ln -s -f /usr/local/php-release/bin/php /usr/local/bin
+ln -s -f /usr/local/php-release/bin/phpize /bin/phpize
+ln -s -f /usr/local/php-release/bin/phpize /usr/bin/phpize
+ln -s -f /usr/local/php-release/bin/phpize /usr/local/bin/phpize
+cd ../
+rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
-# https://github.com/swoole/swoole-src/archive/v4.5.4.tar.gz
-#wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/swoole/swoole-src-4.5.4.tar.gz -O swoole-src-4.5.4.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-infobird/e7831e90-44c8-11eb-97b7-0dc4655d6e68.gz -O swoole-src-4.5.4.tar.gz
-tar zxvf swoole-src-4.5.4.tar.gz
-cd swoole-src-4.5.4
+wget $swoole_src -O swoole-release.tar.gz
+rm -rf swoole-release
+mkdir -p swoole-release
+tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
+cd swoole-release
 phpize
-./configure --enable-openssl --enable-sockets --enable-http2 --enable-mysqlnd --with-php-config=/usr/local/php74/bin/php-config
+./configure --enable-openssl --enable-sockets --enable-mysqlnd --with-php-config=/usr/local/php-release/bin/php-config
 make && make install
 cd ../
-rm -rf swoole-src-4.5.4 swoole-src-4.5.5.tar.gz
+rm -rf swoole-release swoole-release.tar.gz
 
-# 开启 PHP 扩展
-echo "extension=swoole.so" > /usr/local/php74/lib/php.ini
+# 在PHP中开启 PHP 扩展
+echo "extension=swoole.so" > /usr/local/php-release/lib/php.ini
 
 # composer 包管理工具
 # https://www.phpcomposer.com/
