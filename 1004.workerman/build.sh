@@ -1,0 +1,1 @@
+docker build -t="xiaonian/workerman:1.0.0" .

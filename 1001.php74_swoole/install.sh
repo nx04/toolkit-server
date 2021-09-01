@@ -1,8 +1,7 @@
 # 设置系统时区
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
-
 yum -y install gcc-c++ make autoconf cmake
-yum -y install wget zip unzip git
+yum -y install wget zip unzip git tar
 yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel
 
 # 资源列表
@@ -12,8 +11,8 @@ oniguruma_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-
 # https://github.com/madler/zlib/archive/refs/tags/v1.2.11.tar.gz
 zlib_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/a788bd58-ec24-4eb9-b23d-164d86b70315.gz"
 
-# https://www.php.net/distributions/php-7.4.19.tar.gz
-php_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/2d44ef55-5591-49d3-8dc6-8ec3c5179bab.gz"
+# https://www.php.net/distributions/php-8.0.10.tar.gz
+php_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/2ea97480-2915-453c-8e92-354cc5e2fdd9.gz"
 
 # https://github.com/swoole/swoole-src/archive/refs/tags/v4.6.6.tar.gz
 swoole_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/75b868b9-4c39-4fb2-b69a-37d550c42f41.gz"
@@ -59,8 +58,7 @@ rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
 wget $swoole_src -O swoole-release.tar.gz
-rm -rf swoole-release
-mkdir -p swoole-release
+rm -rf swoole-release && mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
 cd swoole-release
 phpize
