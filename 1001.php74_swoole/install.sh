@@ -53,6 +53,15 @@ ln -s -f /usr/local/php-release/bin/php /usr/local/bin
 ln -s -f /usr/local/php-release/bin/phpize /bin/phpize
 ln -s -f /usr/local/php-release/bin/phpize /usr/bin/phpize
 ln -s -f /usr/local/php-release/bin/phpize /usr/local/bin/phpize
+
+#安装zlib扩展
+cd ext/zlib
+mv config0.m4 config.m4
+phpize
+./configure --with-php-config=/usr/local/php-release/bin/php-config
+make && make install
+echo "extension=zlib.so" >> /usr/local/php-release/lib/php.ini
+
 cd ../
 rm -rf php-release php-release.tar.gz
 
@@ -68,7 +77,7 @@ cd ../
 rm -rf swoole-release swoole-release.tar.gz
 
 # 在PHP中开启 PHP 扩展
-echo "extension=swoole.so" > /usr/local/php-release/lib/php.ini
+echo "extension=swoole.so" >> /usr/local/php-release/lib/php.ini
 
 # composer 包管理工具
 # https://www.phpcomposer.com/
