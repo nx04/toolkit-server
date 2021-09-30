@@ -4,6 +4,9 @@ yum -y install gcc-c++ make autoconf cmake
 yum -y install wget zip unzip git tar
 yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel
 
+# 为了能支持更大的并发连接数，必须安装event扩展，并且优化Linux内核。安装方法如下:
+yum install libevent-devel -y
+
 # 资源列表
 # https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz
 oniguruma_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/91ebb0f5-0966-48ad-9a37-63bffe297dea.gz"
@@ -53,15 +56,6 @@ ln -s -f /usr/local/php-release/bin/php /usr/local/bin
 ln -s -f /usr/local/php-release/bin/phpize /bin/phpize
 ln -s -f /usr/local/php-release/bin/phpize /usr/bin/phpize
 ln -s -f /usr/local/php-release/bin/phpize /usr/local/bin/phpize
-
-#安装zlib扩展
-cd ext/zlib
-mv config0.m4 config.m4
-phpize
-./configure --with-php-config=/usr/local/php-release/bin/php-config
-make && make install
-echo "extension=zlib.so" >> /usr/local/php-release/lib/php.ini
-
 cd ../
 rm -rf php-release php-release.tar.gz
 
