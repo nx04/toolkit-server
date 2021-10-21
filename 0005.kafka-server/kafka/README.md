@@ -1,6 +1,5 @@
 # kafka 集群
 
-
 - 1）KAFKA_LISTENERS 定义kafka的服务监听地址，addr可以为空，或者0.0.0.0，表示kafka服务会监听在指定地址
 - 2）KAFKA_ADVERTISED_LISTENERS kafka发布到zookeeper供客户端使用的服务地址，格式也是PLAINTEXT://<addr>:<port>，但是addr不能为空。
   - 2.1）如果KAFKA_ADVERTISED_LISTENERS没有定义，则是取的KAFKA_LISTENERS的值。
@@ -36,19 +35,6 @@ KAFKA_INTER_BROKER_LISTENER_NAME=INSIDE
 - 映射容器端口9094到主机9094
 - 在容器内kafka服务监听在两个端口9092和9094，端口9094被映射到外面同端口，9094:9094。
 - 容器网络使用<container>:9092访问kafka，主机网络使用<host>:9094访问kafka。
-
-## zookeeper
-```
-cd zookeeper
-docker-compose up -d
-```
-
-## 查看zookeeper 状态
-```
-docker exec -it zoo1 /zookeeper-3.4.14/bin/zkServer.sh status
-docker exec -it zoo2 /zookeeper-3.4.14/bin/zkServer.sh status
-docker exec -it zoo3 /zookeeper-3.4.14/bin/zkServer.sh status
-```
 
 ## kafka
 ```

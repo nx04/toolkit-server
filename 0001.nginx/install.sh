@@ -38,7 +38,7 @@ cd ../ && rm -rf nginx-release nginx-release.tar.gz
 mkdir -p /usr/local/nginx/conf.d
 
 # 列出所有端口
-netstat -ntlp
+# netstat -ntlp
 
 # 列出80端口
-lsof -i tcp:80
+# lsof -i tcp:80
