@@ -1,5 +1,4 @@
 version: '2'
-
 services:
   kafka-manager:
     image: sheepkiller/kafka-manager:latest
@@ -9,13 +8,12 @@ services:
     ports:
       - "59000:9000"
     environment:
-      ZK_HOSTS: 10.255.0.248:59010,10.255.0.248:59011,10.255.0.248:59012
+      ZK_HOSTS: 10.255.0.108:52181,10.255.0.18:52181,10.255.0.229:52181
       TZ: Asia/Shanghai
     networks:
       default:
-        ipv4_address: 172.19.0.20
-
+        ipv4_address: 172.17.0.10
 networks:
   default:
     external:
-      name: zookeeper_kafka
+      name: manager_network

@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  zookeeper1002:
+    image: zookeeper:3.7.0
+    container_name: zookeeper1002
+    hostname: zookeeper1002
+    restart: unless-stopped
+    ports:
+      - "2888:2888"
+      - "3888:3888"
+      - "52181:2181"
+    volumes:
+      - "./data:/data"
+      - "./datalog:/datalog"
+    environment:
+      TZ: Asia/Shanghai
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=10.255.0.108:2888:3888;2181 server.2=10.255.0.18:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181
+    networks:
+      default:
+        ipv4_address: 172.19.0.10
+networks:
+  default:
+    external:
+      name: zookeeper_network
+      
