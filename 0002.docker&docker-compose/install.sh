@@ -1,16 +1,15 @@
 # tools
-yum install -y gcc gcc-c++ make cmake autoconf
+yum install -y gcc gcc-c++ make cmake autoconf curl yum-utils
 
 # install docker
-yum remove docker*
-yum install -y curl yum-utils
+yum remove docker* -y
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 yum install -y docker-ce docker-ce-cli containerd.io
 
 # start docker
 systemctl start docker
 systemctl enable  docker
-cp -rf daemon.json "/etc/docker/daemon.json"
+echo '{"registry-mirrors":["https://registry.docker-cn.com","https://docker.mirrors.ustc.edu.cn","https://hub-mirror.c.163.com"],"insecure-registries":[]}' > /etc/docker/daemon.json
 systemctl daemon-reload
 systemctl restart docker
 docker version
