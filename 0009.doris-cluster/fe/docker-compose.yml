@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  docker2fe:
+    image: apache/incubator-doris:build-env-1.2
+    restart: unless-stopped
+    hostname: docker2fe
+    container_name: docker2fe
+    ports:
+      - "48083:8083"
+      - "49020:9020"
+      - "49030:9030"
+      - "49010:9010"
+    volumes:
+      - /home/doris-build/fe:/root/doris-build/fe
+    working_dir: /root/doris-build/fe
+    command:
+      - ls
+    networks:
+      default:
+        ipv4_address: 172.19.0.10
+networks:
+  default:
+    external:
+      name: docker_network
+      

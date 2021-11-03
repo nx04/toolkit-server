@@ -1,4 +1,4 @@
-# 使用 Docker 编译
+# 使用 Doris 安装
 
 ## 1、使用现成镜像
 
@@ -9,7 +9,7 @@ docker pull apache/incubator-doris:build-env-1.3.1
 ## 2、运行镜像
 
 ```
-docker run -it -v /home/doris-www/.m2:/root/.m2 -v /home/doris-www/apache-doris-0.14.0-incubating-src/:/root/apache-doris-0.14.0-incubating-src/ apache/incubator-doris:build-env-1.3.1
+docker run -it -v /home/doris-www/.m2:/root/.m2 -v /home/doris-src/:/root/doris-src/ apache/incubator-doris:build-env-1.3.1
 ```
 
 ## 3、下载源码
@@ -28,3 +28,5 @@ sh build.sh
 ```
 
 编译完成后，产出文件在 output/ 目录中。
+
+

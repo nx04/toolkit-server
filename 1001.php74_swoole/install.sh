@@ -69,9 +69,22 @@ phpize
 make && make install
 cd ../
 rm -rf swoole-release swoole-release.tar.gz
-
 # 在PHP中开启 PHP 扩展
 echo "extension=swoole.so" >> /usr/local/php-release/lib/php.ini
+
+# 安装 php redis 扩展
+# https://pecl.php.net/get/redis-5.3.4.tgz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/8154890a-ab7d-4c74-a81f-ab19244d0f72.tgz -O phpredis-release.tar.gz
+rm -rf phpredis-release && mkdir -p phpredis-release
+tar -zxvf phpredis-release.tar.gz -C ./phpredis-release --strip-components 1
+cd phpredis-release
+phpize
+./configure --with-php-config=/usr/local/php-release/bin/php-config
+make && make install
+cd ../
+rm -rf phpredis-release phpredis-release.tar.gz
+# 在PHP中开启 PHP 扩展
+echo "extension=redis.so" >> /usr/local/php-release/lib/php.ini
 
 # composer 包管理工具
 # https://www.phpcomposer.com/

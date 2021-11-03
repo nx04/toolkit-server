@@ -1,4 +1,4 @@
-# 使用 centos 编译
+# 使用 Doris centos 编译
 
 ## 1、系统依赖
 
