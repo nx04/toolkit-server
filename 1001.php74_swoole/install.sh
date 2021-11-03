@@ -17,9 +17,6 @@ zlib_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75
 # https://www.php.net/distributions/php-8.0.10.tar.gz
 php_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/2ea97480-2915-453c-8e92-354cc5e2fdd9.gz"
 
-# https://github.com/swoole/swoole-src/archive/refs/tags/v4.6.6.tar.gz
-swoole_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/75b868b9-4c39-4fb2-b69a-37d550c42f41.gz"
-
 # 安装 oniguruma
 wget $oniguruma_src -O oniguruma-release.tar.gz
 rm -rf oniguruma-release
@@ -60,7 +57,8 @@ cd ../
 rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
-wget $swoole_src -O swoole-release.tar.gz
+# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.1.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/a724b3ec-772c-4fc2-8b67-30e7fb3494f9.gz -O swoole-release.tar.gz
 rm -rf swoole-release && mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
 cd swoole-release
@@ -71,6 +69,8 @@ cd ../
 rm -rf swoole-release swoole-release.tar.gz
 # 在PHP中开启 PHP 扩展
 echo "extension=swoole.so" >> /usr/local/php-release/lib/php.ini
+
+php --ri swoole
 
 # 安装 php redis 扩展
 # https://pecl.php.net/get/redis-5.3.4.tgz
@@ -85,6 +85,8 @@ cd ../
 rm -rf phpredis-release phpredis-release.tar.gz
 # 在PHP中开启 PHP 扩展
 echo "extension=redis.so" >> /usr/local/php-release/lib/php.ini
+
+php --ri redis
 
 # composer 包管理工具
 # https://www.phpcomposer.com/
