@@ -46,7 +46,12 @@ ln -s -f /usr/local/php-release/bin/php /usr/local/bin
 ln -s -f /usr/local/php-release/bin/phpize /bin/phpize
 ln -s -f /usr/local/php-release/bin/phpize /usr/bin/phpize
 ln -s -f /usr/local/php-release/bin/phpize /usr/local/bin/phpize
-cd ../
+cd ./ext/mysqli
+phpize
+./configure --with-php-config=/usr/local/php-release/bin/php-config
+make && make install
+echo "extension=mysqli.so" >> /usr/local/php-release/lib/php.ini
+cd ../../../
 rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
@@ -82,10 +87,8 @@ echo "extension=redis.so" >> /usr/local/php-release/lib/php.ini
 php --ri redis
 
 # composer 包管理工具
-# https://www.phpcomposer.com/
-php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
+# https://github.com/composer/composer/releases/download/2.1.12/composer.phar
+wget https://github.com/composer/composer/releases/download/2.1.12/composer.phar
 mv composer.phar /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 
