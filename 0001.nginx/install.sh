@@ -21,11 +21,11 @@ wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841af
 rm -rf nginx-release && mkdir -p nginx-release
 tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1
 cd nginx-release
-./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-http_gzip_static_module --with-http_v2_module
+./configure --prefix=/usr/local/nginx-release --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-http_gzip_static_module --with-http_v2_module
 make && make install
-ln -s -f /usr/local/nginx/sbin/nginx /bin/nginx
-ln -s -f /usr/local/nginx/sbin/nginx /usr/bin/nginx
-ln -s -f /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
+ln -s -f /usr/local/nginx-release/sbin/nginx /bin/nginx
+ln -s -f /usr/local/nginx-release/sbin/nginx /usr/bin/nginx
+ln -s -f /usr/local/nginx-release/sbin/nginx /usr/local/bin/nginx
 cd ../ && rm -rf nginx-release nginx-release.tar.gz
 
 # 配置文件
