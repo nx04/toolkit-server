@@ -7,18 +7,9 @@ yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel
 # 为了能支持更大的并发连接数，必须安装event扩展，并且优化Linux内核。安装方法如下:
 yum install libevent-devel -y
 
-# 资源列表
-# https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz
-oniguruma_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/91ebb0f5-0966-48ad-9a37-63bffe297dea.gz"
-
-# https://github.com/madler/zlib/archive/refs/tags/v1.2.11.tar.gz
-zlib_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/a788bd58-ec24-4eb9-b23d-164d86b70315.gz"
-
-# https://www.php.net/distributions/php-8.0.10.tar.gz
-php_src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/2ea97480-2915-453c-8e92-354cc5e2fdd9.gz"
-
 # 安装 oniguruma
-wget $oniguruma_src -O oniguruma-release.tar.gz
+# https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/91ebb0f5-0966-48ad-9a37-63bffe297dea.gz -O oniguruma-release.tar.gz
 rm -rf oniguruma-release
 mkdir -p oniguruma-release
 tar -zxvf oniguruma-release.tar.gz -C ./oniguruma-release --strip-components 1
@@ -29,7 +20,8 @@ cd ../
 rm -rf oniguruma-release oniguruma-release.tar.gz
 
 # 安装 zlib
-wget $zlib_src -O zlib-release.tar.gz
+# https://github.com/madler/zlib/archive/refs/tags/v1.2.11.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/a788bd58-ec24-4eb9-b23d-164d86b70315.gz -O zlib-release.tar.gz
 rm -rf zlib-release
 mkdir -p zlib-release
 tar -zxvf zlib-release.tar.gz -C ./zlib-release --strip-components 1
@@ -40,7 +32,8 @@ cd ../
 rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 php
-wget $php_src -O php-release.tar.gz
+# https://www.php.net/distributions/php-8.0.10.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/2ea97480-2915-453c-8e92-354cc5e2fdd9.gz -O php-release.tar.gz
 rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
