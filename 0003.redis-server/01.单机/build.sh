@@ -1,0 +1,1 @@
+docker build -t="xiaonian/redis:2.0.1" .
