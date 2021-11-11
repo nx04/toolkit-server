@@ -38,7 +38,7 @@ rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
 cd php-release
-./configure --prefix /usr/local/php-release --with-openssl --with-openssl-dir --enable-bcmath --enable-sockets --enable-mysqlnd --enable-mysqli --enable-mbstring --with-curl  --with-zlib=/usr/local/zlib-release
+./configure --prefix /usr/local/php-release --with-openssl --with-openssl-dir --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-mysqli --enable-mbstring --with-curl  --with-zlib=/usr/local/zlib-release
 make && make install
 ln -s -f /usr/local/php-release/bin/php /bin/php
 ln -s -f /usr/local/php-release/bin/php /usr/bin
@@ -69,6 +69,20 @@ rm -rf swoole-release swoole-release.tar.gz
 echo "extension=swoole.so" >> /usr/local/php-release/lib/php.ini
 
 php --ri swoole
+
+# 安装event扩展
+# https://pecl.php.net/get/event-3.0.5.tgz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/1b997eb6-6372-454d-9f64-1d3ccd7a3d75.tgz -O event-release.tgz
+rm -rf event-release && mkdir -p event-release
+tar -zxvf event-release.tgz -C ./event-release --strip-components 1
+cd event-release
+phpize
+./configure --with-php-config=/usr/local/php-release/bin/php-config
+make && make install
+cd ../
+rm -rf event-release event-release.tgz
+# 在PHP中开启 PHP 扩展
+echo "extension=event.so" >> /usr/local/php-release/lib/php.ini
 
 # 安装 php redis 扩展
 # https://pecl.php.net/get/redis-5.3.4.tgz
