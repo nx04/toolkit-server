@@ -15,3 +15,7 @@ sh build.sh
 sh install.sh
 ```
 
+## 安装
+
+为了能支持更大的并发连接数，必须安装 libevent 扩展，并且优化 Linux 内核。
+

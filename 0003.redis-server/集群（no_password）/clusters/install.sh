@@ -1,7 +1,8 @@
-# 设置系统时区和安装工具
+# 时区
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
-yum -y install gcc-c++ make autoconf cmake
-yum -y install wget zip unzip git tar
+
+# 编译器和工具
+yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils
 
 # 安装 redis
 # https://download.redis.io/releases/redis-6.2.6.tar.gz

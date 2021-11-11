@@ -1,5 +1,8 @@
-# tools
-yum install -y gcc gcc-c++ make cmake autoconf curl yum-utils
+# 时区
+ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
+
+# 编译器和工具
+yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils
 
 # install docker
 yum remove docker* -y
@@ -13,7 +16,6 @@ echo '{"registry-mirrors":["https://registry.docker-cn.com","https://docker.mirr
 systemctl daemon-reload
 systemctl restart docker
 docker version
-
 
 # install docker-compose
 # https://github.com/docker/compose/releases/download/v2.1.1/docker-compose-linux-x86_64

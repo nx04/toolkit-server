@@ -1,11 +1,11 @@
-# 设置系统时区
+# 时区
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
-yum -y install gcc-c++ make autoconf cmake
-yum -y install wget zip unzip git tar
-yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel
 
-# 为了能支持更大的并发连接数，必须安装event扩展，并且优化Linux内核。安装方法如下:
-yum install libevent-devel -y
+# 编译器和工具
+yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils
+
+# 第三方的开发包
+yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel
 
 # 安装 oniguruma
 # https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz
@@ -67,7 +67,6 @@ cd ../
 rm -rf swoole-release swoole-release.tar.gz
 # 在PHP中开启 PHP 扩展
 echo "extension=swoole.so" >> /usr/local/php-release/lib/php.ini
-
 php --ri swoole
 
 # 安装event扩展
@@ -83,6 +82,7 @@ cd ../
 rm -rf event-release event-release.tgz
 # 在PHP中开启 PHP 扩展
 echo "extension=event.so" >> /usr/local/php-release/lib/php.ini
+php --ri event
 
 # 安装 php redis 扩展
 # https://pecl.php.net/get/redis-5.3.4.tgz
@@ -97,7 +97,6 @@ cd ../
 rm -rf phpredis-release phpredis-release.tar.gz
 # 在PHP中开启 PHP 扩展
 echo "extension=redis.so" >> /usr/local/php-release/lib/php.ini
-
 php --ri redis
 
 # composer 包管理工具
