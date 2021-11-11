@@ -32,8 +32,8 @@ cd ../
 rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 php
-# https://www.php.net/distributions/php-8.0.10.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/2ea97480-2915-453c-8e92-354cc5e2fdd9.gz -O php-release.tar.gz
+# https://www.php.net/distributions/php-8.0.12.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/aea362ea-b6cd-4aa7-822b-91129ba92739.gz -O php-release.tar.gz
 rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
@@ -70,8 +70,8 @@ echo "extension=swoole.so" >> /usr/local/php-release/lib/php.ini
 php --ri swoole
 
 # 安装event扩展
-# https://pecl.php.net/get/event-3.0.5.tgz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/1b997eb6-6372-454d-9f64-1d3ccd7a3d75.tgz -O event-release.tgz
+# https://pecl.php.net/get/event-3.0.6.tgz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/83dd059b-abbf-4778-8d36-9676429a9ab0.tgz -O event-release.tgz
 rm -rf event-release && mkdir -p event-release
 tar -zxvf event-release.tgz -C ./event-release --strip-components 1
 cd event-release
@@ -101,8 +101,8 @@ php --ri redis
 
 # composer 包管理工具
 # https://github.com/composer/composer/releases/download/2.1.12/composer.phar
-wget https://github.com/composer/composer/releases/download/2.1.12/composer.phar
-mv composer.phar /usr/local/bin/composer
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/58246f86-63e4-4928-9fa1-53cacd63a274.phar -O composer
+mv composer /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 
 
