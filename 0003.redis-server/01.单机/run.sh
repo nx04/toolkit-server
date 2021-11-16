@@ -6,8 +6,6 @@ echo $1
 # 启动
 if [ "$1"  = "start" ]
 then
-    echo 1 > /proc/sys/vm/overcommit_memory
-    echo 32768 > /proc/sys/net/core/somaxconn
     redis-server ./redis.conf
 fi
 

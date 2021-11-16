@@ -8,8 +8,8 @@ yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils
 yum install -y pcre pcre-devel zlib zlib-devel openssl openssl-devel
 
 # Stable version
-# https://nginx.org/download/nginx-1.20.1.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/640aa0dd-9ffe-4216-9898-33a77c974023.gz -O nginx-release.tar.gz
+# http://nginx.org/download/nginx-1.21.4.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/f738c5a2-f040-4c44-b9a6-5d69c60f1c4e.gz -O nginx-release.tar.gz
 rm -rf nginx-release && mkdir -p nginx-release
 tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1
 cd nginx-release

@@ -1,91 +1,79 @@
 version: '3.4'
 services:
-  nodes_58001:
-    image: redis:latest
-    container_name: nodes_58001
+  node_7001:
+    image: xiaonian/redis:2.0.1
+    container_name: node_7001
     restart: always
     ports:
-      - "58001:58001"
+      - "57001:7001"
     volumes:
-      - /home/nodes/redis_58001.conf:/etc/redis.conf
-      - /home/nodes/timezone:/etc/timezone
-      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-    command: redis-server /etc/redis.conf
+      - ./node-7001/redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf
     networks:
       default:
         ipv4_address: 172.19.0.11
-  
-  nodes_58002:
-    image: redis:latest
-    container_name: nodes_58002
+
+  node_7002:
+    image: xiaonian/redis:2.0.1
+    container_name: node_7002
     restart: always
     ports:
-      - "58002:58002"
+      - "57002:7001"
     volumes:
-      - /home/nodes/redis_58002.conf:/etc/redis.conf
-      - /home/nodes/timezone:/etc/timezone
-      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-    command: redis-server /etc/redis.conf
+      - ./node-7001/redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf
     networks:
       default:
         ipv4_address: 172.19.0.12
-  
-  nodes_58003:
-    image: redis:latest
-    container_name: nodes_58003
+
+  node_7003:
+    image: xiaonian/redis:2.0.1
+    container_name: node_7003
     restart: always
     ports:
-      - "58003:58003"
+      - "57003:7001"
     volumes:
-      - /home/nodes/redis_58003.conf:/etc/redis.conf
-      - /home/nodes/timezone:/etc/timezone
-      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-    command: redis-server /etc/redis.conf
+      - ./node-7001/redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf
     networks:
       default:
         ipv4_address: 172.19.0.13
-  
-  nodes_58004:
-    image: redis:latest
-    container_name: nodes_58004
+
+  node_7004:
+    image: xiaonian/redis:2.0.1
+    container_name: node_7004
     restart: always
     ports:
-      - "58004:58004"
+      - "57004:7001"
     volumes:
-      - /home/nodes/redis_58004.conf:/etc/redis.conf
-      - /home/nodes/timezone:/etc/timezone
-      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-    command: redis-server /etc/redis.conf
+      - ./node-7001/redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf
     networks:
       default:
         ipv4_address: 172.19.0.14
-  
-  nodes_58005:
-    image: redis:latest
-    container_name: nodes_58005
+
+  node_7005:
+    image: xiaonian/redis:2.0.1
+    container_name: node_7005
     restart: always
     ports:
-      - "58005:58005"
+      - "57004:7001"
     volumes:
-      - /home/nodes/redis_58005.conf:/etc/redis.conf
-      - /home/nodes/timezone:/etc/timezone
-      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-    command: redis-server /etc/redis.conf
+      - ./node-7001/redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf
     networks:
       default:
         ipv4_address: 172.19.0.15
-  
-  nodes_58006:
-    image: redis:latest
-    container_name: nodes_58006
+
+  node_7006:
+    image: xiaonian/redis:2.0.1
+    container_name: node_7006
     restart: always
     ports:
-      - "58006:58006"
+      - "57004:7001"
     volumes:
-      - /home/nodes/redis_58006.conf:/etc/redis.conf
-      - /home/nodes/timezone:/etc/timezone
-      - /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime
-    command: redis-server /etc/redis.conf
+      - ./node-7001/redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf
     networks:
       default:
         ipv4_address: 172.19.0.16
