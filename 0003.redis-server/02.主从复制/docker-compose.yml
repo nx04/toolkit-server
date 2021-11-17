@@ -40,6 +40,19 @@ services:
       default:
         ipv4_address: 172.19.0.22
 
+  redis_6501_sentinel:
+    image: xiaonian/redis:2.0.1
+    container_name: redis_6501_sentinel
+    restart: always
+    ports:
+      - "56501:26379"
+    volumes:
+      - ./sentinel.conf:/home/sentinel.conf
+    command: redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2
+    networks:
+      default:
+        ipv4_address: 172.19.0.23
+
 networks:
   default:
     external:
