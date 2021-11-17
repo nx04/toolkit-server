@@ -7,6 +7,4 @@ COPY ./install.sh /home/install.sh
 RUN sh /home/install.sh
 
 # 项目目录
-WORKDIR /home/wokerdir
-
-CMD [ "redis-cli", "-v" ]
+WORKDIR /home
