@@ -1,0 +1,19 @@
+version: '3.4'
+services:
+  redis_single_6379:
+    image: xiaonian/redis:2.0.1
+    container_name: redis_single_6379
+    restart: always
+    ports:
+      - "56379:6379"
+    volumes:
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf
+    networks:
+      default:
+        ipv4_address: 172.19.0.20
+
+networks:
+  default:
+    external:
+      name: docker_network
