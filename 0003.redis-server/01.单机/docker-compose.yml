@@ -1,4 +1,5 @@
 version: '3.4'
+
 services:
   redis_single_6379:
     image: xiaonian/redis:2.0.1

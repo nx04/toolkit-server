@@ -1,5 +1,4 @@
-`
-0   SSSSS# Redis 单机
+# Redis 单机
 
 ## 简介
 
