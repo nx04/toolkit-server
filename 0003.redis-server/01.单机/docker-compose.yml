@@ -1,18 +1,18 @@
 version: '3.4'
 
 services:
-  redis_single_6379:
+  redis_6379_single:
     image: xiaonian/redis:2.0.1
-    container_name: redis_single_6379
+    container_name: redis_6379_single
     restart: always
     ports:
       - "56379:6379"
     volumes:
       - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --cluster-enabled no
+    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no
     networks:
       default:
-        ipv4_address: 172.19.0.20
+        ipv4_address: 172.19.0.10
 
 networks:
   default:

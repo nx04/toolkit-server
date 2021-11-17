@@ -8,8 +8,8 @@ if [ "$1"  = "start" ]
 then
     # 优化内核
     echo 1 > /proc/sys/vm/overcommit_memory
-    echo 32768 > /proc/sys/net/core/somaxconn
-    redis-server ./redis.conf --daemonize yes --cluster-enabled no
+    echo 50000 > /proc/sys/net/core/somaxconn
+    redis-server ../redis.conf --daemonize yes --cluster-enabled no
 fi
 
 ## 停止服务

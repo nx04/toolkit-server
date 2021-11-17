@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+  redis_6400_repl_master:
+    image: xiaonian/redis:2.0.1
+    container_name: redis_6400_repl_master
+    restart: always
+    ports:
+      - "56400:6379"
+    volumes:
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no
+    networks:
+      default:
+        ipv4_address: 172.19.0.20
+
+  redis_6401_repl_slave:
+    image: xiaonian/redis:2.0.1
+    container_name: redis_6401_repl_slave
+    restart: always
+    ports:
+      - "56401:6379"
+    volumes:
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no --replicaof 172.19.0.20 6379
+    networks:
+      default:
+        ipv4_address: 172.19.0.21
+
+  redis_6402_repl_slave:
+    image: xiaonian/redis:2.0.1
+    container_name: redis_6402_repl_slave
+    restart: always
+    ports:
+      - "56402:6379"
+    volumes:
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no --replicaof 172.19.0.20 6379
+    networks:
+      default:
+        ipv4_address: 172.19.0.22
+
+networks:
+  default:
+    external:
+      name: docker_network
