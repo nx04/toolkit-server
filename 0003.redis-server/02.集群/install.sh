@@ -15,7 +15,3 @@ cd ../ && rm -rf redis-release redis-release.tar.gz
 ln -s -f /usr/local/redis-release/bin/redis-server /usr/local/bin
 ln -s -f /usr/local/redis-release/bin/redis-cli /usr/local/bin
 
-# 优化内核
-echo 1 > /proc/sys/vm/overcommit_memory
-echo 32768 > /proc/sys/net/core/somaxconn
-
