@@ -1,4 +1,5 @@
 # redis 集群部署及相关配置
+
 redis 文件夹中保存的是 master 和 slaves 的docker-compose.yml 信息
 如果想使用，vim 该文件，将里面的 ip 修改为自己的 ip 即可。
 
