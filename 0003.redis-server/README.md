@@ -1,43 +1,4 @@
-# redis 集群部署及相关配置
+# Redis 单机、集群、主从复制
 
-redis 文件夹中保存的是 master 和 slaves 的docker-compose.yml 信息
-如果想使用，vim 该文件，将里面的 ip 修改为自己的 ip 即可。
+Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。 它支持多种类型的数据结构，如 字符串（strings）， 散列（hashes）， 列表（lists）， 集合（sets）， 有序集合（sorted sets） 与范围查询， bitmaps， hyperloglogs 和 地理空间（geospatial） 索引半径查询。 Redis 内置了 复制（replication），LUA脚本（Lua scripting）， LRU驱动事件（LRU eviction），事务（transactions） 和不同级别的 磁盘持久化（persistence）， 并通过 Redis哨兵（Sentinel）和自动 分区（Cluster）提供高可用性（high availability）
 
-**注意**
-> --requirepass 密码 --masterauth 密码
-
-上面两个在 redis 文件夹下的 docker-compose.yml 中，两个密码尽量相同，不同可能会出现错误
-
-sentinel 文件中保存的是哨兵文件信息
-使用时，将 sentinel中每个文件夹的中的 ip 修改为自己的 ip 即可
-
-
-这三个 sentinel1.confg ,sentinel2.confg,sentinel3.confg 文件是笔者已经构建过
-
-默认的 sentinel.conf 是基础，如果想简单使用，删除有 1-3 的conf ，将这个默认文件赋值三份
-然后每份文件修改端口和 ip 
-
-最后直接部署即可。
-
-no_password 文件夹下的哨兵集群不存在密码
-
-have_password 文件夹下的哨兵集群存在密码，可以自行选择
-
-
-
-## 进入哨兵节点，查看是否有主节点
-
-docker exec -it 85cd540802f9 bash
-
-redis-cli -p 26379
-
-sentinel master mymaster
-
-显示如下信息表示成功
-
-33)"num-slaves"
-34) "2"
-35) "num-other-sentinels"
-36) "2"
-37) "quorum"
-38) "2"
