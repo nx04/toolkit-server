@@ -1,4 +1,5 @@
 version: '3.4'
+
 services:
   node_7001:
     image: xiaonian/redis:2.0.1
