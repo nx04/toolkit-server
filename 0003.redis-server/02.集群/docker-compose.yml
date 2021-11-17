@@ -1,80 +1,80 @@
 version: '3.4'
 
 services:
-  node_7001:
+  redis_cluster_7001:
     image: xiaonian/redis:2.0.1
-    container_name: node_7001
+    container_name: redis_cluster_7001
     restart: always
     ports:
-      - "57001:7001"
+      - "57001:6379"
     volumes:
-      - ./node-7001/redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf --cluster-enabled yes --cluster-announce-ip 172.19.0.11
     networks:
       default:
         ipv4_address: 172.19.0.11
 
-  node_7002:
+  redis_cluster_7002:
     image: xiaonian/redis:2.0.1
-    container_name: node_7002
+    container_name: redis_cluster_7002
     restart: always
     ports:
-      - "57002:7001"
+      - "57002:6379"
     volumes:
-      - ./node-7001/redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf --cluster-enabled yes --cluster-announce-ip 172.19.0.12
     networks:
       default:
         ipv4_address: 172.19.0.12
 
-  node_7003:
+  redis_cluster_7003:
     image: xiaonian/redis:2.0.1
-    container_name: node_7003
+    container_name: redis_cluster_7003
     restart: always
     ports:
-      - "57003:7001"
+      - "57003:6379"
     volumes:
-      - ./node-7001/redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf --cluster-enabled yes --cluster-announce-ip 172.19.0.13
     networks:
       default:
         ipv4_address: 172.19.0.13
 
-  node_7004:
+  redis_cluster_7004:
     image: xiaonian/redis:2.0.1
-    container_name: node_7004
+    container_name: redis_cluster_7004
     restart: always
     ports:
-      - "57004:7001"
+      - "57004:6379"
     volumes:
-      - ./node-7001/redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf --cluster-enabled yes --cluster-announce-ip 172.19.0.14
     networks:
       default:
         ipv4_address: 172.19.0.14
 
-  node_7005:
+  redis_cluster_7005:
     image: xiaonian/redis:2.0.1
-    container_name: node_7005
+    container_name: redis_cluster_7005
     restart: always
     ports:
-      - "57004:7001"
+      - "57005:6379"
     volumes:
-      - ./node-7001/redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf --cluster-enabled yes --cluster-announce-ip 172.19.0.15
     networks:
       default:
         ipv4_address: 172.19.0.15
 
-  node_7006:
+  redis_cluster_7006:
     image: xiaonian/redis:2.0.1
-    container_name: node_7006
+    container_name: redis_cluster_7006
     restart: always
     ports:
-      - "57004:7001"
+      - "57006:6379"
     volumes:
-      - ./node-7001/redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf
+      - ./redis.conf:/home/redis.conf
+    command: redis-server /home/redis.conf --cluster-enabled yes --cluster-announce-ip 172.19.0.16
     networks:
       default:
         ipv4_address: 172.19.0.16

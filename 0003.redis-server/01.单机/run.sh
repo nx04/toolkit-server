@@ -9,7 +9,7 @@ then
     # 优化内核
     echo 1 > /proc/sys/vm/overcommit_memory
     echo 32768 > /proc/sys/net/core/somaxconn
-    redis-server ./redis.conf --daemonize=yes
+    redis-server ./redis.conf --daemonize yes --cluster-enabled no
 fi
 
 ## 停止服务

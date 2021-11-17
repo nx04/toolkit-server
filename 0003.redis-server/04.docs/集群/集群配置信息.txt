@@ -1,6 +1,6 @@
 cluster-enabled yes（启动集群模式）
 
-cluster-config-file nodes-8001.conf（集群节点信息文件，这里800x最好和port对应上） 
+cluster-config-file nodes-8001.conf（集群节点信息文件，这里800x最好和port对应上）
 
 cluster-node-timeout 5000 (节点之间的延迟时间)
 
