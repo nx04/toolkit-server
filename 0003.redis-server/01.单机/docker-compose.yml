@@ -8,8 +8,8 @@ services:
     ports:
       - "56379:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled no"
     networks:
       default:
         ipv4_address: 172.19.0.10

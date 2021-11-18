@@ -9,7 +9,8 @@ then
     # 优化内核
     echo 1 > /proc/sys/vm/overcommit_memory
     echo 50000 > /proc/sys/net/core/somaxconn
-    redis-server ../redis.conf --daemonize yes --cluster-enabled yes --cluster-announce-ip 116.85.36.13 --port 7001 --cluster-announce-port 7001 --cluster-announce-bus-port=17001
+    cp -rf ../redis.conf.tpl ./redis.conf
+    redis-server ./redis.conf --daemonize yes --cluster-enabled yes --cluster-announce-ip 116.85.36.13 --port 7001 --cluster-announce-port 7001 --cluster-announce-bus-port=17001
 fi
 
 ## 停止服务

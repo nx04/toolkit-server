@@ -8,8 +8,8 @@ services:
     ports:
       - "57001:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.101
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.101"
     networks:
       default:
         ipv4_address: 172.19.0.101
@@ -21,8 +21,8 @@ services:
     ports:
       - "57002:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.102
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.102"
     networks:
       default:
         ipv4_address: 172.19.0.102
@@ -34,8 +34,8 @@ services:
     ports:
       - "57003:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.103
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.103"
     networks:
       default:
         ipv4_address: 172.19.0.103
@@ -47,8 +47,8 @@ services:
     ports:
       - "57004:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.104
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.104"
     networks:
       default:
         ipv4_address: 172.19.0.104
@@ -60,8 +60,8 @@ services:
     ports:
       - "57005:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.105
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.105"
     networks:
       default:
         ipv4_address: 172.19.0.105
@@ -73,8 +73,8 @@ services:
     ports:
       - "57006:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.106
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled yes --cluster-announce-ip 172.19.0.106"
     networks:
       default:
         ipv4_address: 172.19.0.106

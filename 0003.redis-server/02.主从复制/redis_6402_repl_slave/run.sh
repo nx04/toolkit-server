@@ -9,7 +9,8 @@ then
     # 优化内核
     echo 1 > /proc/sys/vm/overcommit_memory
     echo 50000 > /proc/sys/net/core/somaxconn
-    redis-server ../redis.conf --daemonize yes --cluster-enabled no --port 6402 --replicaof 116.85.26.115 6400
+    cp -rf ../redis.conf.tpl ./redis.conf
+    redis-server ./redis.conf --daemonize yes --cluster-enabled no --port 6402 --replicaof 116.85.26.115 6400
 fi
 
 ## 停止服务

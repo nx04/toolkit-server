@@ -8,8 +8,8 @@ services:
     ports:
       - "56400:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no --min-replicas-to-write 2
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled no --min-replicas-to-write 2"
     networks:
       default:
         ipv4_address: 172.19.0.20
@@ -21,8 +21,8 @@ services:
     ports:
       - "56401:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no --replicaof 172.19.0.20 6379
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled no --replicaof 172.19.0.20 6379"
     networks:
       default:
         ipv4_address: 172.19.0.21
@@ -34,8 +34,8 @@ services:
     ports:
       - "56402:6379"
     volumes:
-      - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no --replicaof 172.19.0.20 6379
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled no --replicaof 172.19.0.20 6379"
     networks:
       default:
         ipv4_address: 172.19.0.22
@@ -47,8 +47,8 @@ services:
     ports:
       - "56501:26379"
     volumes:
-      - ./sentinel.conf:/home/sentinel.conf
-    command: bash -c "cp -rf /home/sentinel.conf /home/sentinel2.conf && redis-server /home/sentinel2.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2"
+      - ./sentinel.conf.tpl:/home/sentinel.conf.tpl
+    command: bash -c "cp -rf /home/sentinel.conf.tpl /home/sentinel.conf && redis-server /home/sentinel2.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2"
     networks:
       default:
         ipv4_address: 172.19.0.23
@@ -60,8 +60,8 @@ services:
     ports:
       - "56502:26379"
     volumes:
-      - ./sentinel.conf:/home/sentinel.conf
-    command: bash -c "cp -rf /home/sentinel.conf /home/sentinel2.conf && redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2"
+      - ./sentinel.conf.tpl:/home/sentinel.conf.tpl
+    command: bash -c "cp -rf /home/sentinel.conf.tpl /home/sentinel.conf && redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2"
     networks:
       default:
         ipv4_address: 172.19.0.24
@@ -73,8 +73,8 @@ services:
     ports:
       - "56503:26379"
     volumes:
-      - ./sentinel.conf:/home/sentinel.conf
-    command: bash -c "cp -rf /home/sentinel.conf /home/sentinel2.conf &&  redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2"
+      - ./sentinel.conf.tpl:/home/sentinel.conf.tpl
+    command: bash -c "cp -rf /home/sentinel.conf.tpl /home/sentinel.conf && redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2"
     networks:
       default:
         ipv4_address: 172.19.0.25
