@@ -1,26 +1,13 @@
-# Redis 单机
+# Redis 单机部署
 
 ## 裸机
 
-1、安装
-
-```
-sh install.sh
-```
-
-2、部署
 ```
 sh run.sh start
 ```
 
 
-## Docker 安装
-
-1、安装
-
-```
-sh build.sh
-```
+## Docker
 
 2、部署
 ```
