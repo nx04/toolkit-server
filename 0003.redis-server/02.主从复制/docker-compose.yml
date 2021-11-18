@@ -48,7 +48,7 @@ services:
       - "56501:26379"
     volumes:
       - ./sentinel.conf:/home/sentinel.conf
-    command: redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2
+    command: bash -c "cp -rf /home/sentinel.conf /home/sentinel2.conf && redis-server /home/sentinel2.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2"
     networks:
       default:
         ipv4_address: 172.19.0.23
@@ -61,7 +61,7 @@ services:
       - "56502:26379"
     volumes:
       - ./sentinel.conf:/home/sentinel.conf
-    command: redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2
+    command: bash -c "cp -rf /home/sentinel.conf /home/sentinel2.conf && redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2"
     networks:
       default:
         ipv4_address: 172.19.0.24
@@ -74,7 +74,7 @@ services:
       - "56503:26379"
     volumes:
       - ./sentinel.conf:/home/sentinel.conf
-    command: redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2
+    command: bash -c "cp -rf /home/sentinel.conf /home/sentinel2.conf &&  redis-server /home/sentinel.conf --daemonize no --sentinel monitor mymaster 172.19.0.20 6379 2"
     networks:
       default:
         ipv4_address: 172.19.0.25
