@@ -14,3 +14,4 @@ make && make install PREFIX=/usr/local/redis-release
 cd ../ && rm -rf redis-release redis-release.tar.gz
 ln -s -f /usr/local/redis-release/bin/redis-server /usr/bin
 ln -s -f /usr/local/redis-release/bin/redis-cli /usr/bin
+ln -s -f /usr/local/redis-release/bin/redis-sentinel /usr/bin

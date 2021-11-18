@@ -9,7 +9,7 @@ services:
       - "56400:6379"
     volumes:
       - ./redis.conf:/home/redis.conf
-    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no
+    command: redis-server /home/redis.conf --daemonize no --cluster-enabled no --min-replicas-to-write 2
     networks:
       default:
         ipv4_address: 172.19.0.20

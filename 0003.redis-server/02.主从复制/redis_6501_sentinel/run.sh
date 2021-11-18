@@ -9,7 +9,7 @@ then
     # 优化内核
     echo 1 > /proc/sys/vm/overcommit_memory
     echo 50000 > /proc/sys/net/core/somaxconn
-    redis-server ../sentinel.conf --daemonize yes --port 6501 --sentinel monitor mymaster 116.85.36.13 6379 2
+    redis-server ../sentinel.conf --daemonize yes --port 6501 --sentinel monitor mymaster 116.85.26.115 6379 2
 fi
 
 ## 停止服务
