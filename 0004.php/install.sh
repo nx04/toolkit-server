@@ -32,13 +32,13 @@ cd ../
 rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 php
-# https://www.php.net/distributions/php-8.0.12.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/aea362ea-b6cd-4aa7-822b-91129ba92739.gz -O php-release.tar.gz
+# https://www.php.net/distributions/php-8.0.13.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/d68ad764-8177-4ef2-814e-7b243911330a.gz -O php-release.tar.gz
 rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
 cd php-release
-./configure --prefix /usr/local/php-release --with-openssl --with-openssl-dir --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-mysqli --enable-mbstring --with-curl  --with-zlib=/usr/local/zlib-release
+./configure --prefix /usr/local/php-release --with-openssl --with-openssl-dir --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-mbstring --with-curl  --with-zlib=/usr/local/zlib-release
 make && make install
 ln -s -f /usr/local/php-release/bin/php /bin/php
 ln -s -f /usr/local/php-release/bin/php /usr/bin
@@ -55,8 +55,8 @@ cd ../../../
 rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
-# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.1.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/a724b3ec-772c-4fc2-8b67-30e7fb3494f9.gz -O swoole-release.tar.gz
+# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.2.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/73910c3c-934d-4aa4-9884-c89ce24d76ed.gz -O swoole-release.tar.gz
 rm -rf swoole-release && mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
 cd swoole-release

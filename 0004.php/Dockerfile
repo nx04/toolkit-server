@@ -7,6 +7,6 @@ COPY install.sh /home/install.sh
 RUN sh /home/install.sh
 
 # app 项目目录
-WORKDIR /home/workdir
+WORKDIR /home
 
 CMD [ "php", "-m" ]
