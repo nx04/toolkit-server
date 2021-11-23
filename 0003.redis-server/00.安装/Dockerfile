@@ -8,3 +8,5 @@ RUN sh /home/install.sh
 
 # 项目目录
 WORKDIR /home
+
+CMD [ "redis-cli", "-h" ]

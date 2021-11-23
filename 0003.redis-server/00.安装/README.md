@@ -7,7 +7,7 @@ sh install.sh
 ```
 
 
-## Docker 安装
+## Docker
 
 ```
 sh build.sh
