@@ -43,3 +43,4 @@ cmake ../ \
 
 make && make install
 cd ../../ && rm -rf mysql-release mysql-release.tar.gz
+ln -s -f /usr/local/mysql-release/bin/mysql /usr/bin/mysql
