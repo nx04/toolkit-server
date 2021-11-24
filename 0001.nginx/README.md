@@ -18,21 +18,21 @@ Nginx 是一个很强大的高性能Web和反向代理服务，它具有很多�
 
 **pcre**
 
-PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。 
+PCRE ( Perl Compatible Regular Expressions )是一个 Perl 库，包括 perl 兼容的正则表达式库。 
 
-nginx的http模块使用pcre来解析正则表达式，所以需要在linux上安装pcre库。 
+nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库。 
 
-注：pcre-devel是使用pcre开发的一个二次开发库。nginx也需要此库。
+注：pcre-devel 是使用 pcre 开发的一个二次开发库。nginx 也需要此库。
 
 **zlib**
 
-zlib库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip，所以需要在linux上安装zlib库。
+zlib 库提供了很多种压缩和解压缩的方式，nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 linux 上安装 zlib 库。
 
 **openssl**
 
-OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。
+OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。
 
-nginx不仅支持http协议，还支持https（即在ssl协议上传输http），所以需要在linux安装openssl库。
+nginx 不仅支持 http 协议，还支持 https（即在 ssl 协议上传输 http ），所以需要在 linux 安装 openssl 库。
 
 ## 其他问题
 
