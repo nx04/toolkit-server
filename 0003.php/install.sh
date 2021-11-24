@@ -2,10 +2,10 @@
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
 # 编译器和工具
-yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils
+yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib zlib-devel openssl openssl-devel
 
 # 第三方的开发包
-yum -y install openssl-devel libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel
+yum -y install libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel
 
 # 安装 oniguruma
 # https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz

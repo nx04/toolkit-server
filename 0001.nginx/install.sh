@@ -2,10 +2,10 @@
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
 # 编译器和工具
-yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils
+yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib zlib-devel openssl openssl-devel
 
 # 第三方的开发包
-yum install -y pcre pcre-devel zlib zlib-devel openssl openssl-devel
+yum install -y pcre pcre-devel
 
 # Stable version
 # http://nginx.org/download/nginx-1.21.4.tar.gz
