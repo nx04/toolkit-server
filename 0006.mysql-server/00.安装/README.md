@@ -13,6 +13,8 @@ sh install.sh
 sh build.sh
 ```
 
+**cmake 参数**
+
 ```
 -DCMAKE_INSTALL_PREFIX=/usr/local/mysql：MySQL安装的根目录
 -DMYSQL_DATADIR=/data/mysql：数据文件所存放的目录
