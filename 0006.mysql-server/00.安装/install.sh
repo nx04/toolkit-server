@@ -14,15 +14,15 @@ rm -rf mysql-release && mkdir -p mysql-release
 tar -zxvf mysql-release.tar.gz -C ./mysql-release --strip-components 1
 cd mysql-release
 rm -rf CMakeCache.txt
-cmake .. \
+cmake . \
 -DDOWNLOAD_BOOST=1 \
 -DWITH_BOOST=. \
 -DDEFAULT_CHARSET=utf8mb4 \
 -DDEFAULT_COLLATION=utf8mb4_general_ci \
 -DENABLED_LOCAL_INFILE=ON \
 -DWITH_SSL=system \
--DCMAKE_INSTALL_PREFIX=/usr/local/mysql-release/server \
--DMYSQL_DATADIR=/usr/local/mysql-release/data \
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql-release \
+-DMYSQL_DATADIR=/usr/local/mysql-data \
 -DMYSQL_TCP_PORT=3306
 make && make install
 cd ../ && rm -rf mysql-release mysql-release.tar.gz
