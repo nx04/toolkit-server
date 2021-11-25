@@ -7,7 +7,7 @@ yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib 
 # 第三方的开发包
 yum install -y pcre pcre-devel
 
-# Stable version
+# install
 # http://nginx.org/download/nginx-1.21.4.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/f738c5a2-f040-4c44-b9a6-5d69c60f1c4e.gz -O nginx-release.tar.gz
 rm -rf nginx-release && mkdir -p nginx-release
