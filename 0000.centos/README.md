@@ -58,8 +58,9 @@ net.ipv4.tcp_congestion_control = hybla
 net.ipv4.ip_forward = 1
 ```
 
+执行 `sysctl -p` 生效
 
-## TCP优化 - 文件句柄数限制
+## TCP 优化 - 文件句柄数限制
 
 修改 `vi /etc/sysctl.conf`
 
@@ -73,7 +74,7 @@ net.ipv4.ip_forward = 1
 *               hard    nofile          1024000
 ```
 
-## TCP优化 - 每个进程可以打开的文件数目
+## TCP 优化 - 每个进程可以打开的文件数目
 
 ```
 ulimit -n 1024000
@@ -81,4 +82,17 @@ ulimit -n 1024000
 
 查询 `ulimit -n` 返回 1024000
 
-https://www.gotototo.com/2018/12/19/centos-7-performance-optimization/
+## 开启 TCP Fast Open
+
+编辑 `vi /etc/sysctl.conf`
+
+文件中再加上一行：
+
+```
+# turn on TCP Fast Open on both client and server side
+net.ipv4.tcp_fastopen = 3
+```
+
+执行 `sysctl -p` 生效
+
+查询 `sysctl net.ipv4.tcp_fastopen` 輸出 net.ipv4.tcp_fastopen = 3
