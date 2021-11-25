@@ -1,4 +1,4 @@
-# Nginx 的使用
+# Nginx
 
 ## 简介
 
@@ -38,3 +38,5 @@ nginx 不仅支持 http 协议，还支持 https（即在 ssl 协议上传输 ht
 
 Nginx 实现资源压缩的原理是通过 ngx_http_gzip_module 模块拦截请求，并对需要做 gzip 的类型做 gzip，ngx_http_gzip_module 是 Nginx 默认集成的，不需要重新编译，直接开启即可。
 
+
+## Nginx 性能优化
