@@ -73,6 +73,12 @@ net.ipv4.ip_forward = 1
 *               hard    nofile          1024000
 ```
 
-## TCP优化 - ulimit 
+## TCP优化 - 每个进程可以打开的文件数目
+
+```
+ulimit -n 1024000
+```
+
+查询 `ulimit -n` 返回 1024000
 
 https://www.gotototo.com/2018/12/19/centos-7-performance-optimization/
