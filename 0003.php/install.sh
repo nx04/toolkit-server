@@ -32,8 +32,8 @@ cd ../
 rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 php
-# https://www.php.net/distributions/php-8.0.13.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/d68ad764-8177-4ef2-814e-7b243911330a.gz -O php-release.tar.gz
+# https://www.php.net/distributions/php-8.1.0.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/d9e25f2a-072a-4af4-8ba9-dfb10e4215e7.gz -O php-release.tar.gz
 rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
@@ -51,8 +51,8 @@ cd ../../../
 rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
-# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.2.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/73910c3c-934d-4aa4-9884-c89ce24d76ed.gz -O swoole-release.tar.gz
+# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.3.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/28b64db3-c98f-442f-9074-ffebd9bcf92b.gz -O swoole-release.tar.gz
 rm -rf swoole-release && mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
 cd swoole-release
@@ -96,8 +96,8 @@ echo "extension=redis.so" >> /usr/local/php-release/lib/php.ini
 php --ri redis
 
 # composer 包管理工具
-# https://github.com/composer/composer/releases/download/2.1.12/composer.phar
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/58246f86-63e4-4928-9fa1-53cacd63a274.phar -O composer
+# https://github.com/composer/composer/releases/download/2.1.14/composer.phar
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/46e5274d-3b56-469c-b4cb-bfdc008fc13d.phar -O composer
 mv composer /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 
