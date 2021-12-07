@@ -1,1 +1,1 @@
-docker build -t="xiaonian/php:2.0.1" .
+docker build -t="xiaonian/php:8.1.0" .

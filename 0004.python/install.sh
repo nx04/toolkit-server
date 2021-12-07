@@ -14,7 +14,7 @@ wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841af
 rm -rf python3-release && mkdir -p python3-release
 tar -zxvf python3-release.tgz -C ./python3-release --strip-components 1
 cd python3-release
-./configure --prefix /usr/local/python3-release
+./configure --prefix /usr/local/python3-release --enable-shared --enable-loadable-sqlite-extensions --with-http_ssl_module
 make && make install
 /usr/local/python3-release/bin/python3 -m pip install -i https://mirrors.aliyun.com/pypi/simple/ --upgrade pip
 /usr/local/python3-release/bin/pip3 install -i https://mirrors.aliyun.com/pypi/simple/ virtualenv
