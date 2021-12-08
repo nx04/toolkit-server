@@ -8,13 +8,24 @@ yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils
 yum install -y zlib zlib-devel openssl openssl-devel bzip2-devel libffi-devel sqlite-devel
 yum -y install libsndfile readline-devel xz-devel tk-devel gdbm-devel
 
-# python
+# openssl
+# https://www.openssl.org/source/openssl-3.0.0.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/e1f7a5d6-f53f-4d63-980a-b15060f08c14.gz -O openssl-release.tar.gz
+rm -rf openssl-release && mkdir -p openssl-release
+tar -zxvf openssl-release.tgz -C ./openssl-release --strip-components 1
+cd openssl-release
+./configure --prefix /usr/local/openssl-release
+make && make install
+cd ../
+rm -rf openssl-release openssl-release.tar.gz
+
+# install
 # https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/55260cf4-9e3d-45cf-90e9-bac2912f3709.tgz -O python3-release.tgz
 rm -rf python3-release && mkdir -p python3-release
 tar -zxvf python3-release.tgz -C ./python3-release --strip-components 1
 cd python3-release
-./configure --prefix /usr/local/python3-release --with-openssl
+./configure --prefix /usr/local/python3-release --with-openssl=/usr/local/openssl-release
 make && make install
 /usr/local/python3-release/bin/python3 -m pip install -i https://mirrors.aliyun.com/pypi/simple/ --upgrade pip
 /usr/local/python3-release/bin/pip3 install -i https://mirrors.aliyun.com/pypi/simple/ virtualenv
