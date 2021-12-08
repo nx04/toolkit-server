@@ -16,7 +16,8 @@ tar -zxvf openssl-release.tar.gz -C ./openssl-release --strip-components 1
 cd openssl-release
 ./config --prefix /usr/local/openssl
 ./config -t
-make && make install
+make
+make install
 cd ../
 rm -rf openssl-release openssl-release.tar.gz
 ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl
@@ -29,7 +30,7 @@ wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841af
 rm -rf python3-release && mkdir -p python3-release
 tar -zxvf python3-release.tgz -C ./python3-release --strip-components 1
 cd python3-release
-./configure --prefix /usr/local/python3-release --with-openssl=/usr/local/openssl-release
+./configure --prefix /usr/local/python3-release --with-openssl=/usr/local/openssl
 make && make install
 /usr/local/python3-release/bin/python3 -m pip install -i https://mirrors.aliyun.com/pypi/simple/ --upgrade pip
 /usr/local/python3-release/bin/pip3 install -i https://mirrors.aliyun.com/pypi/simple/ virtualenv
