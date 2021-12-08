@@ -14,7 +14,7 @@ rm -rf oniguruma-release
 mkdir -p oniguruma-release
 tar -zxvf oniguruma-release.tar.gz -C ./oniguruma-release --strip-components 1
 cd oniguruma-release
-./configure --prefix /usr/local/oniguruma-release --libdir=/lib64
+./configure --prefix=/usr/local/oniguruma-release --libdir=/lib64
 make && make install
 cd ../
 rm -rf oniguruma-release oniguruma-release.tar.gz
@@ -26,7 +26,7 @@ rm -rf zlib-release
 mkdir -p zlib-release
 tar -zxvf zlib-release.tar.gz -C ./zlib-release --strip-components 1
 cd zlib-release
-./configure --prefix /usr/local/zlib-release
+./configure --prefix=/usr/local/zlib-release
 make && make install
 cd ../
 rm -rf zlib-release zlib-release.tar.gz
@@ -38,7 +38,7 @@ rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
 cd php-release
-./configure --prefix /usr/local/php-release --with-openssl --with-openssl-dir --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-mbstring --with-curl  --with-zlib=/usr/local/zlib-release
+./configure --prefix=/usr/local/php-release --with-openssl --with-openssl-dir --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-mbstring --with-curl  --with-zlib=/usr/local/zlib-release
 make && make install
 ln -s -f /usr/local/php-release/bin/php /usr/bin/php
 ln -s -f /usr/local/php-release/bin/phpize /usr/bin/phpize
