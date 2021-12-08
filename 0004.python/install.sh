@@ -23,6 +23,7 @@ rm -rf openssl-release openssl-release.tar.gz
 ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl
 ln -s /usr/local/openssl/include/openssl /usr/include/openssl
 echo "/usr/local/openssl/lib">> /etc/ld.so.conf
+ldconfig
 
 # install
 # https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
