@@ -1,1 +1,1 @@
-docker build -t="xiaonian/python:3.10.0" .
+docker build -t="hiper/python:3.9.9" .

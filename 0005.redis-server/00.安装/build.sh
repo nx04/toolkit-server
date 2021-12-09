@@ -1,1 +1,1 @@
-docker build -t="xiaonian/redis:2.0.1" .
+docker build -t="hiper/redis:6.2.6" .
