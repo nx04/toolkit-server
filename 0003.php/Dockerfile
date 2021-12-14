@@ -8,5 +8,3 @@ RUN sh /home/install.sh
 
 # app 项目目录
 WORKDIR /home
-
-CMD [ "php", "-m" ]
