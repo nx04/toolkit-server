@@ -2,7 +2,7 @@
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
 # 编译器和工具
-yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils
+yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git
 
 # 第三方工具
 yum install -y zlib zlib-devel bzip2-devel libffi-devel sqlite-devel
