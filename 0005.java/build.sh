@@ -1,0 +1,1 @@
+docker build -t="hiper/java:1.8.0_311" .
