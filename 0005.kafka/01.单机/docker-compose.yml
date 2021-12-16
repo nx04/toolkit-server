@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  kafka_6379_single:
+    image: xiaonian/kafka:2.13-3.0.0
+    container_name: kafka_6379_single
+    restart: always
+    ports:
+      - "56379:6379"
+    volumes:
+      - ./redis.conf.tpl:/home/redis.conf.tpl
+    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled no"
+    networks:
+      default:
+        ipv4_address: 172.19.0.10
+
+networks:
+  default:
+    external:
+      name: docker_network
