@@ -31,4 +31,8 @@ rm -rf /usr/local/kafka-release
 mkdir -p /usr/local/kafka-release
 mv kafka-release/* /usr/local/kafka-release
 rm -rf kafka-release kafka-release.tgz
+ln -s -f /usr/local/kafka-release/bin/zookeeper-server-start.sh /usr/bin/zookeeper-server-start.sh
+ln -s -f /usr/local/kafka-release/bin/zookeeper-server-stop.sh /usr/bin/zookeeper-server-stop.sh
+ln -s -f /usr/local/kafka-release/bin/kafka-server-start.sh /usr/bin/kafka-server-start.sh
+ln -s -f /usr/local/kafka-release/bin/kafka-server-stop.sh /usr/bin/kafka-server-stop.sh
 
