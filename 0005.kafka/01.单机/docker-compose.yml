@@ -1,18 +1,30 @@
 version: '3.4'
 
 services:
-  kafka_6379_single:
+  zookeeper_2181_single:
     image: xiaonian/kafka:2.13-3.0.0
-    container_name: kafka_6379_single
+    container_name: zookeeper_2181_single
     restart: always
     ports:
-      - "56379:6379"
+      - "52182:2182"
     volumes:
-      - ./redis.conf.tpl:/home/redis.conf.tpl
-    command: bash -c "cp -rf /home/redis.conf.tpl /home/redis.conf && redis-server /home/redis.conf --daemonize no --cluster-enabled no"
+      - ./zookeeper.properties:/home/zookeeper.properties
+    command: /usr/local/kafka-release/bin/zookeeper-server-start.sh /home/zookeeper.properties
     networks:
       default:
         ipv4_address: 172.19.0.10
+  kafka_9092_single:
+    image: xiaonian/kafka:2.13-3.0.0
+    container_name: kafka_9092_single
+    restart: always
+    ports:
+      - "59092:9092"
+    volumes:
+      - ./server.properties:/home/server.properties
+    command: /usr/local/kafka-release/bin/kafka-server-start.sh /home/server.properties
+    networks:
+      default:
+        ipv4_address: 172.19.0.11
 
 networks:
   default:

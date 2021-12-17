@@ -9,5 +9,7 @@
  - rabbitmq
  - php
  - python
+ - java
+ - doris
 
  全部基于centos 7
