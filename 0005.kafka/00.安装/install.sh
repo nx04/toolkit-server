@@ -23,6 +23,7 @@ ldconfig
 openssl version
 
 # kafka
+# https://kafka.apache.org/
 # https://dlcdn.apache.org/kafka/3.0.0/kafka_2.13-3.0.0.tgz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/ff53c99f-acd4-45ab-a9e9-43e374641e00.tgz -O kafka-release.tgz
 rm -rf kafka-release && mkdir -p kafka-release
