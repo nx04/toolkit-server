@@ -50,8 +50,8 @@ cd ../
 rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 php
-# https://www.php.net/distributions/php-8.1.0.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/d9e25f2a-072a-4af4-8ba9-dfb10e4215e7.gz -O php-release.tar.gz
+# https://www.php.net/distributions/php-8.1.1.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/6e9b0104-274b-4436-ad8a-2089901d871a.gz -O php-release.tar.gz
 rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
