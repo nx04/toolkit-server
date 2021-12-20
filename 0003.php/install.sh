@@ -99,8 +99,8 @@ echo "extension=event.so" >> /usr/local/php-release/lib/php.ini
 php --ri event
 
 # 安装 php redis 扩展
-# https://pecl.php.net/get/redis-5.3.4.tgz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/8154890a-ab7d-4c74-a81f-ab19244d0f72.tgz -O phpredis-release.tar.gz
+# https://pecl.php.net/get/redis-5.3.5.tgz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/14771100-53e2-4963-b203-8ebd4a5b103c.tgz -O phpredis-release.tar.gz
 rm -rf phpredis-release && mkdir -p phpredis-release
 tar -zxvf phpredis-release.tar.gz -C ./phpredis-release --strip-components 1
 cd phpredis-release
