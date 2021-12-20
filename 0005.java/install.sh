@@ -5,8 +5,8 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib zlib-devel
 
 # openssl
-# https://www.openssl.org/source/openssl-1.1.1l.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/22a4ac75-e6b5-4444-8c87-cc83cbf6f19b.gz -O openssl-release.tar.gz
+# https://www.openssl.org/source/openssl-1.1.1m.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
 rm -rf openssl-release && mkdir -p openssl-release
 tar -zxvf openssl-release.tar.gz -C ./openssl-release --strip-components 1
 cd openssl-release
