@@ -7,6 +7,7 @@ yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git
 # 第三方工具
 yum install -y zlib zlib-devel bzip2-devel libffi-devel sqlite-devel
 yum -y install libsndfile readline-devel xz-devel tk-devel gdbm-devel
+yum -y install mesa-libGL libSM libSM.so.6
 
 # openssl
 # https://www.openssl.org/source/openssl-1.1.1m.tar.gz
