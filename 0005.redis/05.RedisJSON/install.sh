@@ -1,12 +1,15 @@
 # install RedisJSON
-# https://github.com/RedisJSON/RedisJSON/archive/refs/tags/v2.0.6.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/763d23f1-261d-45ff-bbc7-1f74a7313493.gz -O redisJSON-release.tar.gz
+# https://github.com/RedisJSON/RedisJSON.git
+# https://gitee.com/xiaonian0430/RedisJSON.git
+git clone --recursive https://gitee.com/xiaonian0430/RedisJSON.git redisJSON-release
+cd redisJSON-release
+make setup
+make build
+make run
 rm -rf /usr/local/redisJSON-release
 mkdir -p /usr/local/redisJSON-release
-tar -zxvf redisJSON-release.tar.gz -C /usr/local/redisJSON-release --strip-components 1
-rm -rf redisJSON-release.tar.gz
-cd /usr/local/redisJSON-release
-make
+mv build/rejson.so /usr/local/redisJSON-release
+rm -rf redisJSON-release
 
 # 修改 redis.conf
 # vim redis.conf
