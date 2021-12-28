@@ -5,6 +5,7 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib zlib-devel
 
 # openssl
+# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1m.tar.gz
 # https://www.openssl.org/source/openssl-1.1.1m.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
 rm -rf openssl-release && mkdir -p openssl-release
@@ -22,7 +23,7 @@ echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
 ldconfig
 openssl version
 
-# install redis
+# redis
 # https://download.redis.io/releases/redis-6.2.6.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/7997731a-c833-40b6-9592-2c7f59d6fa6c.gz -O redis-release.tar.gz
 rm -rf redis-release && mkdir -p redis-release

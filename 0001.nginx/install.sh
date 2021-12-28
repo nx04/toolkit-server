@@ -8,6 +8,7 @@ yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib 
 yum install -y pcre pcre-devel
 
 # openssl
+# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1m.tar.gz
 # https://www.openssl.org/source/openssl-1.1.1m.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
 rm -rf openssl-release && mkdir -p openssl-release
@@ -25,7 +26,8 @@ echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
 ldconfig
 openssl version
 
-# install
+# nginx
+# https://github.com/nginx/nginx/archive/refs/tags/release-1.21.4.tar.gz
 # http://nginx.org/download/nginx-1.21.4.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/f738c5a2-f040-4c44-b9a6-5d69c60f1c4e.gz -O nginx-release.tar.gz
 rm -rf nginx-release && mkdir -p nginx-release

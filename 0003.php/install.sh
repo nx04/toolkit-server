@@ -8,6 +8,7 @@ yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib 
 yum -y install libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel
 
 # openssl
+# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1m.tar.gz
 # https://www.openssl.org/source/openssl-1.1.1m.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
 rm -rf openssl-release && mkdir -p openssl-release
@@ -25,8 +26,9 @@ echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
 ldconfig
 openssl version
 
-# 安装 oniguruma
+# oniguruma
 # https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz
+# https://gitee.com/xiaonian0430/oniguruma/repository/archive/v6.9.7.1?format=tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/91ebb0f5-0966-48ad-9a37-63bffe297dea.gz -O oniguruma-release.tar.gz
 rm -rf oniguruma-release
 mkdir -p oniguruma-release
@@ -39,6 +41,7 @@ rm -rf oniguruma-release oniguruma-release.tar.gz
 
 # 安装 zlib
 # https://github.com/madler/zlib/archive/refs/tags/v1.2.11.tar.gz
+# https://gitee.com/zhang1021/zlib/repository/archive/v1.2.11?format=tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/a788bd58-ec24-4eb9-b23d-164d86b70315.gz -O zlib-release.tar.gz
 rm -rf zlib-release
 mkdir -p zlib-release
@@ -50,6 +53,7 @@ cd ../
 rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 php
+# https://github.com/php/php-src/archive/refs/tags/php-8.1.1.tar.gz
 # https://www.php.net/distributions/php-8.1.1.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/6e9b0104-274b-4436-ad8a-2089901d871a.gz -O php-release.tar.gz
 rm -rf php-release
@@ -69,8 +73,9 @@ cd ../../../
 rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
-# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.4.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/314ab48e-6d9f-46c1-98f9-0752ff7229a5.gz -O swoole-release.tar.gz
+# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.5.tar.gz
+# https://gitee.com/swoole/swoole/repository/archive/v4.8.5?format=tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/79dbe9e1-6521-4a8f-ad2f-a40102044e5a.gz -O swoole-release.tar.gz
 rm -rf swoole-release && mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
 cd swoole-release
@@ -113,9 +118,9 @@ rm -rf phpredis-release phpredis-release.tar.gz
 echo "extension=redis.so" >> /usr/local/php-release/lib/php.ini
 php --ri redis
 
-# composer 包管理工具
-# https://github.com/composer/composer/releases/download/2.1.14/composer.phar
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/46e5274d-3b56-469c-b4cb-bfdc008fc13d.phar -O composer
+# composer
+# https://github.com/composer/composer/releases/download/2.2.1/composer.phar
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/d24a584c-fa03-459e-b529-af5e8e02f390.phar -O composer
 mv composer /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 

@@ -5,6 +5,7 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib zlib-devel
 
 # openssl
+# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1m.tar.gz
 # https://www.openssl.org/source/openssl-1.1.1m.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
 rm -rf openssl-release && mkdir -p openssl-release
@@ -22,7 +23,7 @@ echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
 ldconfig
 openssl version
 
-# install docker
+# docker
 yum remove docker* -y
 yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 yum install -y docker-ce docker-ce-cli containerd.io
@@ -35,7 +36,7 @@ systemctl daemon-reload
 systemctl restart docker
 docker version
 
-# install docker-compose
+# docker-compose
 # https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-linux-x86_64
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/b7294b1b-03a4-4276-bd13-86d027729799.2 -O /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose

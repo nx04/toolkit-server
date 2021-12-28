@@ -10,6 +10,7 @@ yum -y install libsndfile readline-devel xz-devel tk-devel gdbm-devel
 yum -y install mesa-libGL libSM libSM.so.6
 
 # openssl
+# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1m.tar.gz
 # https://www.openssl.org/source/openssl-1.1.1m.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
 rm -rf openssl-release && mkdir -p openssl-release
