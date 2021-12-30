@@ -27,9 +27,9 @@ ldconfig
 openssl version
 
 # nginx
-# https://github.com/nginx/nginx/archive/refs/tags/release-1.21.4.tar.gz
-# http://nginx.org/download/nginx-1.21.4.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/f738c5a2-f040-4c44-b9a6-5d69c60f1c4e.gz -O nginx-release.tar.gz
+# https://github.com/nginx/nginx/archive/refs/tags/release-1.21.5.tar.gz
+# http://nginx.org/download/nginx-1.21.5.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/cffd321a-433c-409a-8103-efd88f95bedb.gz -O nginx-release.tar.gz
 rm -rf nginx-release && mkdir -p nginx-release
 tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1
 cd nginx-release
