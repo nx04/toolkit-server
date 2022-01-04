@@ -119,8 +119,8 @@ echo "extension=redis.so" >> /usr/local/php-release/lib/php.ini
 php --ri redis
 
 # composer
-# https://github.com/composer/composer/releases/download/2.2.1/composer.phar
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/d24a584c-fa03-459e-b529-af5e8e02f390.phar -O composer
+# https://github.com/composer/composer/releases/download/2.2.3/composer.phar
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/83f0e991-23bd-4d03-becd-9e726546e2ea.phar -O composer
 mv composer /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 
