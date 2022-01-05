@@ -60,7 +60,7 @@ rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
 cd php-release
-./configure --prefix=/usr/local/php-release --with-openssl-dir=/usr/local/openssl-release --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-mbstring --enable-fpm --enable-pdo --enable-sysvsem --enable-sysvshm --enable-zip --with-curl --with-zlib=/usr/local/zlib-release
+./configure --prefix=/usr/local/php-release --with-openssl-dir=/usr/local/openssl-release/lib --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-mbstring --enable-fpm --enable-pdo --enable-sysvsem --enable-sysvshm --enable-zip --with-curl --with-zlib=/usr/local/zlib-release
 make && make install
 ln -s -f /usr/local/php-release/bin/php /usr/bin/php
 ln -s -f /usr/local/php-release/bin/phpize /usr/bin/phpize
