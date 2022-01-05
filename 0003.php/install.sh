@@ -5,26 +5,7 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib zlib-devel
 
 # 第三方的开发包
-yum -y install libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel
-
-# openssl
-# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1m.tar.gz
-# https://www.openssl.org/source/openssl-1.1.1m.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
-rm -rf openssl-release && mkdir -p openssl-release
-tar -zxvf openssl-release.tar.gz -C ./openssl-release --strip-components 1
-cd openssl-release
-./config --prefix=/usr/local/openssl-release
-./config -t
-make
-make install
-cd ../
-rm -rf openssl-release openssl-release.tar.gz
-ln -s -f /usr/local/openssl-release/bin/openssl /usr/bin/openssl
-ln -s -f /usr/local/openssl-release/include/openssl /usr/include/openssl
-echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
-ldconfig
-openssl version
+yum -y install libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel openssl openssl-devel
 
 # oniguruma
 # https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz
@@ -60,7 +41,7 @@ rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
 cd php-release
-./configure --prefix=/usr/local/php-release --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-mbstring --enable-fpm --enable-pdo --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
+./configure --prefix=/usr/local/php-release --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-mbstring --enable-fpm --enable-pdo --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
 make && make install
 ln -s -f /usr/local/php-release/bin/php /usr/bin/php
 ln -s -f /usr/local/php-release/bin/phpize /usr/bin/phpize
@@ -70,12 +51,6 @@ phpize
 ./configure --with-php-config=/usr/local/php-release/bin/php-config
 make && make install
 echo "extension=mysqli.so" >> /usr/local/php-release/lib/php.ini
-# openssl 扩展
-cd ../openssl
-phpize
-./configure --with-openssl --with-php-config=/usr/local/php-release/bin/php-config
-make && make install
-echo "extension=openssl.so" >> /usr/local/php-release/lib/php.ini
 cd ../../../
 rm -rf php-release php-release.tar.gz
 
