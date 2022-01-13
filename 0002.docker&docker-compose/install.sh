@@ -18,8 +18,8 @@ systemctl restart docker
 docker version
 
 # docker-compose
-# https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-linux-x86_64
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/b7294b1b-03a4-4276-bd13-86d027729799.2 -O /usr/local/bin/docker-compose
+# https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/fe7480e8-766c-4ef1-b875-ae428354940b.3 -O /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version

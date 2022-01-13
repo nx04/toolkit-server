@@ -55,9 +55,9 @@ cd ../../../
 rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
-# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.5.tar.gz
-# https://gitee.com/swoole/swoole/repository/archive/v4.8.5?format=tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/79dbe9e1-6521-4a8f-ad2f-a40102044e5a.gz -O swoole-release.tar.gz
+# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.6.tar.gz
+# https://gitee.com/swoole/swoole/repository/archive/v4.8.6?format=tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/666d1c15-2ede-4a61-9cd0-2db584ec89ba.gz -O swoole-release.tar.gz
 rm -rf swoole-release && mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
 cd swoole-release

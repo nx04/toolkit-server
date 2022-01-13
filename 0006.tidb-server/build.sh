@@ -1,0 +1,1 @@
+docker build -t="hiper/tidb:5.0.6" .
