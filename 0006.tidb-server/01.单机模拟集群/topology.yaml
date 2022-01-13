@@ -1,0 +1,87 @@
+global:
+  user: "tidb"
+  ssh_port: 22
+  deploy_dir: "/tidb-deploy"
+  data_dir: "/tidb-data"
+
+# # Monitored variables are applied to all the machines.
+monitored:
+  node_exporter_port: 9100
+  blackbox_exporter_port: 9115
+
+server_configs:
+  tidb:
+    log.slow-threshold: 300
+  tikv:
+    readpool.storage.use-unified-pool: false
+    readpool.coprocessor.use-unified-pool: true
+  pd:
+    replication.enable-placement-rules: true
+    replication.location-labels: ["host"]
+  tiflash:
+    logger.level: "info"
+
+pd_servers:
+  - host: 116.85.70.167
+    ssh_port: 22
+    name: pd-1
+    client_port: 2379
+    peer_port: 2380
+    deploy_dir: "/tidb-deploy/pd-2379"
+    data_dir: "/tidb-data/pd-2379"
+    log_dir: "/tidb-deploy/pd-2379/log"
+
+tidb_servers:
+  - host: 116.85.70.167
+    ssh_port: 22
+    port: 4000
+    status_port: 10080
+    deploy_dir: "/tidb-deploy/tidb-4000"
+    log_dir: "/tidb-deploy/tidb-4000/log"
+
+tikv_servers:
+  - host: 116.85.70.167
+    port: 20160
+    status_port: 20180
+    deploy_dir: "/tidb-deploy/tikv-20160"
+    data_dir: "/tidb-data/tikv-20160"
+    log_dir: "/tidb-deploy/tikv-20160/log"
+
+  - host: 116.85.70.167
+    port: 20161
+    status_port: 20181
+    deploy_dir: "/tidb-deploy/tikv-20161"
+    data_dir: "/tidb-data/tikv-20161"
+    log_dir: "/tidb-deploy/tikv-20161/log"
+
+  - host: 116.85.70.167
+    port: 20162
+    status_port: 20182
+    deploy_dir: "/tidb-deploy/tikv-20162"
+    data_dir: "/tidb-data/tikv-20162"
+    log_dir: "/tidb-deploy/tikv-20162/log"
+
+tiflash_servers:
+  - host: 116.85.70.167
+    ssh_port: 22
+    tcp_port: 9000
+    http_port: 8123
+    flash_service_port: 3930
+    flash_proxy_port: 20170
+    flash_proxy_status_port: 20292
+    metrics_port: 8234
+    deploy_dir: "/tidb-deploy/tiflash-9000"
+    data_dir: "/tidb-data/tiflash-9000"
+
+monitoring_servers:
+  - host: 116.85.70.167
+    ssh_port: 22
+    port: 9090
+    deploy_dir: "/tidb-deploy/prometheus-8249"
+    data_dir: "/tidb-data/prometheus-8249"
+    log_dir: "/tidb-deploy/prometheus-8249/log"
+
+grafana_servers:
+  - host: 116.85.70.167
+    port: 3000
+    deploy_dir: "/tidb-deploy/grafana-3000"

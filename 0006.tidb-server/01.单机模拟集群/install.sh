@@ -1,0 +1,1 @@
+tiup cluster check ./topology.yaml --user root -p
