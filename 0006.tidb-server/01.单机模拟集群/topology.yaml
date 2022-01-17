@@ -25,10 +25,15 @@ monitored:
 # # You can overwrite this configuration via the instance-level `config` field.
 server_configs:
   tidb:
+    log.level: "error"
     log.slow-threshold: 300
     binlog.enable: false
     binlog.ignore-error: false
+    prepared-plan-cache.enabled: true
   tikv:
+    log-level: "error"
+    rocksdb.defaultcf.block-cache-size: "24GB"
+    rocksdb.writecf.block-cache-size: "6GB"
     readpool.storage.use-unified-pool: false
     readpool.coprocessor.use-unified-pool: true
   pd:
