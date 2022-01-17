@@ -72,22 +72,6 @@ tikv_servers:
     log_dir: "/tidb-deploy/tikv-20160/log"
     numa_node: "0,1"
 
-  - host: 116.85.70.167
-    port: 20161
-    status_port: 20181
-    deploy_dir: "/tidb-deploy/tikv-20161"
-    data_dir: "/tidb-data/tikv-20161"
-    log_dir: "/tidb-deploy/tikv-20161/log"
-    numa_node: "0,1"
-
-  - host: 116.85.70.167
-    port: 20162
-    status_port: 20182
-    deploy_dir: "/tidb-deploy/tikv-20162"
-    data_dir: "/tidb-data/tikv-20162"
-    log_dir: "/tidb-deploy/tikv-20162/log"
-    numa_node: "0,1"
-
 tiflash_servers:
   - host: 116.85.70.167
     ssh_port: 22
