@@ -22,7 +22,6 @@ rm -rf oniguruma-release oniguruma-release.tar.gz
 
 # 安装 zlib
 # https://github.com/madler/zlib/archive/refs/tags/v1.2.11.tar.gz
-# https://gitee.com/zhang1021/zlib/repository/archive/v1.2.11?format=tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/a788bd58-ec24-4eb9-b23d-164d86b70315.gz -O zlib-release.tar.gz
 rm -rf zlib-release
 mkdir -p zlib-release
@@ -34,9 +33,9 @@ cd ../
 rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 php
-# https://github.com/php/php-src/archive/refs/tags/php-8.0.14.tar.gz
-# https://www.php.net/distributions/php-8.0.14.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/8a76f2be-193a-4318-a357-2bba80620fab.gz -O php-release.tar.gz
+# https://github.com/php/php-src/archive/refs/tags/php-8.0.17.tar.gz
+# https://www.php.net/distributions/php-8.0.17.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/ac6c25ec-09ff-4555-901b-9e7a94e3781e.gz -O php-release.tar.gz
 rm -rf php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
@@ -55,9 +54,8 @@ cd ../../../
 rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
-# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.6.tar.gz
-# https://gitee.com/swoole/swoole/repository/archive/v4.8.6?format=tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/666d1c15-2ede-4a61-9cd0-2db584ec89ba.gz -O swoole-release.tar.gz
+# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.8.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/eaf4ed8e-98f7-47aa-b7b2-220fb39ea2f6.gz -O swoole-release.tar.gz
 rm -rf swoole-release && mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
 cd swoole-release
@@ -86,8 +84,8 @@ echo "extension=event.so" >> /usr/local/php-release/lib/php.ini
 php --ri event
 
 # 安装 php redis 扩展
-# https://pecl.php.net/get/redis-5.3.5.tgz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/14771100-53e2-4963-b203-8ebd4a5b103c.tgz -O phpredis-release.tar.gz
+# https://pecl.php.net/get/redis-5.3.7.tgz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/13caffd6-1905-4566-b5db-f215b1f287fd.tgz -O phpredis-release.tar.gz
 rm -rf phpredis-release && mkdir -p phpredis-release
 tar -zxvf phpredis-release.tar.gz -C ./phpredis-release --strip-components 1
 cd phpredis-release
@@ -101,8 +99,8 @@ echo "extension=redis.so" >> /usr/local/php-release/lib/php.ini
 php --ri redis
 
 # composer
-# https://github.com/composer/composer/releases/download/2.2.3/composer.phar
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/83f0e991-23bd-4d03-becd-9e726546e2ea.phar -O composer
+# https://github.com/composer/composer/releases/download/2.3.4/composer.phar
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/3a93a6de-0902-444a-a163-75328222c6ee.phar -O composer
 mv composer /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
 

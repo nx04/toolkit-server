@@ -6,8 +6,8 @@ yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib 
 
 # nginx
 # https://github.com/nginx/nginx/archive/refs/tags/release-1.21.5.tar.gz
-# http://nginx.org/download/nginx-1.21.5.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/cffd321a-433c-409a-8103-efd88f95bedb.gz -O nginx-release.tar.gz
+# http://nginx.org/download/nginx-1.21.6.tar.gz
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/023a6b5a-0f36-4160-9c17-5961b6f1dc7f.gz -O nginx-release.tar.gz
 rm -rf nginx-release && mkdir -p nginx-release
 tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1
 cd nginx-release
