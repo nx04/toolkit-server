@@ -1,0 +1,1 @@
+docker build -t="hiper/nodejs:14.19.1" .

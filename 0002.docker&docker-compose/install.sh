@@ -19,6 +19,7 @@ docker version
 
 # docker-compose
 # https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-linux-x86_64
+rm -rf /usr/local/bin/docker-compose
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/dc38addf-cb77-4c34-8f74-2812d5595e79.1 -O /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose

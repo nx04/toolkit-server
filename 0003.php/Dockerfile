@@ -1,10 +1,12 @@
-FROM centos:centos7.8.2003
+FROM centos:centos7.9.2009
 
 USER root
 
+RUN mkdir -p /data/server/php
+
 # 执行 shell 安装脚本
-COPY install.sh /home/install.sh
-RUN sh /home/install.sh
+COPY install.sh /data/server/php/install.sh
+RUN sh /data/server/php/install.sh
 
 # app 项目目录
-WORKDIR /home
+WORKDIR /data
