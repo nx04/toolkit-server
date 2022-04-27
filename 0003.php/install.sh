@@ -1,5 +1,3 @@
-rpm -Uvh http://repo.webtatic.com/yum/el7/epel-release.rpm
-curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 # 时区
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
