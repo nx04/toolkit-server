@@ -2,7 +2,9 @@
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
 # build tools
-yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib zlib-devel openssl openssl-devel
+yum install -y yum-utils
+yum install -y gcc gcc-c++ make automake autoconf cmake lsof
+yum install -y wget tar curl git zlib zlib-devel openssl openssl-devel
 
 # docker
 yum remove docker* -y
@@ -18,9 +20,9 @@ systemctl restart docker
 docker version
 
 # docker-compose
-# https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-linux-x86_64
+# https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64
 rm -rf /usr/local/bin/docker-compose
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/dc38addf-cb77-4c34-8f74-2812d5595e79.1 -O /usr/local/bin/docker-compose
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bb7e0a20-6de1-45d8-bf48-b2f44341a54c.0 -O /usr/local/bin/docker-compose --no-check-certificate
 chmod +x /usr/local/bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version

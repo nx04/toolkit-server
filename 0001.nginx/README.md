@@ -44,3 +44,5 @@ Nginx 实现资源压缩的原理是通过 ngx_http_gzip_module 模块拦截请�
 
 
 ## Nginx 性能优化
+
+若安装时找不到上述依赖模块，使用--with-openssl=<openssl_dir>、--with-pcre=<pcre_dir>、--with-zlib=<zlib_dir>指定依赖的模块目录。
