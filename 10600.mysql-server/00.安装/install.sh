@@ -2,15 +2,18 @@
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
 # 编译器和工具
-yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib zlib-devel
+yum install -y yum-utils
+yum install -y gcc gcc-c++ make automake autoconf cmake lsof net-tools
+yum install -y wget tar curl git zlib zlib-devel
 
 # 第三方的开发包
 yum install -y bison bzip2 hostname ncurses-devel pkgconfig doxygen
 
 # openssl
-# https://www.openssl.org/source/openssl-1.1.1m.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
-rm -rf openssl-release && mkdir -p openssl-release
+# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1o.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/openssl-OpenSSL_1_1_1o.tar.gz -O openssl-release.tar.gz
+rm -rf openssl-release /usr/local/openssl-release
+mkdir -p openssl-release
 tar -zxvf openssl-release.tar.gz -C ./openssl-release --strip-components 1
 cd openssl-release
 ./config --prefix=/usr/local/openssl-release
@@ -20,14 +23,14 @@ make install
 cd ../
 rm -rf openssl-release openssl-release.tar.gz
 ln -s -f /usr/local/openssl-release/bin/openssl /usr/bin/openssl
-ln -s -f /usr/local/openssl-release/include/openssl /usr/include/openssl
+#ln -s -f /usr/local/openssl-release/include/openssl /usr/include/openssl
 echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
 ldconfig
 openssl version
 
-# install
-# https://github.com/mysql/mysql-server/archive/refs/tags/mysql-8.0.27.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/mysql-server-mysql-8.0.27.tar.gz -O mysql-release.tar.gz
+# mysql
+# https://github.com/mysql/mysql-server/archive/refs/tags/mysql-8.0.29.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/mysql-server-mysql-8.0.29.tar.gz -O mysql-release.tar.gz
 rm -rf mysql-release && mkdir -p mysql-release
 tar -zxvf mysql-release.tar.gz -C ./mysql-release --strip-components 1
 cd mysql-release

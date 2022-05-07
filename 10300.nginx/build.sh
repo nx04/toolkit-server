@@ -1,1 +1,1 @@
-docker build -t="php:8.0.18" .
+docker build -t="nginx:1.21.6" .

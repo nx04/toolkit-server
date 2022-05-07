@@ -1,1 +1,1 @@
-docker build -t="xiaonian/mysql:2.0.1" .
+docker build -t="mysql:8.0.29" .
