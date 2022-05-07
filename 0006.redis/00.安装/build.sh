@@ -1,1 +1,1 @@
-docker build -t="hiper/redis:6.2.6" .
+docker build -t="redis:7.0.0" .

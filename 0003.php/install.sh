@@ -11,8 +11,8 @@ yum -y install libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel o
 yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
 
 # oniguruma
-# https://github.com/kkos/oniguruma/releases/download/v6.9.7.1/onig-6.9.7.1.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/91ebb0f5-0966-48ad-9a37-63bffe297dea.gz -O oniguruma-release.tar.gz --no-check-certificate
+# https://github.com/kkos/oniguruma/releases/download/v6.9.8/onig-6.9.8.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/onig-6.9.8.tar.gz -O oniguruma-release.tar.gz --no-check-certificate
 rm -rf oniguruma-release /usr/local/oniguruma-release
 mkdir -p oniguruma-release
 tar -zxvf oniguruma-release.tar.gz -C ./oniguruma-release --strip-components 1
@@ -23,8 +23,8 @@ cd ../
 rm -rf oniguruma-release oniguruma-release.tar.gz
 
 # 安装 zlib
-# https://github.com/madler/zlib/archive/refs/tags/v1.2.11.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/a788bd58-ec24-4eb9-b23d-164d86b70315.gz -O zlib-release.tar.gz --no-check-certificate
+# https://github.com/madler/zlib/archive/refs/tags/v1.2.12.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/zlib-1.2.12.tar.gz -O zlib-release.tar.gz --no-check-certificate
 rm -rf zlib-release /usr/local/zlib-release
 mkdir -p zlib-release
 tar -zxvf zlib-release.tar.gz -C ./zlib-release --strip-components 1
@@ -36,7 +36,7 @@ rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 libzip
 # https://libzip.org/download/libzip-1.8.0.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/d4fb05a9-b89d-45a3-9cdf-c5a088206df5.gz -O libzip-release.tar.gz --no-check-certificate
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/libzip-1.8.0.tar.gz -O libzip-release.tar.gz --no-check-certificate
 rm -rf libzip-release
 mkdir -p libzip-release
 tar -zxvf libzip-release.tar.gz -C ./libzip-release --strip-components 1
@@ -50,7 +50,7 @@ rm -rf libzip-release libzip-release.tar.gz
 
 # 安装 php
 # https://www.php.net/distributions/php-8.0.18.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/f4848d82-a75f-4704-933e-a027243f7d8e.gz -O php-release.tar.gz --no-check-certificate
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-8.0.18.tar.gz -O php-release.tar.gz --no-check-certificate
 rm -rf php-release /usr/local/php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
@@ -77,7 +77,7 @@ rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
 # https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.9.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/16372690-0a24-41e1-9011-219f7b3589ec.gz -O swoole-release.tar.gz --no-check-certificate
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/swoole-src-4.8.9.tar.gz -O swoole-release.tar.gz --no-check-certificate
 rm -rf swoole-release
 mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
@@ -93,7 +93,7 @@ php --ri swoole
 
 # 安装event扩展
 # https://pecl.php.net/get/event-3.0.6.tgz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/83dd059b-abbf-4778-8d36-9676429a9ab0.tgz -O event-release.tgz --no-check-certificate
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/event-3.0.6.tgz -O event-release.tgz --no-check-certificate
 rm -rf event-release
 mkdir -p event-release
 tar -zxvf event-release.tgz -C ./event-release --strip-components 1
@@ -109,7 +109,7 @@ php --ri event
 
 # 安装 php redis 扩展
 # https://pecl.php.net/get/redis-5.3.7.tgz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/13caffd6-1905-4566-b5db-f215b1f287fd.tgz -O phpredis-release.tar.gz --no-check-certificate
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/redis-5.3.7.tgz -O phpredis-release.tar.gz --no-check-certificate
 rm -rf phpredis-release
 mkdir -p phpredis-release
 tar -zxvf phpredis-release.tar.gz -C ./phpredis-release --strip-components 1
@@ -125,10 +125,8 @@ php --ri redis
 
 # composer
 # https://github.com/composer/composer/releases/download/2.3.5/composer.phar
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/6242bbc4-02c4-403c-949e-d5ad420ee7e9.phar -O composer --no-check-certificate
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/composer.phar -O composer --no-check-certificate
 rm -rf /usr/local/bin/composer
 mv composer /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
-
-
 

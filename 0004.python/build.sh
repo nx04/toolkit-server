@@ -1,1 +1,1 @@
-docker build -t="hiper/python:3.9.9" .
+docker build -t="python:3.9.9" .

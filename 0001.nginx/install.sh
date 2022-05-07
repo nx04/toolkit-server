@@ -3,15 +3,14 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 
 # 编译器和工具
 yum install -y yum-utils
-yum install -y gcc gcc-c++ make automake autoconf cmake lsof
+yum install -y gcc gcc-c++ make automake autoconf cmake lsof netstat
 yum install -y wget tar curl git zlib zlib-devel openssl openssl-devel
 
 # nginx
 # http://nginx.org/download/nginx-1.21.6.tar.gz
-cp -rf /usr/local/nginx-release /usr/local/nginx-release.bak
-rm -rf /usr/local/nginx-release
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/023a6b5a-0f36-4160-9c17-5961b6f1dc7f.gz -O nginx-release.tar.gz --no-check-certificate
-rm -rf nginx-release && mkdir -p nginx-release
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/nginx-1.21.6.tar.gz -O nginx-release.tar.gz --no-check-certificate
+rm -rf nginx-release /usr/local/nginx-release
+mkdir -p nginx-release
 tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1
 cd nginx-release
 ./configure --prefix=/usr/local/nginx-release --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-http_gzip_static_module --with-http_v2_module

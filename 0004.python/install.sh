@@ -2,7 +2,9 @@
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
 # 编译器和工具
-yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git
+yum install -y yum-utils
+yum install -y gcc gcc-c++ make automake autoconf cmake lsof
+yum install -y wget tar curl git
 
 # 第三方工具
 yum install -y zlib zlib-devel bzip2-devel libffi-devel sqlite-devel
@@ -10,8 +12,7 @@ yum -y install libsndfile readline-devel xz-devel tk-devel gdbm-devel
 yum -y install mesa-libGL libSM libSM.so.6
 
 # openssl
-# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1m.tar.gz
-# https://www.openssl.org/source/openssl-1.1.1m.tar.gz
+# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1o.tar.gz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
 rm -rf openssl-release && mkdir -p openssl-release
 tar -zxvf openssl-release.tar.gz -C ./openssl-release --strip-components 1
@@ -29,7 +30,7 @@ ldconfig
 openssl version
 
 # python3
-# https://www.python.org/ftp/python/3.9.9/Python-3.9.9.tgz
+# https://www.python.org/ftp/python/3.8.13/Python-3.8.13.tgz
 wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/1015f2d6-3350-4684-90bf-960727f6cb02.tgz -O python3-release.tgz
 rm -rf python3-release && mkdir -p python3-release
 tar -zxvf python3-release.tgz -C ./python3-release --strip-components 1

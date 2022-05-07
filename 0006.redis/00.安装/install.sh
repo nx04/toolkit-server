@@ -2,12 +2,15 @@
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
 # 编译器和工具
-yum install -y gcc gcc-c++ make cmake autoconf wget tar curl yum-utils git zlib zlib-devel openssl openssl-devel
+yum install -y yum-utils
+yum install -y gcc gcc-c++ make automake autoconf cmake lsof
+yum install -y wget tar curl git zlib zlib-devel openssl openssl-devel
 
 # redis
-# https://download.redis.io/releases/redis-6.2.6.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/7997731a-c833-40b6-9592-2c7f59d6fa6c.gz -O redis-release.tar.gz
-rm -rf redis-release && mkdir -p redis-release
+# https://github.com/redis/redis/archive/refs/tags/7.0.0.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/redis-7.0.0.tar.gz -O redis-release.tar.gz --no-check-certificate
+rm -rf redis-release /usr/local/redis-release
+mkdir -p redis-release
 tar -zxvf redis-release.tar.gz -C ./redis-release --strip-components 1
 cd redis-release
 make && make install PREFIX=/usr/local/redis-release

@@ -8,7 +8,8 @@ yum install -y wget tar curl git zlib zlib-devel openssl openssl-devel
 
 # docker
 yum remove docker* -y
-yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+#yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install -y docker-ce docker-ce-cli containerd.io
 
 # start docker
