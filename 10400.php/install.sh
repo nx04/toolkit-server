@@ -49,8 +49,8 @@ cd ../
 rm -rf libzip-release libzip-release.tar.gz
 
 # 安装 php
-# https://www.php.net/distributions/php-8.0.18.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-8.0.18.tar.gz -O php-release.tar.gz --no-check-certificate
+# https://www.php.net/distributions/php-8.0.19.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-8.0.19.tar.gz -O php-release.tar.gz --no-check-certificate
 rm -rf php-release /usr/local/php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
