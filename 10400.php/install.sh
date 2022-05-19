@@ -10,6 +10,16 @@ yum install -y wget tar curl git
 yum -y install libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel openssl openssl-devel
 yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
 
+wget https://cmake.org/files/v3.23/cmake-3.23.1.tar.gz -O cmake3-release.tar.gz --no-check-certificate
+rm -rf cmake3-release /usr/local/cmake3-release
+mkdir -p cmake3-release
+tar -zxvf cmake3-release.tar.gz -C ./cmake3-release --strip-components 1
+cd cmake3-release
+./bootstrap
+gmake
+gmake install
+
+
 # oniguruma
 # https://github.com/kkos/oniguruma/releases/download/v6.9.8/onig-6.9.8.tar.gz
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/onig-6.9.8.tar.gz -O oniguruma-release.tar.gz --no-check-certificate
@@ -45,7 +55,7 @@ mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 make && make install
-cd ../
+cd ../../
 rm -rf libzip-release libzip-release.tar.gz
 
 # 安装 php
