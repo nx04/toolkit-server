@@ -4,7 +4,7 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 # 编译器和工具
 yum install -y yum-utils
 yum install -y gcc gcc-c++ make automake autoconf cmake lsof net-tools
-yum install -y wget tar curl git zlib zlib-devel openssl openssl-devel
+yum install -y wget tar curl git unzip zip zlib zlib-devel openssl openssl-devel
 
 # redis
 # https://github.com/redis/redis/archive/refs/tags/7.0.0.tar.gz

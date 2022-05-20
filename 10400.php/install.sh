@@ -3,21 +3,18 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 
 # 编译器和工具
 yum install -y yum-utils
-yum install -y gcc gcc-c++ make automake autoconf cmake lsof net-tools
-yum install -y wget tar curl git
+yum install -y gcc gcc-c++ make automake autoconf lsof net-tools 
+yum install -y wget tar curl git unzip zip
 
 # 第三方的开发包
 yum -y install libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel openssl openssl-devel
 yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
 
-wget https://cmake.org/files/v3.23/cmake-3.23.1.tar.gz -O cmake3-release.tar.gz --no-check-certificate
-rm -rf cmake3-release /usr/local/cmake3-release
-mkdir -p cmake3-release
-tar -zxvf cmake3-release.tar.gz -C ./cmake3-release --strip-components 1
-cd cmake3-release
-./bootstrap
-gmake
-gmake install
+# cmake3
+yum remove camke
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/cmake-3.23.1-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
+sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
+ln -s -f /usr/local/bin/cmake /usr/bin/cmake
 
 
 # oniguruma
@@ -99,6 +96,7 @@ cd ../
 rm -rf swoole-release swoole-release.tar.gz
 # 在PHP中开启 PHP 扩展
 echo "extension=swoole.so" >> /usr/local/php-release/lib/php.ini
+echo "swoole.use_shortname='Off'" >> /usr/local/php-release/lib/php.ini
 php --ri swoole
 
 # 安装event扩展
