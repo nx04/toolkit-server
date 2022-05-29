@@ -83,8 +83,8 @@ cd ../../../
 rm -rf php-release php-release.tar.gz
 
 # 安装 php swoole 扩展
-# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.9.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/swoole-src-4.8.9.tar.gz -O swoole-release.tar.gz --no-check-certificate
+# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.10.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/swoole-src-4.8.10.tar.gz -O swoole-release.tar.gz --no-check-certificate
 rm -rf swoole-release
 mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
@@ -132,7 +132,7 @@ echo "extension=redis.so" >> /usr/local/php-release/lib/php.ini
 php --ri redis
 
 # composer
-# https://github.com/composer/composer/releases/download/2.3.5/composer.phar
+# https://github.com/composer/composer/releases/download/2.2.13/composer.phar
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/composer.phar -O composer --no-check-certificate
 rm -rf /usr/local/bin/composer
 mv composer /usr/local/bin/composer

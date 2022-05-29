@@ -33,8 +33,8 @@ ldconfig
 openssl version
 
 # nginx
-# http://nginx.org/download/nginx-1.21.6.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/nginx-1.21.6.tar.gz -O nginx-release.tar.gz --no-check-certificate
+# http://nginx.org/download/nginx-1.22.0.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/nginx-1.22.0.tar.gz -O nginx-release.tar.gz --no-check-certificate
 rm -rf nginx-release /usr/local/nginx-release
 mkdir -p nginx-release
 tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1
