@@ -1,13 +1,20 @@
+ulimit -HSn 102400
+echo 1 > /proc/sys/vm/overcommit_memory
+echo 50000 > /proc/sys/net/core/somaxconn
+echo 1 > /proc/sys/net/ipv4/tcp_tw_recycle
+echo 1 > /proc/sys/net/ipv4/tcp_tw_reuse
+echo 0 > /proc/sys/net/ipv4/tcp_syncookies
 # 时区
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
 # 编译器和工具
 yum install -y yum-utils
-yum install -y gcc gcc-c++ make automake autoconf cmake lsof net-tools
+yum install -y gcc gcc-c++ make automake autoconf
+yum install -y lsof net-tools sysstat tree iotop
 yum install -y wget tar curl git unzip zip zlib zlib-devel openssl openssl-devel
 
 # cmake3
-yum remove camke
+yum remove cmake
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/cmake-3.23.1-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
 sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
 ln -s -f /usr/local/bin/cmake /usr/bin/cmake

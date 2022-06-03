@@ -1,0 +1,1 @@
+docker build -t="php:8.0.18" .

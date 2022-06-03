@@ -23,3 +23,6 @@ root     23916  0.0  0.0 112668   964 pts/0    R+   16:21   0:00 grep --color=au
 重启php-fpm:
 
 kill -USR2 11667
+
+停用
+kill -INT 17122 

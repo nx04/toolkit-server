@@ -10,8 +10,15 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 
 # 编译器和工具
 yum install -y yum-utils
-yum install -y gcc gcc-c++ make automake autoconf cmake lsof net-tools
+yum install -y gcc gcc-c++ make automake autoconf
+yum install -y lsof net-tools sysstat tree iotop
 yum install -y wget tar curl git unzip zip zlib zlib-devel
+
+# cmake3
+yum remove cmake
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/cmake-3.23.1-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
+sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
+ln -s -f /usr/local/bin/cmake /usr/bin/cmake
 
 # openssl
 # https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1o.tar.gz

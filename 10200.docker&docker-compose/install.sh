@@ -3,7 +3,8 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 
 # build tools
 yum install -y yum-utils
-yum install -y gcc gcc-c++ make automake autoconf cmake lsof net-tools
+yum install -y gcc gcc-c++ make automake autoconf cmake 
+yum install -y lsof net-tools sysstat tree iotop
 yum install -y wget tar curl git unzip zip zlib zlib-devel openssl openssl-devel
 
 # docker
