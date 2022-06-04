@@ -1,10 +1,3 @@
-ulimit -HSn 102400
-echo 1 > /proc/sys/vm/overcommit_memory
-echo 50000 > /proc/sys/net/core/somaxconn
-echo 1 > /proc/sys/net/ipv4/tcp_tw_recycle
-echo 1 > /proc/sys/net/ipv4/tcp_tw_reuse
-echo 0 > /proc/sys/net/ipv4/tcp_syncookies
-
 # 时区
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
@@ -63,6 +56,11 @@ make && make install
 cd ../../
 rm -rf libzip-release libzip-release.tar.gz
 
+# 安装 apache httpd
+yum install httpd -y
+yum install httpd-devel -y
+cat /etc/httpd/conf/httpd.conf
+
 # 安装 php
 # https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/php-5.6.40.tar.gz
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/php-5.6.40.tar.gz -O php-release.tar.gz --no-check-certificate
@@ -107,16 +105,3 @@ rm -rf event-release event-release.tgz
 # 在PHP中开启 PHP 扩展
 echo "extension=event.so" >> /usr/local/php-release/lib/php.ini
 php --ri event
-
-# composer
-# https://github.com/composer/composer/releases/download/2.2.13/composer.phar
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/composer.phar -O composer --no-check-certificate
-rm -rf /usr/local/bin/composer
-mv composer /usr/local/bin/composer
-chmod +x /usr/local/bin/composer
-
-
-php-fpm
-
-
-ps aux|grep php-fpm
