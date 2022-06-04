@@ -15,4 +15,4 @@ EXPOSE 80 443
 # /var/www/html #http服务部署位置
 # /etc/httpd/logs #日志文件位置
 # /usr/local/php-release/lib/php.ini # php配置文件所在位置
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["./docker-entrypoint.sh"]

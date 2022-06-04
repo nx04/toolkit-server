@@ -1,3 +1,4 @@
+#!/bin/bash
 # 设置防火墙
 firewall-cmd --state
 firewall-cmd --list-all
@@ -28,5 +29,6 @@ mkdir -p /data/demo_server/apache-logs
 mkdir -p /data/demo_server/php-config
 mkdir -p /data/demo_server/www-html
 cp -rf httpd.conf /data/demo_server/apache-config
-docker run -p 8880:80 --name demo_server -v /data/demo_server/php-config/php.ini:/usr/local/php-release/lib/php.ini -v /data/demo_server/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf -v /data/demo_server/apache-logs:/etc/httpd/logs -v /data/demo_server/www-html:/var/www/html -d apache_php56:2.0.0
+docker rm -f demo_server
+docker run -d -p 8880:80 --name demo_server -v /data/demo_server/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf -v /data/demo_server/apache-logs:/etc/httpd/logs -v /data/demo_server/www-html:/var/www/html apache_php56:2.0.0
 
