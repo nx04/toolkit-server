@@ -34,6 +34,8 @@ setenforce 0
 # > hj123456
 # grant all privileges on *.*  to 'root'@'%' ;
 # flush privileges;
+# GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'hj123456' WITH GRANT OPTION;
+# flush privileges;
 
 
 # 非首次创建服务

@@ -7,16 +7,16 @@ datadir=/var/lib/mysql
 #bind-address=127.0.0.1 
 symbolic-links=0 
 sql_mode=ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION 
-init_connect='SET collation_connection = utf8mb4_general_ci' 
-init_connect='SET NAMES utf8mb4' 
-character_set_server = utf8mb4 
-collation_server = utf8mb4_general_ci 
+#init_connect='SET collation_connection = latin1_swedish_ci' 
+#init_connect='SET NAMES latin1' 
+character_set_server = latin1 
+collation_server = latin1_swedish_ci
 slow_query_log = 1
 slow_query_log_file = slow.log
 long_query_time = 2
 
 [client] 
-default-character-set=utf8mb4
+default-character-set=latin1
 
 [mysql] 
-default-character-set=utf8mb4
+default-character-set=latin1
