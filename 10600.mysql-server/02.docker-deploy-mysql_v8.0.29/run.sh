@@ -6,8 +6,8 @@ init_env_data="/.init_env_data"
 # 初始化环境
 init_env_action_event(){
     # 设置防火墙
-    firewall-cmd --state
-    firewall-cmd --list-all
+    #firewall-cmd --state
+    #firewall-cmd --list-all
     firewall-cmd --permanent --add-port=80/tcp
     firewall-cmd --permanent --add-port=443/tcp
     firewall-cmd --permanent --add-port=3306/tcp
@@ -48,10 +48,10 @@ init_env_before_event(){
 }
 
 init_env_after_event(){
-    if [[ -n $(docker images -q -f "name=^${mysql_image_name}$") ]];then
-	    mysql_server_run
+    if [[ "$(docker images -q $mysql_image_name 2> /dev/null)" == "" ]];then
+	    echo "$mysql_image_name not exist"
     else
-        echo "$mysql_image_name not exist"
+        mysql_server_run
     fi
 }
 
@@ -74,10 +74,12 @@ mysql_server_run(){
 mysql_server_start_event(){
     mkdir -p /data/$mysql_server_name/conf
     cp -rf $mysql_conf /data/$mysql_server_name/conf
-    docker run -p 53306:3306 -p 33060:33060 --name $mysql_server_name -v /data/$mysql_server_name/data:/var/lib/mysql -v /data/$mysql_server_name/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=xn9981k% -d $mysql_image_name
+    docker run -p 53306:3306 -p 13300:33060 --name $mysql_server_name -v /data/$mysql_server_name/data:/var/lib/mysql -v /data/$mysql_server_name/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=xn9981k% -d $mysql_image_name
+    echo 'mysql server start'
 }
 mysql_server_reload_event(){
     docker restart $mysql_server_name
+    echo 'mysql server reload'
 }
 mysql_server_restart_event(){
     docker rm -f $mysql_server_name
@@ -87,6 +89,7 @@ mysql_server_restart_event(){
     mv /data/$mysql_server_name/data.bak/* /data/$mysql_server_name/data
     rm -rf /data/$mysql_server_name/data.bak
     mysql_server_reload_event
+    echo 'mysql server restart'
 }
 
 init_env_run
