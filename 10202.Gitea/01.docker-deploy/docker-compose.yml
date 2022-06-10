@@ -9,8 +9,8 @@ services:
     image: gitea/gitea:1.16.8
     container_name: gitea_server
     environment:
-      - USER_UID=root
-      - USER_GID=root
+      - USER_UID=1000
+      - USER_GID=1000
       - DB_TYPE=mysql
       - DB_HOST=192.168.91.129:53306
       - DB_NAME=gitea
