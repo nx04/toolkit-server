@@ -1,8 +1,22 @@
 #!/bin/bash
+
 mysql_image_name=mysql:8.0.29
 mysql_server_name='mysql_server_001'
 mysql_conf='mysqld.cnf'
 init_env_data="/.init_env_data"
+
+# 创建docker网络
+create_network_event(){
+    filter_name=`docker network ls | grep docker_network | awk '{ print $2 }'`
+    if [ "$filter_name" == "" ]; then
+        #不存在就创建
+        docker network create --subnet 172.19.0.0/24 --gateway 172.19.0.1 docker_network
+        echo 'docker_network created [\e[32mok\e[0m]'
+    else
+        echo -e 'docker_network [\e[32mok\e[0m]'
+    fi
+}
+
 # 初始化环境
 init_env_action_event(){
     # 设置防火墙
@@ -60,24 +74,25 @@ init_env_run(){
 }
 
 mysql_server_run(){
+    create_network_event
     if [[ -n $(docker ps -q -a -f "name=^${mysql_server_name}$") ]];then
 	    exist=`docker inspect --format '{{.State.Running}}' ${mysql_server_name}`
         if [ "${exist}" != "true" ];then
-        mysql_server_restart_event
-        echo 'mysql server restart'
+            mysql_server_restart_event
+            echo 'mysql server restart [ok]'
         else
-        mysql_server_reload_event
-        echo 'mysql server reload'
+            mysql_server_reload_event
+            echo 'mysql server reload [ok]'
         fi
     else
         mysql_server_start_event
-        echo 'mysql server start'
+        echo 'mysql server start [ok]'
     fi
 }
 mysql_server_start_event(){
     mkdir -p /data/$mysql_server_name/conf
     cp -rf $mysql_conf /data/$mysql_server_name/conf
-    docker run -p 53306:3306 -p 13300:33060 --name $mysql_server_name -v /data/$mysql_server_name/data:/var/lib/mysql -v /data/$mysql_server_name/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=xn9981k% -d $mysql_image_name
+    docker run -p 53306:3306 -p 13300:33060 --restart=always --net=docker_network --ip=172.19.0.10 --name $mysql_server_name -v /data/$mysql_server_name/data:/var/lib/mysql -v /data/$mysql_server_name/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=xn9981k% -d $mysql_image_name
 }
 mysql_server_reload_event(){
     docker restart $mysql_server_name
