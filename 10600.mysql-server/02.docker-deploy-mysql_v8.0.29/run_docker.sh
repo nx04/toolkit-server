@@ -2,7 +2,7 @@
 
 mysql_image_name=mysql:8.0.29
 mysql_server_name='mysql_server_001'
-mysql_conf='my.cnf'
+mysql_conf='mysqld.cnf'
 init_env_data="/.init_env_data"
 
 # 创建docker网络
@@ -92,7 +92,7 @@ mysql_server_run(){
 mysql_server_start_event(){
     mkdir -p /data/$mysql_server_name/conf
     cp -rf $mysql_conf /data/$mysql_server_name/conf
-    docker run -p 53306:3306 -p 13300:33060 --restart=always --net=docker_network --ip=172.19.0.10 --name $mysql_server_name -v /data/$mysql_server_name/data:/var/lib/mysql -v /data/$mysql_server_name/conf/my.cnf:/etc/mysql/my.cnf -e MYSQL_ROOT_PASSWORD=xn9981k% -e TZ=Asia/Shanghai -d $mysql_image_name
+    docker run -p 53306:3306 -p 13300:33060 --restart=always --net=docker_network --ip=172.19.0.10 --name $mysql_server_name -v /data/$mysql_server_name/data:/var/lib/mysql -v /data/$mysql_server_name/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=xn9981k% -e TZ=Asia/Shanghai -d $mysql_image_name
 }
 mysql_server_reload_event(){
     docker restart $mysql_server_name
