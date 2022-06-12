@@ -9,7 +9,7 @@ services:
     restart: always
     volumes:
       - /data/mysql_server_001/data:/var/lib/mysql
-      - /data/mysql_server_001/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      - /data/mysql_server_001/conf/my.cnf:/etc/mysql/my.cnf
     ports:
       - "53306:3306"
       - "13300:33060"
