@@ -2,7 +2,7 @@
 
 mysql_image_name=mysql:8.0.29
 mysql_server_name='mysql_server_001'
-mysql_conf='mysqld.cnf'
+mysql_conf='my.cnf'
 init_env_data="/.init_env_data"
 
 # 创建docker网络
