@@ -1,28 +1,30 @@
 version: "3"
 
-networks:
-  gitea:
-    external: false
-
 services:
-  gitea_server:
+  gitea_server_001:
     image: gitea/gitea:1.16.8
-    container_name: gitea_server
+    container_name: gitea_server_001
     environment:
       - USER_UID=1000
       - USER_GID=1000
       - DB_TYPE=mysql
-      - DB_HOST=192.168.91.129:53306
+      - DB_HOST=172.19.0.10:3306
       - DB_NAME=gitea
       - DB_USER=root
       - DB_PASSWD=xn9981k%
     restart: always
     networks:
-      - gitea
+      default:
+        ipv4_address: 172.19.1.10
     volumes:
-      - ./gitea:/data
+      - /data/gitea_server_001/data:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "53000:3000"
       - "10022:22"
+
+networks:
+  default:
+    external:
+      name: docker_network
