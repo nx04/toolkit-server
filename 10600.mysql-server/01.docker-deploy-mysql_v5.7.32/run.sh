@@ -24,7 +24,7 @@ docker pull mysql:5.7.32
 # 初次创建服务
 mkdir -p /data/mysql_erpsystem/conf
 cp -rf mysqld.cnf /data/mysql_erpsystem/conf
-docker run -p 3306:3306 -p 33060:33060 --name mysql_erpsystem -v /data/mysql_erpsystem/data:/var/lib/mysql -v /data/mysql_erpsystem/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=hj123456 -d mysql:5.7.32
+docker run -p 3306:3306 -p 33060:33060 --name mysql_erpsystem -v /data/mysql_erpsystem/data:/var/lib/mysql -v /data/mysql_erpsystem/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=hj123456 -e TZ=Asia/Shanghai -d mysql:5.7.32
 
 ## 进入容器 修改mysql权限
 # docker exec -it mysql_erpsystem bash

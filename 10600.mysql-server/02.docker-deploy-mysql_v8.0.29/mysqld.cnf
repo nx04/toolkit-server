@@ -6,7 +6,6 @@ datadir=/var/lib/mysql
 #log-error=/var/log/mysql/error.log 
 #bind-address=127.0.0.1 
 symbolic-links=0
-skip_symbolic_links=yes
 sql_mode='ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'
 #init_connect='SET collation_connection = utf8mb4_general_ci' 
 #init_connect='SET NAMES utf8mb4' 
@@ -17,6 +16,7 @@ slow_query_log_file = slow.log
 long_query_time = 2
 default-time-zone='+08:00'
 default_authentication_plugin=mysql_native_password
+lower_case_table_names = 1
 
 [client] 
 default-character-set=utf8mb4
