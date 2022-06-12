@@ -6,6 +6,7 @@ services:
     container_name: mysql_server_001
     environment:
       - MYSQL_ROOT_PASSWORD=xn9981k%
+      - TZ=Asia/Shanghai
     restart: always
     volumes:
       - /data/mysql_server_001/data:/var/lib/mysql
