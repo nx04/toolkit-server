@@ -14,6 +14,9 @@ create_network_event(){
 create_network_event
 
 mkdir -p /data/gitea_server_001
+useradd xiaonian
+groupadd softgroup
+gpasswd -a xiaonian softgroup
 docker-compose up -d
 
 
