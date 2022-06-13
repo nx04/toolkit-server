@@ -1,1 +1,1 @@
-docker build -t="php:8.0.18" .
+docker build -t="php_pro:8.0.19" .
