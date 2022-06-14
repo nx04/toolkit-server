@@ -18,13 +18,13 @@ yum install -y wget tar curl git unzip zip
 # 第三方的开发包
 yum -y install libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel openssl openssl-devel
 yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
+yum -y install mysql-devel
 
 # cmake3
 yum remove cmake
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/cmake-3.23.1-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
 sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
 ln -s -f /usr/local/bin/cmake /usr/bin/cmake
-
 
 # oniguruma
 # https://github.com/kkos/oniguruma/releases/download/v6.9.8/onig-6.9.8.tar.gz
@@ -71,7 +71,7 @@ rm -rf php-release /usr/local/php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
 cd php-release
-./configure --prefix=/usr/local/php-release --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-gd --enable-mbstring --enable-fpm --enable-pdo --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
+./configure --prefix=/usr/local/php-release --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-gd --enable-mbstring --enable-fpm --enable-pdo --with-pdo-mysql --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
 make && make install
 cp -rf /usr/local/php-release/etc/php-fpm.conf.default /usr/local/php-release/etc/php-fpm.conf
 cp -rf /usr/local/php-release/etc/php-fpm.d/www.conf.default cp -rf /usr/local/php-release/etc/php-fpm.d/www.conf

@@ -11,6 +11,7 @@ yum install -y wget tar curl git unzip zip pcre-devel
 # 第三方的开发包
 yum -y install libxml2 libxml2-devel sqlite-devel libcurl-devel libevent-devel openssl openssl-devel
 yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
+yum -y install mysql-devel
 
 # cmake3
 yum remove cmake
