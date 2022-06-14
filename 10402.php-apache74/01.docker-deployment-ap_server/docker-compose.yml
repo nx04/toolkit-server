@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  demo_server_003:
+    image: apache_php74:2.0.0
+    container_name: demo_server_003
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/demo_server_003/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf
+      - /data/demo_server_003/apache-logs:/etc/httpd/logs
+      - /data/demo_server_003/www-html:/var/www/html
+    ports:
+      - "8881:80"
+    networks:
+      default:
+        ipv4_address: 172.19.5.10
+
+networks:
+  default:
+    external:
+      name: docker_network

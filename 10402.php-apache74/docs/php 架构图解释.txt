@@ -1,0 +1,9 @@
+SAPI：Server API的缩写，负责与外部web服务器进⾏交互协议的定义。
+
+PHP层：处理来自外部的交互，绑定了SAPI层并处理与它的通信，它同时对safe_mode和open_basedir的检测提供一致的控制层，将fopen()、fread()和fwrite()等用户空间的函数与文件和网络I/O联系起来。
+
+PHP拓展：PHP扩展应该称为“模块”（源码中以module命名），向用户层面提供一些C实现的PHP函数
+
+Zend引擎：Zend引擎为PHP提供了基础服务，包括词法分析 语法分析 ，AST抽象语法树编译 opcodes执- 行，PHP的变量设计、内存管理、进程管理。
+
+Zend拓展：Zend扩展称为“扩展”（源码中以extension命名）。在Zend引擎提供核⼼能⼒和接⼝规范基础上开发的扩展为PHP代码的性能和功能的多样化提供了更丰富的资源，例如：opcache缓存扩展
