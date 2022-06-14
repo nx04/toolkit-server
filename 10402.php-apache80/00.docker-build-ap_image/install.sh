@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# 内核优化
 ulimit -HSn 102400
 echo 1 > /proc/sys/vm/overcommit_memory
 echo 50000 > /proc/sys/net/core/somaxconn
