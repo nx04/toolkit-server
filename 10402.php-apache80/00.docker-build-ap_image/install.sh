@@ -80,7 +80,7 @@ cd php-release
 ./configure --prefix=/usr/local/php-release --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-gd --enable-mbstring --enable-fpm --enable-pdo --with-pdo-mysql --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
 make && make install
 cp -rf /usr/local/php-release/etc/php-fpm.conf.default /usr/local/php-release/etc/php-fpm.conf
-cp -rf /usr/local/php-release/etc/php-fpm.d/www.conf.default cp -rf /usr/local/php-release/etc/php-fpm.d/www.conf
+cp -rf /usr/local/php-release/etc/php-fpm.d/www.conf.default /usr/local/php-release/etc/php-fpm.d/www.conf
 ln -s -f /usr/local/php-release/bin/php /usr/bin/php
 ln -s -f /usr/local/php-release/bin/phpize /usr/bin/phpize
 ln -s -f /usr/local/php-release/sbin/php-fpm /usr/bin/php-fpm
