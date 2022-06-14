@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  demo_server_002:
+    image: apache_php80:2.0.0
+    container_name: demo_server_002
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/demo_server_002/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf
+      - /data/demo_server_002/apache-logs:/etc/httpd/logs
+      - /data/demo_server_002/www-html:/var/www/html
+    ports:
+      - "8881:80"
+    networks:
+      default:
+        ipv4_address: 172.19.4.10
+
+networks:
+  default:
+    external:
+      name: docker_network
