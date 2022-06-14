@@ -76,7 +76,7 @@ rm -rf php-release /usr/local/php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
 cd php-release
-./configure --prefix=/usr/local/php-release --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-gd --enable-mbstring --enable-fpm --enable-pdo --with-pdo-mysql --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
+./configure --prefix=/usr/local/php-release --with-apxs2=/usr/bin/apxs --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-gd --enable-mbstring --enable-fpm --enable-pdo --with-pdo-mysql --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
 make && make install
 cp -rf /usr/local/php-release/etc/php-fpm.conf.default /usr/local/php-release/etc/php-fpm.conf
 cp -rf /usr/local/php-release/etc/php-fpm.d/www.conf.default /usr/local/php-release/etc/php-fpm.d/www.conf
