@@ -70,7 +70,6 @@ rm -rf libzip-release libzip-release.tar.gz
 # 安装 apache httpd
 yum install httpd -y
 yum install httpd-devel -y
-cat /etc/httpd/conf/httpd.conf
 
 # 安装 php
 # https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/php-5.6.40.tar.gz

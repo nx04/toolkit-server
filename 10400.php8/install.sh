@@ -66,6 +66,10 @@ make && make install
 cd ../../
 rm -rf libzip-release libzip-release.tar.gz
 
+# 安装 httpd
+yum install httpd -y
+yum install httpd-devel -y
+
 # 安装 php
 # https://www.php.net/distributions/php-8.0.19.tar.gz
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-8.0.19.tar.gz -O php-release.tar.gz --no-check-certificate
@@ -73,7 +77,7 @@ rm -rf php-release /usr/local/php-release
 mkdir -p php-release
 tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
 cd php-release
-./configure --prefix=/usr/local/php-release --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-gd --enable-mbstring --enable-fpm --enable-pdo --with-pdo-mysql --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
+./configure --prefix=/usr/local/php-release --with-apxs2=/usr/bin/apxs --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-gd --enable-mbstring --enable-fpm --enable-pdo --with-pdo-mysql --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
 make && make install
 cp -rf /usr/local/php-release/etc/php-fpm.conf.default /usr/local/php-release/etc/php-fpm.conf
 cp -rf /usr/local/php-release/etc/php-fpm.d/www.conf.default /usr/local/php-release/etc/php-fpm.d/www.conf
