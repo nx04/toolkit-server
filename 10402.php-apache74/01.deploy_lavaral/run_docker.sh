@@ -28,6 +28,9 @@ mkdir -p /data/demo_server_003/apache-config
 mkdir -p /data/demo_server_003/apache-logs
 mkdir -p /data/demo_server_003/php-config
 mkdir -p /data/demo_server_003/www-html
+chmod -R 777 /data/demo_server_003/www-html/bootstrap
+chmod -R 777 /data/demo_server_003/www-html/storage
+chmod -R 777 /data/demo_server_003/www-html/public
 cp -rf httpd.conf /data/demo_server_003/apache-config
 docker rm -f demo_server_003
 docker run -d -p 8881:80 --name demo_server_003 -v /data/demo_server_003/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf -v /data/demo_server_003/apache-logs:/etc/httpd/logs -v /data/demo_server_003/www-html:/var/www/html apache_php74:2.0.0
