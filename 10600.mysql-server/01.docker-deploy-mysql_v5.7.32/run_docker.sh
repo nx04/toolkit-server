@@ -18,14 +18,19 @@ create_network_event(){
 mysql_server_run(){
     mkdir -p /data/mysql_server_001/conf
     cp -rf ./mysqld.cnf /data/mysql_server_001/conf/mysqld.cnf
-    if [[ -n $(docker ps -q -a -f "name=^mysql_server_001$") ]];then
-	    exist=`docker inspect --format '{{.State.Running}}' mysql_server_001`
-        if [ "${exist}" != "true" ];then
-            mysql_server_restart_event
-            echo 'mysql server restart [ok]'
+    if [ -f "/data/mysql_server_001/data/mysql/db.frm" ]; then
+        if [[ -n $(docker ps -q -a -f "name=^mysql_server_001$") ]];then
+            exist=`docker inspect --format '{{.State.Running}}' mysql_server_001`
+            if [ "${exist}" != "true" ];then
+                mysql_server_restart_event
+                echo 'mysql server restart [ok]'
+            else
+                mysql_server_reload_event
+                echo 'mysql server reload [ok]'
+            fi
         else
-            mysql_server_reload_event
-            echo 'mysql server reload [ok]'
+            mysql_server_restart_event
+            echo 'mysql server start [ok]'
         fi
     else
         mysql_server_start_event
