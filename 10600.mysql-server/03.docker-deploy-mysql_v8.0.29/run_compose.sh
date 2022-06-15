@@ -13,8 +13,8 @@ create_network_event(){
 }
 create_network_event
 
-mkdir -p /data/mysql_server_001/conf
-cp -rf ./mysqld.cnf /data/mysql_server_001/conf/mysqld.cnf
+mkdir -p /data/mysql_server_003/conf
+cp -rf ./mysqld.cnf /data/mysql_server_003/conf/mysqld.cnf
 docker-compose up -d
 
 

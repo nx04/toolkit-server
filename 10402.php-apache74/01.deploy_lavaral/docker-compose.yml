@@ -11,8 +11,10 @@ services:
       - /data/demo_server_003/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf
       - /data/demo_server_003/apache-logs:/etc/httpd/logs
       - /data/demo_server_003/www-html:/var/www/html
+    command: php web/start.php start
     ports:
       - "8881:80"
+      - "2347:2347"
     networks:
       default:
         ipv4_address: 172.19.5.10
