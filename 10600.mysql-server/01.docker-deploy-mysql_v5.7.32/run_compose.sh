@@ -41,7 +41,7 @@ mysql_server_start_event(){
     docker-compose up -d
 }
 mysql_server_reload_event(){
-    docker-compose restart
+    docker-compose restart mysql_server_001
 }
 mysql_server_restart_event(){
     docker-compose down
