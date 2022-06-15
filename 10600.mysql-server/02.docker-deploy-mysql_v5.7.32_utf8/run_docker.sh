@@ -38,7 +38,7 @@ mysql_server_run(){
     fi
 }
 mysql_server_start_event(){
-    docker run -p 3306:3306 -p 33060:33060 --restart=always --net=docker_network --ip=172.19.106.1 --name mysql_server_002 -v /data/mysql_server_002/data:/var/lib/mysql -v /data/mysql_server_002/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -d mysql:5.7.32
+    docker run -p 51102:3306 -p 41102:33060 --restart=always --net=docker_network --ip=172.19.106.1 --name mysql_server_002 -v /data/mysql_server_002/data:/var/lib/mysql -v /data/mysql_server_002/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -d mysql:5.7.32
 }
 mysql_server_reload_event(){
     docker restart mysql_server_002
