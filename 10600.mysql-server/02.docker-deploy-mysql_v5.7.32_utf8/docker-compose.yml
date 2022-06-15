@@ -1,22 +1,22 @@
 version: "3"
 
 services:
-  mysql_server_001:
+  mysql_server_002:
     image: mysql:5.7.32
-    container_name: mysql_server_001
+    container_name: mysql_server_002
     environment:
-      - MYSQL_ROOT_PASSWORD=xn9981k%
+      - MYSQL_ROOT_PASSWORD=123456
       - TZ=Asia/Shanghai
     restart: always
     volumes:
-      - /data/mysql_server_001/data:/var/lib/mysql
-      - /data/mysql_server_001/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      - /data/mysql_server_002/data:/var/lib/mysql
+      - /data/mysql_server_002/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
     ports:
-      - "3306:3306"
-      - "33060:33060"
+      - "51102:3306"
+      - "41102:33060"
     networks:
       default:
-        ipv4_address: 172.19.106.1
+        ipv4_address: 172.19.106.2
 
 networks:
   default:
