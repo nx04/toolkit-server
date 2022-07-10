@@ -88,6 +88,8 @@ echo "extension=zip.so" >> /usr/local/php80-release/lib/php.ini
 cd ../../../
 rm -rf php80-release php80-release.tar.gz
 
+mkdir -p ./php-ext
+cd ./php-ext
 # 安装 php swoole 扩展
 # https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.11.tar.gz
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/swoole-src-4.8.11.tar.gz -O swoole-release.tar.gz --no-check-certificate
@@ -106,8 +108,8 @@ echo "swoole.use_shortname='Off'" >> /usr/local/php80-release/lib/php.ini
 php --ri swoole
 
 # 安装event扩展
-# https://pecl.php.net/get/event-3.0.6.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/event-3.0.6.tgz -O event-release.tgz --no-check-certificate
+# https://pecl.php.net/get/event-3.0.8.tgz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/event-3.0.8.tgz -O event-release.tgz --no-check-certificate
 rm -rf event-release
 mkdir -p event-release
 tar -zxvf event-release.tgz -C ./event-release --strip-components 1
@@ -123,19 +125,54 @@ php --ri event
 
 # 安装 php redis 扩展
 # https://pecl.php.net/get/redis-5.3.7.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/redis-5.3.7.tgz -O phpredis-release.tar.gz --no-check-certificate
-rm -rf phpredis-release
-mkdir -p phpredis-release
-tar -zxvf phpredis-release.tar.gz -C ./phpredis-release --strip-components 1
-cd phpredis-release
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/redis-5.3.7.tgz -O redis-release.tgz --no-check-certificate
+rm -rf redis-release
+mkdir -p redis-release
+tar -zxvf redis-release.tgz -C ./redis-release --strip-components 1
+cd redis-release
 phpize
 ./configure --with-php-config=/usr/local/php80-release/bin/php-config
 make && make install
 cd ../
-rm -rf phpredis-release phpredis-release.tar.gz
+rm -rf redis-release redis-release.tgz
 # 在PHP中开启 PHP 扩展
 echo "extension=redis.so" >> /usr/local/php80-release/lib/php.ini
 php --ri redis
+
+# 安装 php grpc 扩展
+# https://pecl.php.net/get/grpc-1.47.0.tgz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/grpc-1.47.0.tgz -O grpc-release.tgz --no-check-certificate
+rm -rf grpc-release
+mkdir -p grpc-release
+tar -zxvf grpc-release.tgz -C ./grpc-release --strip-components 1
+cd grpc-release
+phpize
+./configure --with-php-config=/usr/local/php80-release/bin/php-config
+make && make install
+cd ../
+rm -rf grpc-release grpc-release.tgz
+# 在PHP中开启 PHP 扩展
+echo "extension=grpc.so" >> /usr/local/php80-release/lib/php.ini
+php --ri grpc
+
+# 安装 php protobuf 扩展
+# https://pecl.php.net/get/protobuf-3.21.2.tgz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/protobuf-3.21.2.tgz -O protobuf-release.tgz --no-check-certificate
+rm -rf protobuf-release
+mkdir -p protobuf-release
+tar -zxvf protobuf-release.tgz -C ./protobuf-release --strip-components 1
+cd protobuf-release
+phpize
+./configure --with-php-config=/usr/local/php80-release/bin/php-config
+make && make install
+cd ../
+rm -rf protobuf-release protobuf-release.tgz
+# 在PHP中开启 PHP 扩展
+echo "extension=protobuf.so" >> /usr/local/php80-release/lib/php.ini
+php --ri protobuf
+
+cd ../
+rm -rf ./php-ext
 
 # composer
 # https://github.com/composer/composer/releases/download/2.3.9/composer.phar
