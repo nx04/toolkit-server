@@ -65,7 +65,7 @@ rm -rf php80-release /usr/local/php80-release
 mkdir -p php80-release
 tar -zxvf php80-release.tar.gz -C ./php80-release --strip-components 1
 cd php80-release
-./configure --prefix=/usr/local/php80-release --with-apxs2=/usr/bin/apxs --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-gd --enable-mbstring --enable-fpm --enable-pdo --with-pdo-mysql --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
+./configure --prefix=/usr/local/php80-release --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --enable-gd --enable-mbstring --enable-fpm --enable-pdo --with-pdo-mysql --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
 make && make install
 cp -rf /usr/local/php80-release/etc/php-fpm.conf.default /usr/local/php80-release/etc/php-fpm.conf
 cp -rf /usr/local/php80-release/etc/php-fpm.d/www.conf.default /usr/local/php80-release/etc/php-fpm.d/www.conf
