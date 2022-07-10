@@ -10,10 +10,11 @@ services:
     volumes:
       - /data/demo_server_php_swoole_8048/www:/data/www
     ports:
-      - "8881:80"
+      - "59501:9501"
+    command: php http_server.php
     networks:
       default:
-        ipv4_address: 172.19.4.10
+        ipv4_address: 172.19.10.10
 
 networks:
   default:
