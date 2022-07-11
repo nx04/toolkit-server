@@ -9,6 +9,8 @@ services:
     restart: always
     volumes:
       - /data/demo_server_redis_702/config/redis.conf:/data/server/config/redis.conf
+      - /data/demo_server_redis_702/runtime/:/data/server/runtime/
+      - /data/demo_server_redis_702/data/:/data/server/data/
     ports:
       - "56379:6379"
     networks:

@@ -13,10 +13,10 @@ create_network_event(){
 }
 create_network_event
 
-mkdir -p /data/demo_server_redis_702/config
-mkdir -p /data/demo_server_redis_702/logs
-mkdir -p /data/demo_server_redis_702/www
-cp -rf redis.conf /data/demo_server_redis_702/config
+mkdir -p /data/demo_server_redis_702/config/
+mkdir -p /data/demo_server_redis_702/runtime/
+mkdir -p /data/demo_server_redis_702/data/
+cp -rf redis.conf /data/demo_server_redis_702/config/
 docker-compose -f ./docker-compose.yml down
 docker-compose -f ./docker-compose.yml up -d
 

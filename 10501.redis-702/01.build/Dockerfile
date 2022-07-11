@@ -4,6 +4,8 @@ USER root
 
 RUN mkdir -p /data/soft/
 RUN mkdir -p /data/server/config/
+RUN mkdir -p /data/server/runtime/
+RUN mkdir -p /data/server/data/
 # 执行 shell 安装脚本
 COPY install.sh /data/soft/
 COPY docker-entrypoint.sh /data/soft/
