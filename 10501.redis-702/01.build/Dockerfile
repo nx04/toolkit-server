@@ -3,7 +3,7 @@ FROM centos:centos7.9.2009
 USER root
 
 RUN mkdir -p /data/soft/
-RUN mkdir -p /data/server/
+RUN mkdir -p /data/server/config/
 # 执行 shell 安装脚本
 COPY install.sh /data/soft/
 COPY docker-entrypoint.sh /data/soft/
