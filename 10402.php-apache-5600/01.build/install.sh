@@ -63,47 +63,38 @@ rm -rf libzip-release libzip-release.tar.gz
 yum install httpd -y
 yum install httpd-devel -y
 
-# 安装 php
+# 安装 php56
 # https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/php-5.6.40.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/php-5.6.40.tar.gz -O php-release.tar.gz --no-check-certificate
-rm -rf php-release /usr/local/php-release
-mkdir -p php-release
-tar -zxvf php-release.tar.gz -C ./php-release --strip-components 1
-cd php-release
-./configure --prefix=/usr/local/php-release --enable-soap --with-apxs2=/usr/bin/apxs --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --enable-gd-native-ttf --with-gd --enable-mbstring --enable-fpm --enable-pdo --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/php-5.6.40.tar.gz -O php56-release.tar.gz --no-check-certificate
+rm -rf php56-release /usr/local/php56-release
+mkdir -p php56-release
+tar -zxvf php56-release.tar.gz -C ./php56-release --strip-components 1
+cd php56-release
+./configure --prefix=/usr/local/php56-release --enable-soap --with-apxs2=/usr/bin/apxs --with-openssl --enable-bcmath --enable-pcntl --enable-posix --enable-sockets --enable-mysqlnd --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --enable-gd-native-ttf --with-gd --enable-mbstring --enable-fpm --enable-pdo --enable-sysvsem --enable-sysvshm --with-curl --with-zlib=/usr/local/zlib-release
 make && make install
-cp -rf /usr/local/php-release/etc/php-fpm.conf.default /usr/local/php-release/etc/php-fpm.conf
-ln -s -f /usr/local/php-release/bin/php /usr/bin/php
-ln -s -f /usr/local/php-release/bin/phpize /usr/bin/phpize
-ln -s -f /usr/local/php-release/sbin/php-fpm /usr/bin/php-fpm
+cp -rf /usr/local/php56-release/etc/php-fpm.conf.default /usr/local/php56-release/etc/php-fpm.conf
+ln -s -f /usr/local/php56-release/bin/php /usr/bin/php
+ln -s -f /usr/local/php56-release/bin/phpize /usr/bin/phpize
+ln -s -f /usr/local/php56-release/sbin/php-fpm /usr/bin/php-fpm
 # mysqli 扩展
 cd ./ext/mysqli
 phpize
-./configure --with-php-config=/usr/local/php-release/bin/php-config
+./configure --with-php-config=/usr/local/php56-release/bin/php-config
 make && make install
-echo "extension=mysqli.so" >> /usr/local/php-release/lib/php.ini
+echo "extension=mysqli.so" >> /usr/local/php56-release/lib/php.ini
 cd ../../
 # zip 扩展
 cd ./ext/zip
 phpize
-./configure --with-php-config=/usr/local/php-release/bin/php-config
+./configure --with-php-config=/usr/local/php56-release/bin/php-config
 make && make install
-echo "extension=zip.so" >> /usr/local/php-release/lib/php.ini
+echo "extension=zip.so" >> /usr/local/php56-release/lib/php.ini
 cd ../../../
-rm -rf php-release php-release.tar.gz
+rm -rf php56-release php56-release.tar.gz
 
-# 安装event扩展
-# https://pecl.php.net/get/event-3.0.6.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/event-3.0.8.tgz -O event-release.tgz --no-check-certificate
-rm -rf event-release
-mkdir -p event-release
-tar -zxvf event-release.tgz -C ./event-release --strip-components 1
-cd event-release
-phpize
-./configure --with-php-config=/usr/local/php-release/bin/php-config
-make && make install
-cd ../
-rm -rf event-release event-release.tgz
-# 在PHP中开启 PHP 扩展
-echo "extension=event.so" >> /usr/local/php-release/lib/php.ini
-php --ri event
+# composer
+# https://github.com/composer/composer/releases/download/2.2.13/composer.phar
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/composer.phar -O composer --no-check-certificate
+rm -rf /usr/local/bin/composer
+mv composer /usr/local/bin/composer
+chmod +x /usr/local/bin/composer
