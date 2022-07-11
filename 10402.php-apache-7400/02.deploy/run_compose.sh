@@ -15,14 +15,12 @@ create_network_event
 
 
 
-mkdir -p /data/demo_server_003/apache-config
-mkdir -p /data/demo_server_003/apache-logs
-mkdir -p /data/demo_server_003/php-config
-mkdir -p /data/demo_server_003/www-html
-chmod -R 777 /data/demo_server_003/www-html/bootstrap
-chmod -R 777 /data/demo_server_003/www-html/storage
-chmod -R 777 /data/demo_server_003/www-html/public
-cp -rf httpd.conf /data/demo_server_003/apache-config
-docker-compose up -d
+mkdir -p /data/demo_server_apache_php_7400/apache-config
+mkdir -p /data/demo_server_apache_php_7400/apache-logs
+mkdir -p /data/demo_server_apache_php_7400/php-config
+mkdir -p /data/demo_server_apache_php_7400/www
+cp -rf httpd.conf /data/demo_server_apache_php_7400/apache-config
+docker-compose -f ./docker-compose.yml down
+docker-compose -f ./docker-compose.yml up -d
 
 

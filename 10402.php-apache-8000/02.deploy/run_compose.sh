@@ -13,11 +13,12 @@ create_network_event(){
 }
 create_network_event
 
-mkdir -p /data/demo_server_002/apache-config
-mkdir -p /data/demo_server_002/apache-logs
-mkdir -p /data/demo_server_002/php-config
-mkdir -p /data/demo_server_002/www-html
-cp -rf httpd.conf /data/demo_server_002/apache-config
-docker-compose up -d
+mkdir -p /data/demo_server_php_apache_8000/apache-config
+mkdir -p /data/demo_server_php_apache_8000/apache-logs
+mkdir -p /data/demo_server_php_apache_8000/php-config
+mkdir -p /data/demo_server_php_apache_8000/www
+cp -rf httpd.conf /data/demo_server_php_apache_8000/apache-config
+docker-compose -f ./docker-compose.yml down
+docker-compose -f ./docker-compose.yml up -d
 
 
