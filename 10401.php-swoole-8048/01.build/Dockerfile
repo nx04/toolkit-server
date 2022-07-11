@@ -13,7 +13,7 @@ WORKDIR /data/www/
 
 # /usr/local/php80-release/lib/php.ini # php配置文件所在位置 # 
 # /data/www/ # http服务部署位置 #
-# php # php cli #
-# composer # composer cli #
+# php # php #
+# composer # composer #
 
 
