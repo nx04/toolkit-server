@@ -12,7 +12,12 @@ create_network_event(){
     fi
 }
 create_network_event
-mkdir -p /data/demo_server_php_swoole_8048/www
+
+mkdir -p /data/demo_server_php_apache_5600/apache-config
+mkdir -p /data/demo_server_php_apache_5600/apache-logs
+mkdir -p /data/demo_server_php_apache_5600/php-config
+mkdir -p /data/demo_server_php_apache_5600/www
+cp -rf httpd.conf /data/demo_server_php_apache_5600/apache-config
 docker-compose -f ./docker-compose.yml down
 docker-compose -f ./docker-compose.yml up -d
 

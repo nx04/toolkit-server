@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  demo_server_php_apache_5600:
+    image: php-apache-5600:2.0.0
+    container_name: demo_server_php_apache_5600
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/demo_server_php_apache_5600/www:/var/www/html
+      - /data/demo_server_php_apache_5600/apache-logs:/etc/httpd/logs
+      - /data/demo_server_php_apache_5600/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf
+    ports:
+      - "58800:80"
+    networks:
+      default:
+        ipv4_address: 172.19.9.10
+
+networks:
+  default:
+    external:
+      name: docker_network
