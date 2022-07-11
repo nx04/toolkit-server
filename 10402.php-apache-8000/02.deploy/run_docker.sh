@@ -14,5 +14,5 @@ mkdir -p /data/demo_server_php_apache_8000/php-config
 mkdir -p /data/demo_server_php_apache_8000/www
 cp -rf httpd.conf /data/demo_server_php_apache_8000/apache-config
 docker rm -f demo_server_php_apache_8000
-docker run -d -p 8881:80 --name demo_server_php_apache_8000 -v /data/demo_server_php_apache_8000/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf -v /data/demo_server_php_apache_8000/apache-logs:/etc/httpd/logs -v /data/demo_server_php_apache_8000/www:/var/www/html php-apache-8000:2.0.0
+docker run -d -p 58802:80 --name demo_server_php_apache_8000 -v /data/demo_server_php_apache_8000/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf -v /data/demo_server_php_apache_8000/apache-logs:/etc/httpd/logs -v /data/demo_server_php_apache_8000/www:/var/www/html php-apache-8000:2.0.0
 

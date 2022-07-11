@@ -14,5 +14,5 @@ mkdir -p /data/demo_server_apache_php_7400/php-config
 mkdir -p /data/demo_server_apache_php_7400/www
 cp -rf httpd.conf /data/demo_server_apache_php_7400/apache-config
 docker rm -f demo_server_apache_php_7400
-docker run -d -p 8881:80 --name demo_server_apache_php_7400 -v /data/demo_server_apache_php_7400/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf -v /data/demo_server_apache_php_7400/apache-logs:/etc/httpd/logs -v /data/demo_server_apache_php_7400/www:/var/www/html php-apache-7400:2.0.0
+docker run -d -p 58801:80 --name demo_server_apache_php_7400 -v /data/demo_server_apache_php_7400/apache-config/httpd.conf:/etc/httpd/conf/httpd.conf -v /data/demo_server_apache_php_7400/apache-logs:/etc/httpd/logs -v /data/demo_server_apache_php_7400/www:/var/www/html php-apache-7400:2.0.0
 
