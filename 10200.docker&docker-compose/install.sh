@@ -22,9 +22,9 @@ systemctl restart docker
 docker version
 
 # docker-compose
-# https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64
+# https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64
 rm -rf /usr/local/bin/docker-compose
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bb7e0a20-6de1-45d8-bf48-b2f44341a54c.0 -O /usr/local/bin/docker-compose --no-check-certificate
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/docker-compose.linux -O /usr/local/bin/docker-compose --no-check-certificate
 chmod +x /usr/local/bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version

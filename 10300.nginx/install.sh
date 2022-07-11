@@ -1,9 +1,5 @@
-ulimit -HSn 102400
-echo 1 > /proc/sys/vm/overcommit_memory
-echo 50000 > /proc/sys/net/core/somaxconn
-echo 1 > /proc/sys/net/ipv4/tcp_tw_recycle
-echo 1 > /proc/sys/net/ipv4/tcp_tw_reuse
-echo 0 > /proc/sys/net/ipv4/tcp_syncookies
+#!/bin/bash
+##安装nginx##
 
 # 时区
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
@@ -54,10 +50,3 @@ cd ../ && rm -rf nginx-release nginx-release.tar.gz
 # 配置文件
 mkdir -p /usr/local/nginx-release/conf.d
 cp -rf ./conf/nginx.conf /usr/local/nginx-release/conf/nginx.conf
-nginx
-
-# 列出所有端口
-# netstat -ntlp
-
-# 列出80端口
-# lsof -i tcp:80
