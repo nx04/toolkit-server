@@ -9,6 +9,7 @@ services:
     restart: always
     volumes:
       - /data/demo_server_nginx/www:/data/server/www
+      - /data/demo_server_nginx/config/nginx.conf:/usr/local/nginx-release/conf/nginx.conf
       - /data/demo_server_nginx/config/demo.com.conf:/usr/local/nginx-release/conf.d/demo.com.conf
     ports:
       - "58800:80"
