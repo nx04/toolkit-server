@@ -17,7 +17,7 @@ mkdir -p /data/demo_server_nginx/www
 mkdir -p /data/demo_server_nginx/config
 cp -rf nginx.conf /data/demo_server_nginx/config
 cp -rf demo.com.conf /data/demo_server_nginx/config
-docker-compose -f ./docker-compose.yml down
+docker rm -f demo_server_nginx
 docker-compose -f ./docker-compose.yml up -d
 
 
