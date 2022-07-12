@@ -1,4 +1,5 @@
 #!/bin/bash
+
 ##安装nginx##
 
 # 时区
