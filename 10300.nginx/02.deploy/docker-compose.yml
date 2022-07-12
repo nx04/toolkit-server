@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  demo_server_nginx:
+    image: nginx:1.22.0
+    container_name: demo_server_nginx
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/demo_server_nginx/www:/data/server/www
+      - /data/demo_server_nginx/config/demo.com.conf:/usr/local/nginx-release/conf.d/demo.com.conf
+    ports:
+      - "58800:80"
+    networks:
+      default:
+        ipv4_address: 172.19.12.10
+
+networks:
+  default:
+    external:
+      name: docker_network
