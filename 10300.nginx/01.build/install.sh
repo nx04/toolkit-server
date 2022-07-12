@@ -49,4 +49,4 @@ cd ../ && rm -rf nginx-release nginx-release.tar.gz
 
 # 配置文件
 mkdir -p /usr/local/nginx-release/conf.d
-cp -rf ./conf/nginx.conf /usr/local/nginx-release/conf/nginx.conf
+cp -rf ./nginx.conf /usr/local/nginx-release/conf/nginx.conf
