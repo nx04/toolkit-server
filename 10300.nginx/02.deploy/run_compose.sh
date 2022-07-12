@@ -12,7 +12,7 @@ create_network_event(){
     fi
 }
 create_network_event
-
+mkdir -p /data/demo_server_nginx/logs
 mkdir -p /data/demo_server_nginx/www
 mkdir -p /data/demo_server_nginx/config
 cp -rf nginx.conf /data/demo_server_nginx/config
