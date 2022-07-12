@@ -9,26 +9,7 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 yum install -y yum-utils
 yum install -y gcc gcc-c++ make automake autoconf
 yum install -y lsof net-tools sysstat tree iotop
-yum install -y wget tar curl git unzip zip zlib zlib-devel pcre pcre-devel
-
-# openssl
-# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1o.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/openssl-OpenSSL_1_1_1o.tar.gz -O openssl-release.tar.gz
-rm -rf openssl-release /usr/local/openssl-release
-mkdir -p openssl-release
-tar -zxvf openssl-release.tar.gz -C ./openssl-release --strip-components 1
-cd openssl-release
-./config --prefix=/usr/local/openssl-release
-./config -t
-make
-make install
-cd ../
-rm -rf openssl-release openssl-release.tar.gz
-ln -s -f /usr/local/openssl-release/bin/openssl /usr/bin/openssl
-#ln -s -f /usr/local/openssl-release/include/openssl /usr/include/openssl
-echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
-ldconfig
-openssl version
+yum install -y wget tar curl git unzip zip zlib zlib-devel pcre pcre-devel openssl openssl-devel
 
 # nginx
 # http://nginx.org/download/nginx-1.22.0.tar.gz
