@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # 创建docker网络
 create_network_event(){
     filter_name=`docker network ls | grep docker_network | awk '{ print $2 }'`
