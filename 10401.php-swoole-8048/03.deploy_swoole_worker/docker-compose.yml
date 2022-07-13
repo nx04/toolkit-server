@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  demo_server_php_swoole_worker:
+    image: php-swoole-8048:2.0.0
+    container_name: demo_server_php_swoole_worker
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/demo_server_php_swoole_worker/www:/data/www
+    ports:
+      - "58000:8000"
+    command: /bin/bash -c "sh run.sh"
+    networks:
+      default:
+        ipv4_address: 172.19.13.10
+
+networks:
+  default:
+    external:
+      name: docker_network
