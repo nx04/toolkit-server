@@ -8,3 +8,5 @@ php8.0 扩展
 - redis
 - event
 - mysql
+- grpc
+- protobuf
