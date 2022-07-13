@@ -12,7 +12,7 @@ RUN /data/soft/install.sh
 WORKDIR /data/www/
 
 # /usr/local/php80-release/lib/php.ini # php配置文件所在位置 # 
-# /data/www/ # http服务部署位置 #
+# /data/www/ # http服务部署位置1 #
 # php # php #
 # composer # composer #
 
