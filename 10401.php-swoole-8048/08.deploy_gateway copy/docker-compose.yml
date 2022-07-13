@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  demo_server_php_swoole_register:
+    image: php-swoole-8048:2.0.0
+    container_name: demo_server_php_swoole_register
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/demo_server_php_swoole_gateway/www:/data/www
+    ports:
+      - "59327:9327"
+    command: /bin/bash -c "sh run_register.sh"
+    networks:
+      default:
+        ipv4_address: 172.19.15.10
+  demo_server_php_swoole_worker:
+    image: php-swoole-8048:2.0.0
+    container_name: demo_server_php_swoole_worker
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/demo_server_php_swoole_gateway/www:/data/www
+    command: /bin/bash -c "sh run_worker.sh"
+    networks:
+      default:
+        ipv4_address: 172.19.15.11
+  demo_server_php_swoole_gateway:
+    image: php-swoole-8048:2.0.0
+    container_name: demo_server_php_swoole_gateway
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/demo_server_php_swoole_gateway/www:/data/www
+    ports:
+      - "58000:8000"
+    command: /bin/bash -c "sh run_gateway.sh"
+    networks:
+      default:
+        ipv4_address: 172.19.15.12
+networks:
+  default:
+    external:
+      name: docker_network
