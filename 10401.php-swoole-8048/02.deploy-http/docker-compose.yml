@@ -1,17 +1,17 @@
 version: "3"
 
 services:
-  demo_server_php_swoole_8048:
+  demo_server_php_swoole_http:
     image: php-swoole-8048:2.0.0
-    container_name: demo_server_php_swoole_8048
+    container_name: demo_server_php_swoole_http
     environment:
       - TZ=Asia/Shanghai
     restart: always
     volumes:
-      - /data/demo_server_php_swoole_8048/www:/data/www
+      - /data/demo_server_php_swoole_http/www:/data/www
     ports:
       - "59501:9501"
-    command: /bin/bash -c "sh run.sh"
+    command: /bin/bash -c "php http_server.php"
     networks:
       default:
         ipv4_address: 172.19.10.10
