@@ -10,11 +10,11 @@ services:
     volumes:
       - /data/demo_server_php_swoole_udp/www:/data/www
     ports:
-      - "59501:9501"
+      - "59503:9503"
     command: /bin/bash -c "php server_udp.php"
     networks:
       default:
-        ipv4_address: 172.19.10.10
+        ipv4_address: 172.19.13.13
 
 networks:
   default:
