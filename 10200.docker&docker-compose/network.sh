@@ -1,3 +1,4 @@
+#!/bin/bash
 docker network ls
 
 # 	查看网络详情

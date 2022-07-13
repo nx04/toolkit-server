@@ -1,3 +1,5 @@
+#!/bin/bash
+##安装docker##
 # time zone
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
