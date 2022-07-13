@@ -14,8 +14,8 @@ create_network_event(){
 create_network_event
 
 ##部署##
-mkdir -p /data/demo_server_php_swoole_websocket/www
-docker rm -f demo_server_php_swoole_websocket
+mkdir -p /data/demo_server_php_swoole_ws/www
+docker rm -f demo_server_php_swoole_ws
 docker-compose -f ./docker-compose.yml up -d
 
 

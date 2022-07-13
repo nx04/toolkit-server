@@ -1,14 +1,14 @@
 version: "3"
 
 services:
-  demo_server_php_swoole_websocket:
+  demo_server_php_swoole_ws:
     image: php-swoole-8048:2.0.0
-    container_name: demo_server_php_swoole_websocket
+    container_name: demo_server_php_swoole_ws
     environment:
       - TZ=Asia/Shanghai
     restart: always
     volumes:
-      - /data/demo_server_php_swoole_websocket/www:/data/www
+      - /data/demo_server_php_swoole_ws/www:/data/www
     ports:
       - "59501:9501"
     command: /bin/bash -c "php server_websocket.php"
