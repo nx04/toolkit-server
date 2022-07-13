@@ -8,7 +8,7 @@ services:
       - TZ=Asia/Shanghai
     restart: always
     volumes:
-      - /data/demo_server_php_swoole_worker/www:/data/www
+      - /data/demo_server_php_swoole_gateway/www:/data/www
     ports:
       - "59327:9327"
     command: /bin/bash -c "sh run_register.sh"
@@ -22,7 +22,7 @@ services:
       - TZ=Asia/Shanghai
     restart: always
     volumes:
-      - /data/demo_server_php_swoole_worker/www:/data/www
+      - /data/demo_server_php_swoole_gateway/www:/data/www
     command: /bin/bash -c "sh run_worker.sh"
     networks:
       default:
@@ -34,7 +34,7 @@ services:
       - TZ=Asia/Shanghai
     restart: always
     volumes:
-      - /data/demo_server_php_swoole_worker/www:/data/www
+      - /data/demo_server_php_swoole_gateway/www:/data/www
     ports:
       - "58000:8000"
     command: /bin/bash -c "sh run_gateway.sh"
