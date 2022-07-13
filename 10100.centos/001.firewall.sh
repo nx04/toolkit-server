@@ -1,3 +1,5 @@
+#!/bin/bash
+##防火墙##
 firewall-cmd --state
 firewall-cmd --list-all
 firewall-cmd --permanent --add-port=80/tcp

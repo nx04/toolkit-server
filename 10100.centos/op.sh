@@ -1,4 +1,5 @@
-
+#!/bin/bash
+##内核优化##
 # 优化系统内核参数，单机1万并发，每个连接请求10万次
 ulimit -HSn 102400
 echo 1 > /proc/sys/vm/overcommit_memory
