@@ -21,6 +21,12 @@ wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/cmake-3.23.1-l
 sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
 ln -s -f /usr/local/bin/cmake /usr/bin/cmake
 
+# update g++ 7
+yum -y install centos-release-scl 
+yum -y install devtoolset-7-gcc*
+scl enable devtoolset-7 bash
+
+
 # oniguruma
 # https://github.com/kkos/oniguruma/releases/download/v6.9.8/onig-6.9.8.tar.gz
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/onig-6.9.8.tar.gz -O oniguruma-release.tar.gz --no-check-certificate
