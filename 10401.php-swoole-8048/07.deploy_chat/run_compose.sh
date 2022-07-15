@@ -14,10 +14,10 @@ create_network_event(){
 create_network_event
 
 ##部署##
-mkdir -p /data/demo_server_php_swoole_gateway/www
-docker rm -f demo_server_php_swoole_gateway
-docker rm -f demo_server_php_swoole_worker
-docker rm -f demo_server_php_swoole_register
+mkdir -p /data/demo_server_php_swoole_chat/www
+docker rm -f demo_server_php_swoole_chat_gateway
+docker rm -f demo_server_php_swoole_chat_worker
+docker rm -f demo_server_php_swoole_chat_register
 docker-compose -f ./docker-compose.yml up -d
 
 
