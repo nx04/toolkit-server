@@ -16,7 +16,7 @@ yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
 yum -y install mysql-devel
 
 # cmake3
-yum remove cmake
+yum -y remove cmake
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/cmake-3.23.1-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
 sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
 ln -s -f /usr/local/bin/cmake /usr/bin/cmake
