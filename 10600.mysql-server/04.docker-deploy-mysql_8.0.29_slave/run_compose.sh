@@ -13,11 +13,14 @@ create_network_event(){
 }
 create_network_event
 
-mkdir -p /data/mysql_server_003/conf
-cp -rf ./mysqld.cnf /data/mysql_server_003/conf/mysqld.cnf
+mkdir -p /data/mysql_server_005/data
+mkdir -p /data/mysql_server_005/log
+mkdir -p /data/mysql_server_005/conf
+cp -rf ./my.cnf /data/mysql_server_005/conf/my.cnf
 docker-compose up -d
 
 #ALTER USER 'root'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER;
 #ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+
 
 
