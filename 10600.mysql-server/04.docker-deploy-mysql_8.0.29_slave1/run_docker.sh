@@ -24,12 +24,12 @@ else
 fi
 
 mysql_server_run(){
-    mkdir -p /data/mysql_server_005/data
-    mkdir -p /data/mysql_server_005/log
-    mkdir -p /data/mysql_server_005/conf
-    cp -rf ./my.cnf /data/mysql_server_005/conf/my.cnf
-    if [[ -n $(docker ps -q -a -f "name=^mysql_server_005$") ]];then
-	    exist=`docker inspect --format '{{.State.Running}}' mysql_server_005`
+    mkdir -p /data/mysql_server_004_slave1/data
+    mkdir -p /data/mysql_server_004_slave1/log
+    mkdir -p /data/mysql_server_004_slave1/conf
+    cp -rf ./my.cnf /data/mysql_server_004_slave1/conf/my.cnf
+    if [[ -n $(docker ps -q -a -f "name=^mysql_server_004_slave1$") ]];then
+	    exist=`docker inspect --format '{{.State.Running}}' mysql_server_004_slave1`
         if [ "${exist}" != "true" ];then
             mysql_server_restart_event
             echo 'mysql server restart [ok]'
@@ -43,18 +43,18 @@ mysql_server_run(){
     fi
 }
 mysql_server_start_event(){
-    docker run -p 50102:3306 -p 50302:33060 --restart=always --net=docker_network --ip=172.19.50.102 --name mysql_server_005 -v /data/mysql_server_005/data:/var/data/mysql -v /data/mysql_server_005/log:/var/log/mysql -v /data/mysql_server_005/conf/my.cnf:/etc/mysql/my.cnf -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -d mysql:8.0.29
+    docker run -p 50101:3306 -p 53101:33060 --restart=always --net=docker_network --ip=172.19.50.101 --name mysql_server_004_slave1 -v /data/mysql_server_004_slave1/data:/var/data/mysql -v /data/mysql_server_004_slave1/log:/var/log/mysql -v /data/mysql_server_004_slave1/conf/my.cnf:/etc/mysql/my.cnf -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -d mysql:8.0.29
 }
 mysql_server_reload_event(){
-    docker restart mysql_server_005
+    docker restart mysql_server_004_slave1
 }
 mysql_server_restart_event(){
-    docker rm -f mysql_server_005
-    mv /data/mysql_server_005/data  /data/mysql_server_005/data.bak
+    docker rm -f mysql_server_004_slave1
+    mv /data/mysql_server_004_slave1/data  /data/mysql_server_004_slave1/data.bak
     mysql_server_start_event
-    rm -rf /data/mysql_server_005/data/*
-    mv /data/mysql_server_005/data.bak/* /data/mysql_server_005/data
-    rm -rf /data/mysql_server_005/data.bak
+    rm -rf /data/mysql_server_004_slave1/data/*
+    mv /data/mysql_server_004_slave1/data.bak/* /data/mysql_server_004_slave1/data
+    rm -rf /data/mysql_server_004_slave1/data.bak
     mysql_server_reload_event
 }
 
@@ -63,9 +63,9 @@ mysql_server_restart_event(){
 # setenforce 0
 ## 给用于授予权限,允许其他客户端访问
 # mysql -p
-# > hj123456
+# > 123456
 # grant all privileges on *.*  to 'root'@'%' ;
 # flush privileges;
-# GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'hj123456' WITH GRANT OPTION;
+# GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
 # flush privileges;
 

@@ -24,12 +24,12 @@ else
 fi
 
 mysql_server_run(){
-    mkdir -p /data/mysql_server_004_master/conf
-    mkdir -p /data/mysql_server_004_master/log
-    mkdir -p /data/mysql_server_004_master/data
-    cp -rf ./my.cnf /data/mysql_server_004_master/conf/my.cnf
-    if [[ -n $(docker ps -q -a -f "name=^mysql_server_004_master$") ]];then
-	    exist=`docker inspect --format '{{.State.Running}}' mysql_server_004_master`
+    mkdir -p /data/mysql_server_005_master1/conf
+    mkdir -p /data/mysql_server_005_master1/log
+    mkdir -p /data/mysql_server_005_master1/data
+    cp -rf ./my.cnf /data/mysql_server_005_master1/conf/my.cnf
+    if [[ -n $(docker ps -q -a -f "name=^mysql_server_005_master1$") ]];then
+	    exist=`docker inspect --format '{{.State.Running}}' mysql_server_005_master1`
         if [ "${exist}" != "true" ];then
             mysql_server_restart_event
             echo 'mysql server restart [ok]'
@@ -43,18 +43,18 @@ mysql_server_run(){
     fi
 }
 mysql_server_start_event(){
-    docker run -p 50100:3306 -p 53100:33060 --restart=always --net=docker_network --ip=172.19.50.100 --name mysql_server_004_master -v /data/mysql_server_004_master/data:/var/data/mysql -v /data/mysql_server_004_master/log:/var/log/mysql -v /data/mysql_server_004_master/conf/my.cnf:/etc/mysql/my.cnf -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -d mysql:8.0.29
+    docker run -p 50111:3306 -p 53111:33060 --restart=always --net=docker_network --ip=172.19.50.111 --name mysql_server_005_master1 -v /data/mysql_server_005_master1/data:/var/data/mysql -v /data/mysql_server_005_master1/log:/var/log/mysql -v /data/mysql_server_005_master1/conf/my.cnf:/etc/mysql/my.cnf -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -d mysql:8.0.29
 }
 mysql_server_reload_event(){
-    docker restart mysql_server_004_master
+    docker restart mysql_server_005_master1
 }
 mysql_server_restart_event(){
-    docker rm -f mysql_server_004_master
-    mv /data/mysql_server_004_master/data  /data/mysql_server_004_master/data.bak
+    docker rm -f mysql_server_005_master1
+    mv /data/mysql_server_005_master1/data  /data/mysql_server_005_master1/data.bak
     mysql_server_start_event
-    rm -rf /data/mysql_server_004_master/data/*
-    mv /data/mysql_server_004_master/data.bak/* /data/mysql_server_004_master/data
-    rm -rf /data/mysql_server_004_master/data.bak
+    rm -rf /data/mysql_server_005_master1/data/*
+    mv /data/mysql_server_005_master1/data.bak/* /data/mysql_server_005_master1/data
+    rm -rf /data/mysql_server_005_master1/data.bak
     mysql_server_reload_event
 }
 
