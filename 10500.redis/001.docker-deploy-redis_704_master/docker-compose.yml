@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  redis_server_001_master:
+    image: redis:7.0.4-alpine
+    container_name: redis_server_001_master
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/redis_server_001_master/conf/redis.conf:/data/server/config/redis.conf
+      - /data/redis_server_001_master/runtime/:/data/server/runtime/
+      - /data/redis_server_001_master/data/:/data/server/data/
+    ports:
+      - "56101:6379"
+    networks:
+      default:
+        ipv4_address: 172.19.56.101
+
+networks:
+  default:
+    external:
+      name: docker_network
