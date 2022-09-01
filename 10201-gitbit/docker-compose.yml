@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  gitbit_server:
+    image: gitblit/gitblit:rpc
+    container_name: gitbit_server
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/gitbit_server/data:/var/opt/gitblit
+    command: ' --httpsPort=0'
+    ports:
+      - "58080:8080"
+    networks:
+      default:
+        ipv4_address: 172.19.80.80
+
+networks:
+  default:
+    external:
+      name: docker_network
