@@ -79,8 +79,8 @@ cd ../../
 rm -rf libzip-release libzip-release.tar.gz
 
 # 安装 php80
-# https://www.php.net/distributions/php-8.0.21.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-8.0.21.tar.gz -O php80-release.tar.gz --no-check-certificate
+# https://www.php.net/distributions/php-8.0.23.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-8.0.23.tar.gz -O php80-release.tar.gz --no-check-certificate
 rm -rf php80-release /usr/local/php80-release
 mkdir -p php80-release
 tar -zxvf php80-release.tar.gz -C ./php80-release --strip-components 1
@@ -160,8 +160,8 @@ echo "extension=redis.so" >> /usr/local/php80-release/lib/php.ini
 php --ri redis
 
 # 安装 php grpc 扩展
-# https://pecl.php.net/get/grpc-1.47.0.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/grpc-1.47.0.tgz -O grpc-release.tgz --no-check-certificate
+# https://pecl.php.net/get/grpc-1.48.0.tgz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/grpc-1.48.0.tgz -O grpc-release.tgz --no-check-certificate
 rm -rf grpc-release
 mkdir -p grpc-release
 tar -zxvf grpc-release.tgz -C ./grpc-release --strip-components 1
@@ -176,8 +176,8 @@ echo "extension=grpc.so" >> /usr/local/php80-release/lib/php.ini
 php --ri grpc
 
 # 安装 php protobuf 扩展
-# https://pecl.php.net/get/protobuf-3.21.2.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/protobuf-3.21.2.tgz -O protobuf-release.tgz --no-check-certificate
+# https://pecl.php.net/get/protobuf-3.21.5.tgz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/protobuf-3.21.5.tgz -O protobuf-release.tgz --no-check-certificate
 rm -rf protobuf-release
 mkdir -p protobuf-release
 tar -zxvf protobuf-release.tgz -C ./protobuf-release --strip-components 1
@@ -195,7 +195,7 @@ cd ../
 rm -rf ./php-ext
 
 # composer
-# https://github.com/composer/composer/releases/download/2.3.9/composer.phar
+# https://github.com/composer/composer/releases/download/2.4.1/composer.phar
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/composer.phar -O composer --no-check-certificate
 rm -rf /usr/local/bin/composer
 mv composer /usr/local/bin/composer

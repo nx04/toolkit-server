@@ -12,8 +12,8 @@ yum install -y lsof net-tools sysstat tree iotop
 yum install -y wget tar curl git unzip zip zlib zlib-devel pcre pcre-devel openssl openssl-devel
 
 # nginx
-# http://nginx.org/download/nginx-1.22.0.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/nginx-1.22.0.tar.gz -O nginx-release.tar.gz --no-check-certificate
+# http://nginx.org/download/nginx-1.23.1.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/nginx-1.23.1.tar.gz -O nginx-release.tar.gz --no-check-certificate
 rm -rf nginx-release /usr/local/nginx-release
 mkdir -p nginx-release
 tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1

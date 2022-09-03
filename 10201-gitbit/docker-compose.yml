@@ -2,7 +2,7 @@ version: "3"
 
 services:
   gitbit_server:
-    image: gitblit/gitblit:rpc
+    image: gitblit/gitblit:latest
     container_name: gitbit_server
     environment:
       - TZ=Asia/Shanghai

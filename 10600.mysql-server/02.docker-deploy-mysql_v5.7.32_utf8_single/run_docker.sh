@@ -17,17 +17,19 @@ create_network_event(){
 create_network_event
 
 # 拉取mysql镜像
-if [[ "$(docker images -q mysql:8.0.29 2> /dev/null)" == "" ]];then
-    docker pull mysql:8.0.29
+if [[ "$(docker images -q mysql:5.7.32 2> /dev/null)" == "" ]];then
+    docker pull mysql:5.7.32
 else
     mysql_server_run
 fi
 
 mysql_server_run(){
-    mkdir -p /data/mysql_server_003/conf
-    cp -rf ./mysqld.cnf /data/mysql_server_003/conf/mysqld.cnf
-    if [[ -n $(docker ps -q -a -f "name=^mysql_server_003$") ]];then
-	    exist=`docker inspect --format '{{.State.Running}}' mysql_server_003`
+    mkdir -p /data/mysql_server_002_single/conf
+    mkdir -p /data/mysql_server_002_single/log
+    mkdir -p /data/mysql_server_002_single/data
+    cp -rf ./my.cnf /data/mysql_server_002_single/conf/my.cnf
+    if [[ -n $(docker ps -q -a -f "name=^mysql_server_002_single$") ]];then
+	    exist=`docker inspect --format '{{.State.Running}}' mysql_server_002_single`
         if [ "${exist}" != "true" ];then
             mysql_server_restart_event
             echo 'mysql server restart [ok]'
@@ -41,18 +43,18 @@ mysql_server_run(){
     fi
 }
 mysql_server_start_event(){
-    docker run -p 53306:3306 -p 13300:33060 --restart=always --net=docker_network --ip=172.19.0.10 --name mysql_server_003 -v /data/mysql_server_003/data:/var/lib/mysql -v /data/mysql_server_003/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf -e MYSQL_ROOT_PASSWORD=xn9981k% -e TZ=Asia/Shanghai -d mysql:8.0.29
+    docker run -p 50002:3306 -p 53002:33060 --restart=always --net=docker_network --ip=172.19.50.2 --name mysql_server_002_single -v /data/mysql_server_002_single/data:/var/data/mysql -v /data/mysql_server_002_single/log:/var/log/mysql -v /data/mysql_server_002_single/conf/my.cnf:/etc/mysql/my.cnf -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -d mysql:5.7.32
 }
 mysql_server_reload_event(){
-    docker restart mysql_server_003
+    docker restart mysql_server_002_single
 }
 mysql_server_restart_event(){
-    docker rm -f mysql_server_003
-    mv /data/mysql_server_003/data  /data/mysql_server_003/data.bak
+    docker rm -f mysql_server_002_single
+    mv /data/mysql_server_002_single/data  /data/mysql_server_002_single/data.bak
     mysql_server_start_event
-    rm -rf /data/mysql_server_003/data/*
-    mv /data/mysql_server_003/data.bak/* /data/mysql_server_003/data
-    rm -rf /data/mysql_server_003/data.bak
+    rm -rf /data/mysql_server_002_single/data/*
+    mv /data/mysql_server_002_single/data.bak/* /data/mysql_server_002_single/data
+    rm -rf /data/mysql_server_002_single/data.bak
     mysql_server_reload_event
 }
 
@@ -61,9 +63,9 @@ mysql_server_restart_event(){
 # setenforce 0
 ## 给用于授予权限,允许其他客户端访问
 # mysql -p
-# > hj123456
+# > 123456
 # grant all privileges on *.*  to 'root'@'%' ;
 # flush privileges;
-# GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'hj123456' WITH GRANT OPTION;
+# GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
 # flush privileges;
 
