@@ -13,15 +13,7 @@ create_network_event(){
 }
 create_network_event
 
-
-mkdir -p /data/mysql_server_004_master/conf
-mkdir -p /data/mysql_server_004_master/log
-mkdir -p /data/mysql_server_004_master/data
-cp -rf ./my.cnf /data/mysql_server_004_master/conf/my.cnf
+mkdir -p /data/redmine_server/data
 docker-compose up -d
-
-#ALTER USER 'root'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER;
-#ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
-
 
 

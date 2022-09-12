@@ -13,7 +13,7 @@ yum -y install mesa-libGL libSM libSM.so.6
 
 # openssl
 # https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1o.tar.gz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/bbaac4f6-6dd5-4591-8391-4bf5b4677b3d.gz -O openssl-release.tar.gz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/openssl-OpenSSL_1_1_1o.tar.gz -O openssl-release.tar.gz
 rm -rf openssl-release && mkdir -p openssl-release
 tar -zxvf openssl-release.tar.gz -C ./openssl-release --strip-components 1
 cd openssl-release
@@ -30,8 +30,8 @@ ldconfig
 openssl version
 
 # python3
-# https://www.python.org/ftp/python/3.8.13/Python-3.8.13.tgz
-wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f21b85c6-6337-4b61-b6e7-aca75841afed/1015f2d6-3350-4684-90bf-960727f6cb02.tgz -O python3-release.tgz
+# https://www.python.org/ftp/python/3.8.13/Python-3.8.10.tgz
+wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/Python-3.8.10.tgz -O python3-release.tgz
 rm -rf python3-release && mkdir -p python3-release
 tar -zxvf python3-release.tgz -C ./python3-release --strip-components 1
 cd python3-release

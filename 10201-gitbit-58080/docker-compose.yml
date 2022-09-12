@@ -14,7 +14,7 @@ services:
       - "58080:8080"
     networks:
       default:
-        ipv4_address: 172.19.80.80
+        ipv4_address: 172.19.58.80
 
 networks:
   default:

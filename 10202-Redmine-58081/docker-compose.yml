@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  redmine_server:
+    image: redmine:5.0.2
+    container_name: redmine_server
+    environment:
+      - TZ=Asia/Shanghai
+      - REDMINE_DB_MYSQL=172.19.50.112
+      - REDMINE_DB_PORT=3306
+      - REDMINE_DB_USERNAME=root
+      - REDMINE_DB_PASSWORD=123456
+      - REDMINE_DB_DATABASE=redmine
+      - REDMINE_SECRET_KEY_BASE=supersecretkey
+    volumes:
+      - /data/redmine_server/data:/usr/src/redmine/files
+    restart: always
+    ports:
+      - "58081:3000"
+    networks:
+      default:
+        ipv4_address: 172.19.58.81
+
+networks:
+  default:
+    external:
+      name: docker_network

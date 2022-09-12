@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  server_sim:
+    image: python:3.8.10
+    container_name: server_sim
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/server_sim/www:/data/www
+    ports:
+      - "5050:5050"
+    command: /bin/bash -c "python3 run.py"
+    networks:
+      default:
+        ipv4_address: 172.19.50.50
+
+networks:
+  default:
+    external:
+      name: docker_network

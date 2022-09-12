@@ -115,4 +115,5 @@ wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/composer.phar 
 rm -rf /usr/local/bin/composer
 mv composer /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
+ln -s -f /usr/local/bin/composer /usr/bin/composer
 
