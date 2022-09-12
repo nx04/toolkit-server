@@ -27,3 +27,4 @@ docker-compose stop
 docker exec -it 容器id bash
 ```
 
+docker至少有一个进程保持运行，否则会启动失败
