@@ -25,8 +25,8 @@ cd ../
 rm -rf openssl-release openssl-release.tar.gz
 ln -s -f /usr/local/openssl-release/bin/openssl /usr/bin/openssl
 ln -s -f /usr/local/openssl-release/include/openssl /usr/include/openssl
-echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
-ldconfig
+#echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
+#ldconfig
 openssl version
 
 # python3

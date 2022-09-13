@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  server_logstash:
+    image: logstash:7.14.2
+    container_name: server_logstash
+    restart: always
+    volumes:
+      - /data/server_es/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - /data/server_es/config/logstash.conf:/usr/share/logstash/config/logstash.conf
+    networks:
+      default:
+        ipv4_address: 172.19.54.1
+
+networks:
+  default:
+    external:
+      name: docker_network

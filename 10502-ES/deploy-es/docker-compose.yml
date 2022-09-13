@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  server_elasticsearch:
+    image: elasticsearch:7.14.2
+    container_name: server_elasticsearch
+    environment:
+      - discovery.type=single-node
+    restart: always
+    volumes:
+      - /data/server_es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      default:
+        ipv4_address: 172.19.92.1
+
+networks:
+  default:
+    external:
+      name: docker_network

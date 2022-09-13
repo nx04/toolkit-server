@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  server_kibana:
+    image: kibana:7.14.2
+    container_name: server_kibana
+    restart: always
+    volumes:
+      - /data/server_es/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+    ports:
+      - "5601:5601"
+    networks:
+      default:
+        ipv4_address: 172.19.56.1
+
+networks:
+  default:
+    external:
+      name: docker_network
