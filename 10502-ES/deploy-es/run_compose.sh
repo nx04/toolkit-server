@@ -12,7 +12,11 @@ create_network_event(){
     fi
 }
 create_network_event
-
+docker-compose down 
+mkdir -p /data/server_es/logs-es
+mkdir -p /data/server_es/data-es
+chmod -R 777 /data/server_es/logs-es
+chmod -R 777 /data/server_es/data-es
 docker-compose up -d
 
 

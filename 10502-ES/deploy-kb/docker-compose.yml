@@ -5,10 +5,13 @@ services:
     image: kibana:7.14.2
     container_name: server_kibana
     restart: always
+    environment:
+      - TZ="Asia/Shanghai"
     volumes:
       - /data/server_es/config/kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
       - "5601:5601"
+    privileged: true
     networks:
       default:
         ipv4_address: 172.19.56.1
