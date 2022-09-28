@@ -17,19 +17,19 @@ create_network_event(){
 create_network_event
 
 # 拉取mysql镜像
-if [[ "$(docker images -q mysql:8.0.29 2> /dev/null)" == "" ]];then
-    docker pull mysql:8.0.29
+if [[ "$(docker images -q mysql:5.6.16 2> /dev/null)" == "" ]];then
+    docker pull mysql:5.6.16
 else
     mysql_server_run
 fi
 
 mysql_server_run(){
-    mkdir -p /data/mysql_server_003_single/conf
-    mkdir -p /data/mysql_server_003_single/log
-    mkdir -p /data/mysql_server_003_single/data
-    cp -rf ./my.cnf /data/mysql_server_003_single/conf/my.cnf
-    if [[ -n $(docker ps -q -a -f "name=^mysql_server_003_single$") ]];then
-	    exist=`docker inspect --format '{{.State.Running}}' mysql_server_003_single`
+    mkdir -p /data/mysql_server_5617/conf
+    mkdir -p /data/mysql_server_5617/log
+    mkdir -p /data/mysql_server_5617/data
+    cp -rf ./my.cnf /data/mysql_server_5617/conf/my.cnf
+    if [[ -n $(docker ps -q -a -f "name=^mysql_server_5617$") ]];then
+	    exist=`docker inspect --format '{{.State.Running}}' mysql_server_5617`
         if [ "${exist}" != "true" ];then
             mysql_server_restart_event
             echo 'mysql server restart [ok]'
@@ -43,18 +43,18 @@ mysql_server_run(){
     fi
 }
 mysql_server_start_event(){
-    docker run -p 50003:3306 -p 53003:33060 --restart=always --net=docker_network --ip=172.19.50.3 --name mysql_server_003_single -v /data/mysql_server_003_single/data:/var/data/mysql -v /data/mysql_server_004_master/log:/var/log/mysql -v /data/mysql_server_003_single/conf/my.cnf:/etc/mysql/my.cnf -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -d mysql:8.0.29
+    docker run -p 50005:3306 -p 53005:33060 --restart=always --net=docker_network --ip=172.19.50.5 --name mysql_server_5617 -v /data/mysql_server_5617/data:/var/data/mysql -v /data/mysql_server_5617/log:/var/log/mysql -v /data/mysql_server_5617/conf/my.cnf:/etc/mysql/my.cnf -e MYSQL_ROOT_PASSWORD=123456 -e TZ=Asia/Shanghai -d mysql:5.6.17
 }
 mysql_server_reload_event(){
-    docker restart mysql_server_003_single
+    docker restart mysql_server_5617
 }
 mysql_server_restart_event(){
-    docker rm -f mysql_server_003_single
-    mv /data/mysql_server_003_single/data  /data/mysql_server_003_single/data.bak
+    docker rm -f mysql_server_5617
+    mv /data/mysql_server_5617/data  /data/mysql_server_5617/data.bak
     mysql_server_start_event
-    rm -rf /data/mysql_server_003_single/data/*
-    mv /data/mysql_server_003_single/data.bak/* /data/mysql_server_003_single/data
-    rm -rf /data/mysql_server_003_single/data.bak
+    rm -rf /data/mysql_server_5617/data/*
+    mv /data/mysql_server_5617/data.bak/* /data/mysql_server_5617/data
+    rm -rf /data/mysql_server_5617/data.bak
     mysql_server_reload_event
 }
 

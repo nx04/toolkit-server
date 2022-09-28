@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  server_redis_505:
+    image: redis:5.0.5
+    container_name: server_redis_505
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/server_redis_505/data:/data
+      - /data/server_redis_505/conf/redis.conf:/etc/redis/redis.conf
+    ports:
+      - "56379:6379"
+    networks:
+      default:
+        ipv4_address: 172.19.63.79
+
+networks:
+  default:
+    external:
+      name: docker_network

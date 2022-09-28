@@ -13,15 +13,8 @@ create_network_event(){
 }
 create_network_event
 
-
-mkdir -p /data/mysql_server_002_single/conf
-mkdir -p /data/mysql_server_002_single/log
-mkdir -p /data/mysql_server_002_single/data
-cp -rf ./my.cnf /data/mysql_server_002_single/conf/my.cnf
-docker-compose up -d
-
-#ALTER USER 'root'@'%' IDENTIFIED BY 'password' PASSWORD EXPIRE NEVER;
-#ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
-
+mkdir -p /data/server_redis_505/conf
+cp -rf redis.conf /data/server_redis_505/conf
+docker-compose -f ./docker-compose.yml up -d
 
 

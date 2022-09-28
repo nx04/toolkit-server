@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  mysql_server_5617:
+    image: mysql:5.6.17
+    container_name: mysql_server_5617
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/mysql_server_5617/data:/var/data/mysql
+      - /data/mysql_server_5617/log:/var/log/mysql
+      - /data/mysql_server_5617/conf/my.cnf:/etc/mysql/my.cnf
+    ports:
+      - "50005:3306"
+      - "53005:33060"
+    networks:
+      default:
+        ipv4_address: 172.19.50.5
+
+networks:
+  default:
+    external:
+      name: docker_network
