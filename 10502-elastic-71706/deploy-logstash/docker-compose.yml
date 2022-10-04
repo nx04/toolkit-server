@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  server_logstash:
+    image: logstash:7.17.6
+    container_name: server_logstash
+    restart: always
+    environment:
+      - TZ="Asia/Shanghai"
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    volumes:
+      - /data/server_es/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - /data/server_es/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - /data/server_es/config/mysql-connector-java-5.1.5-bin.jar:/usr/share/logstash/logstash-core/lib/jars/mysql-connector-java-5.1.5-bin.jar
+    privileged: true
+    networks:
+      default:
+        ipv4_address: 172.19.54.1
+
+networks:
+  default:
+    external:
+      name: docker_network

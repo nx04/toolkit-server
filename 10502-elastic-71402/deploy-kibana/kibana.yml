@@ -11,3 +11,4 @@ xpack.monitoring.ui.container.elasticsearch.enabled: true
 #使用初始用户kibana
 elasticsearch.username: "kibana"
 elasticsearch.password: "aa5626188"
+i18n.locale: "zh-CN"

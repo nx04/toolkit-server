@@ -1,0 +1,22 @@
+
+【常用用法】
+#每隔2秒刷新一次，分别显示各个cpu的实时信息
+mpstat -P ALL 10
+
+#每隔1秒刷新一次，总共显示10次
+mpstat 10 10
+
+
+【重点关注】
+%idle(cpu空载时间)，%iowait(硬盘IO等待时间)
+
+【参数说明】
+%user      在internal时间段里，用户态的CPU时间(%)，不包含nice值为负进程  (usr/total)*100
+%nice      在internal时间段里，nice值为负进程的CPU时间(%)   (nice/total)*100
+%sys       在internal时间段里，内核时间(%)       (system/total)*100
+%iowait    在internal时间段里，硬盘IO等待时间(%) (iowait/total)*100
+%irq       在internal时间段里，硬中断时间(%)     (irq/total)*100
+%soft      在internal时间段里，软中断时间(%)     (softirq/total)*100
+%idle      在internal时间段里，CPU除去等待磁盘IO操作外的因为任何原因而空闲的时间闲置时间(%) (idle/total)*100
+
+

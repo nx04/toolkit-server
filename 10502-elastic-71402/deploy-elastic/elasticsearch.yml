@@ -1,4 +1,4 @@
-cluster.name: "docker-cluster"
+cluster.name: "elastic-cluster"
 network.host: 0.0.0.0
 
 #添加配置 
@@ -7,5 +7,6 @@ http.cors.allow-origin: "*"
 discovery.zen.minimum_master_nodes: 1
 #开启安全选项
 xpack.security.enabled: true
+xpack.security.http.ssl.enabled: false
 #配置单节点模式
 discovery.type: single-node
