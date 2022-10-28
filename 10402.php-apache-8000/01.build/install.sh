@@ -20,6 +20,7 @@ yum -y install mysql-devel
 yum remove cmake
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/cmake-3.23.1-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
 sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
+cp -rf /usr/bin/cmake /usr/bin/cmake.bak
 ln -s -f /usr/local/bin/cmake /usr/bin/cmake
 
 # oniguruma

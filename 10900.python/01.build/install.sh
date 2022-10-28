@@ -11,6 +11,10 @@ yum install -y zlib zlib-devel bzip2-devel libffi-devel sqlite-devel
 yum -y install libsndfile readline-devel xz-devel tk-devel gdbm-devel
 yum -y install mesa-libGL libSM libSM.so.6
 
+yum -y install crontabs
+#crond
+#systemctl enable crond.service
+
 # openssl
 # https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1o.tar.gz
 wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/openssl-OpenSSL_1_1_1o.tar.gz -O openssl-release.tar.gz

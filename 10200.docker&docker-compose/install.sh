@@ -7,7 +7,7 @@ ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai"
 yum install -y yum-utils
 yum install -y gcc gcc-c++ make automake autoconf cmake 
 yum install -y lsof net-tools sysstat tree iotop
-yum install -y wget tar curl git unzip zip zlib zlib-devel openssl openssl-devel
+yum install -y wget tar curl git unzip zip zlib zlib-devel
 
 # docker
 yum remove docker* -y
@@ -26,7 +26,7 @@ docker version
 # docker-compose
 # https://github.com/docker/compose/releases/download/v2.10.2/docker-compose-linux-x86_64
 rm -rf /usr/local/bin/docker-compose
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/docker-compose-linux.1 -O /usr/local/bin/docker-compose --no-check-certificate
+wget https://vkceyugu.cdn.bspapp.com/VKCEYUGU-7549bcb0-b298-4a7a-b30c-0c4d938ccf67/f9fa1ad1-0e54-4499-a564-fd7789cfca25.1 -O /usr/local/bin/docker-compose --no-check-certificate
 chmod +x /usr/local/bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version
