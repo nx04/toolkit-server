@@ -42,10 +42,8 @@ cd python3-release
 ./configure --prefix=/usr/local/python3-release --with-openssl=/usr/local/openssl-release
 make && make install
 /usr/local/python3-release/bin/python3 -m pip install -i https://mirrors.aliyun.com/pypi/simple/ --upgrade pip
-/usr/local/python3-release/bin/pip3 install -i https://mirrors.aliyun.com/pypi/simple/ virtualenv
 ln -s -f /usr/local/python3-release/bin/python3 /usr/bin/python3
 ln -s -f /usr/local/python3-release/bin/pip3 /usr/bin/pip3
-ln -s -f /usr/local/python3-release/bin/virtualenv /usr/bin/virtualenv3
 cd ../
 rm -rf python3-release python3-release.tgz
 python3 -V

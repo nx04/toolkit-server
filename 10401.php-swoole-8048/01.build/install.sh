@@ -16,8 +16,9 @@ yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
 yum -y install mysql-devel
 
 # cmake3
+# https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3-linux-x86_64.sh
 yum -y remove cmake
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/cmake-3.23.1-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
+wget https://gitee.com/xiaonian0430/sources/raw/master/cmake-last-linux-x86_64 -O cmake3-release.sh --no-check-certificate
 sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
 ln -s -f /usr/local/bin/cmake /usr/bin/cmake
 
@@ -42,7 +43,7 @@ ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gdb-add-index /usr/bin/gdb-add-index
 
 # oniguruma
 # https://github.com/kkos/oniguruma/releases/download/v6.9.8/onig-6.9.8.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/onig-6.9.8.tar.gz -O oniguruma-release.tar.gz --no-check-certificate
+wget https://gitee.com/xiaonian0430/sources/raw/master/onig-last.tar.gz -O oniguruma-release.tar.gz --no-check-certificate
 rm -rf oniguruma-release /usr/local/oniguruma-release
 mkdir -p oniguruma-release
 tar -zxvf oniguruma-release.tar.gz -C ./oniguruma-release --strip-components 1
@@ -54,7 +55,7 @@ rm -rf oniguruma-release oniguruma-release.tar.gz
 
 # 安装 zlib
 # https://github.com/madler/zlib/archive/refs/tags/v1.2.12.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/zlib-1.2.12.tar.gz -O zlib-release.tar.gz --no-check-certificate
+wget https://gitee.com/xiaonian0430/sources/raw/master/zlib-last.tar.gz -O zlib-release.tar.gz --no-check-certificate
 rm -rf zlib-release /usr/local/zlib-release
 mkdir -p zlib-release
 tar -zxvf zlib-release.tar.gz -C ./zlib-release --strip-components 1
@@ -65,8 +66,8 @@ cd ../
 rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 libzip
-# https://libzip.org/download/libzip-1.8.0.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/libzip-1.8.0.tar.gz -O libzip-release.tar.gz --no-check-certificate
+# https://libzip.org/download/libzip-1.9.2.tar.gz
+wget https://gitee.com/xiaonian0430/sources/raw/master/libzip-last.tar.gz -O libzip-release.tar.gz --no-check-certificate
 rm -rf libzip-release
 mkdir -p libzip-release
 tar -zxvf libzip-release.tar.gz -C ./libzip-release --strip-components 1
@@ -79,8 +80,8 @@ cd ../../
 rm -rf libzip-release libzip-release.tar.gz
 
 # 安装 php80
-# https://www.php.net/distributions/php-8.0.23.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-8.0.23.tar.gz -O php80-release.tar.gz --no-check-certificate
+# https://www.php.net/distributions/php-8.0.28.tar.gz
+wget https://gitee.com/xiaonian0430/sources/raw/master/php-8.0.last.tar.gz -O php80-release.tar.gz --no-check-certificate
 rm -rf php80-release /usr/local/php80-release
 mkdir -p php80-release
 tar -zxvf php80-release.tar.gz -C ./php80-release --strip-components 1
@@ -111,8 +112,8 @@ rm -rf php80-release php80-release.tar.gz
 mkdir -p ./php-ext
 cd ./php-ext
 # 安装 php swoole 扩展
-# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.11.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/swoole-src-4.8.11.tar.gz -O swoole-release.tar.gz --no-check-certificate
+# https://github.com/swoole/swoole-src/archive/refs/tags/v5.0.3.tar.gz
+wget https://gitee.com/xiaonian0430/sources/raw/master/swoole-src-last.tar.gz -O swoole-release.tar.gz --no-check-certificate
 rm -rf swoole-release
 mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
@@ -195,8 +196,8 @@ cd ../
 rm -rf ./php-ext
 
 # composer
-# https://github.com/composer/composer/releases/download/2.4.1/composer.phar
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/composer.phar -O composer --no-check-certificate
+# https://github.com/composer/composer/releases/download/2.5.5/composer.phar
+wget https://gitee.com/xiaonian0430/sources/raw/master/composer.phar -O composer --no-check-certificate
 rm -rf /usr/local/bin/composer
 mv composer /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
