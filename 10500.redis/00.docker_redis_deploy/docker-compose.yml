@@ -2,7 +2,7 @@ version: "3"
 
 services:
   redis_server_001:
-    image: redis:7.0.2
+    image: redis:7.0.11
     container_name: redis_server_001
     restart: always
     environment:
