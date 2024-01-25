@@ -16,9 +16,9 @@ yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
 yum -y install mysql-devel
 
 # cmake3
-# https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3-linux-x86_64.sh
+# https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-linux-x86_64.sh
 yum -y remove cmake
-wget https://gitee.com/xiaonian0430/sources/raw/master/cmake-last-linux-x86_64 -O cmake3-release.sh --no-check-certificate
+wget https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
 sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
 ln -s -f /usr/local/bin/cmake /usr/bin/cmake
 
@@ -42,8 +42,8 @@ ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gdb /usr/bin/gdb
 ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gdb-add-index /usr/bin/gdb-add-index
 
 # oniguruma
-# https://github.com/kkos/oniguruma/releases/download/v6.9.8/onig-6.9.8.tar.gz
-wget https://gitee.com/xiaonian0430/sources/raw/master/onig-last.tar.gz -O oniguruma-release.tar.gz --no-check-certificate
+# https://github.com/kkos/oniguruma/releases/download/v6.9.9/onig-6.9.9.tar.gz
+wget https://github.com/kkos/oniguruma/releases/download/v6.9.9/onig-6.9.9.tar.gz -O oniguruma-release.tar.gz --no-check-certificate
 rm -rf oniguruma-release /usr/local/oniguruma-release
 mkdir -p oniguruma-release
 tar -zxvf oniguruma-release.tar.gz -C ./oniguruma-release --strip-components 1
@@ -54,8 +54,8 @@ cd ../
 rm -rf oniguruma-release oniguruma-release.tar.gz
 
 # 安装 zlib
-# https://github.com/madler/zlib/archive/refs/tags/v1.2.12.tar.gz
-wget https://gitee.com/xiaonian0430/sources/raw/master/zlib-last.tar.gz -O zlib-release.tar.gz --no-check-certificate
+# https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz
+wget https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz -O zlib-release.tar.gz --no-check-certificate
 rm -rf zlib-release /usr/local/zlib-release
 mkdir -p zlib-release
 tar -zxvf zlib-release.tar.gz -C ./zlib-release --strip-components 1
@@ -66,8 +66,8 @@ cd ../
 rm -rf zlib-release zlib-release.tar.gz
 
 # 安装 libzip
-# https://libzip.org/download/libzip-1.9.2.tar.gz
-wget https://gitee.com/xiaonian0430/sources/raw/master/libzip-last.tar.gz -O libzip-release.tar.gz --no-check-certificate
+# https://libzip.org/download/libzip-1.10.1.tar.gz
+wget https://libzip.org/download/libzip-1.10.1.tar.gz -O libzip-release.tar.gz --no-check-certificate
 rm -rf libzip-release
 mkdir -p libzip-release
 tar -zxvf libzip-release.tar.gz -C ./libzip-release --strip-components 1
@@ -80,8 +80,8 @@ cd ../../
 rm -rf libzip-release libzip-release.tar.gz
 
 # 安装 php80
-# https://www.php.net/distributions/php-8.0.28.tar.gz
-wget https://gitee.com/xiaonian0430/sources/raw/master/php-8.0.last.tar.gz -O php80-release.tar.gz --no-check-certificate
+# https://www.php.net/distributions/php-8.0.30.tar.gz
+wget https://www.php.net/distributions/php-8.0.30.tar.gz -O php80-release.tar.gz --no-check-certificate
 rm -rf php80-release /usr/local/php80-release
 mkdir -p php80-release
 tar -zxvf php80-release.tar.gz -C ./php80-release --strip-components 1
@@ -112,8 +112,8 @@ rm -rf php80-release php80-release.tar.gz
 mkdir -p ./php-ext
 cd ./php-ext
 # 安装 php swoole 扩展
-# https://github.com/swoole/swoole-src/archive/refs/tags/v5.0.3.tar.gz
-wget https://gitee.com/xiaonian0430/sources/raw/master/swoole-src-last.tar.gz -O swoole-release.tar.gz --no-check-certificate
+# https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.13.tar.gz
+wget https://github.com/swoole/swoole-src/archive/refs/tags/v4.8.13.tar.gz -O swoole-release.tar.gz --no-check-certificate
 rm -rf swoole-release
 mkdir -p swoole-release
 tar -zxvf swoole-release.tar.gz -C ./swoole-release --strip-components 1
@@ -129,8 +129,8 @@ echo "swoole.use_shortname='Off'" >> /usr/local/php80-release/lib/php.ini
 php --ri swoole
 
 # 安装event扩展
-# https://pecl.php.net/get/event-3.0.8.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/event-3.0.8.tgz -O event-release.tgz --no-check-certificate
+# https://pecl.php.net/get/event-3.1.2.tgz
+wget https://pecl.php.net/get/event-3.1.2.tgz -O event-release.tgz --no-check-certificate
 rm -rf event-release
 mkdir -p event-release
 tar -zxvf event-release.tgz -C ./event-release --strip-components 1
@@ -145,8 +145,8 @@ echo "extension=event.so" >> /usr/local/php80-release/lib/php.ini
 php --ri event
 
 # 安装 php redis 扩展
-# https://pecl.php.net/get/redis-5.3.7.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/redis-5.3.7.tgz -O redis-release.tgz --no-check-certificate
+# https://pecl.php.net/get/redis-6.0.2.tgz
+wget https://pecl.php.net/get/redis-6.0.2.tgz -O redis-release.tgz --no-check-certificate
 rm -rf redis-release
 mkdir -p redis-release
 tar -zxvf redis-release.tgz -C ./redis-release --strip-components 1
@@ -160,9 +160,9 @@ rm -rf redis-release redis-release.tgz
 echo "extension=redis.so" >> /usr/local/php80-release/lib/php.ini
 php --ri redis
 
-# 安装 php grpc 扩展
-# https://pecl.php.net/get/grpc-1.48.0.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/grpc-1.48.0.tgz -O grpc-release.tgz --no-check-certificate
+# 安装 php grpc 扩展 基于GRPC的简单微服务框架
+# https://pecl.php.net/get/grpc-1.60.0.tgz
+wget https://pecl.php.net/get/grpc-1.60.0.tgz -O grpc-release.tgz --no-check-certificate
 rm -rf grpc-release
 mkdir -p grpc-release
 tar -zxvf grpc-release.tgz -C ./grpc-release --strip-components 1
@@ -177,8 +177,8 @@ echo "extension=grpc.so" >> /usr/local/php80-release/lib/php.ini
 php --ri grpc
 
 # 安装 php protobuf 扩展
-# https://pecl.php.net/get/protobuf-3.21.5.tgz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/php-ext/protobuf-3.21.5.tgz -O protobuf-release.tgz --no-check-certificate
+# https://pecl.php.net/get/protobuf-3.25.2.tgz
+wget https://pecl.php.net/get/protobuf-3.25.2.tgz -O protobuf-release.tgz --no-check-certificate
 rm -rf protobuf-release
 mkdir -p protobuf-release
 tar -zxvf protobuf-release.tgz -C ./protobuf-release --strip-components 1
@@ -195,9 +195,9 @@ php --ri protobuf
 cd ../
 rm -rf ./php-ext
 
-# composer
-# https://github.com/composer/composer/releases/download/2.5.5/composer.phar
-wget https://gitee.com/xiaonian0430/sources/raw/master/composer.phar -O composer --no-check-certificate
+# composer php包管理器
+# https://github.com/composer/composer/releases/download/2.6.6/composer.phar
+wget https://github.com/composer/composer/releases/download/2.6.6/composer.phar -O composer --no-check-certificate
 rm -rf /usr/local/bin/composer
 mv composer /usr/local/bin/composer
 chmod +x /usr/local/bin/composer

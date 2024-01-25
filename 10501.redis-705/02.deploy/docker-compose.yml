@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  demo_server_redis_705:
+    image: redis:7.0.5
+    container_name: demo_server_redis_705
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    volumes:
+      - /data/demo_server_redis_705/config/redis.conf:/data/server/config/redis.conf
+      - /data/demo_server_redis_705/runtime/:/data/server/runtime/
+      - /data/demo_server_redis_705/data/:/data/server/data/
+    ports:
+      - "56379:6379"
+    networks:
+      default:
+        ipv4_address: 172.19.11.10
+
+networks:
+  default:
+    external:
+      name: docker_network
