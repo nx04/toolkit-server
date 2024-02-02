@@ -1,0 +1,8 @@
+# 安装
+rpm --import http://www.webmin.com/jcameron-key.asc
+yum install webmin
+service webmin start
+systemctl status webmin
+rpm --import http://www.webmin.com/jcameron-key.asc
+service webmin start
+
