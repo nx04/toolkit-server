@@ -8,9 +8,10 @@ services:
       - TZ=Asia/Shanghai
     restart: always
     volumes:
-      - /data/demo_server_redis_705/config/redis.conf:/data/server/config/redis.conf
-      - /data/demo_server_redis_705/runtime/:/data/server/runtime/
-      - /data/demo_server_redis_705/data/:/data/server/data/
+      - /data/demo_server_redis_705/config/redis.conf:/www/redis/redis.conf
+      - /data/demo_server_redis_705/runtime/:/www/redis/runtime/
+      - /data/demo_server_redis_705/data/:/www/redis/data/
+    command: ["redis-server","/www/redis/redis.conf"]
     ports:
       - "56379:6379"
     networks:

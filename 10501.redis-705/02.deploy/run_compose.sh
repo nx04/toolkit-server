@@ -16,6 +16,8 @@ create_network_event
 mkdir -p /data/demo_server_redis_705/config/
 mkdir -p /data/demo_server_redis_705/runtime/
 mkdir -p /data/demo_server_redis_705/data/
+chmod 777 -R /data/demo_server_redis_705/runtime
+chmod 777 -R /data/demo_server_redis_705/data
 cp -rf redis.conf /data/demo_server_redis_705/config/
 docker-compose -f ./docker-compose.yml down
 docker-compose -f ./docker-compose.yml up -d
