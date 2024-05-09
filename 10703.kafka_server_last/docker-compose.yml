@@ -1,0 +1,16 @@
+version: '2'
+services:
+  broker_kafka:
+    image: apache/kafka:3.7.0
+    hostname: broker_kafka
+    container_name: broker_kafka
+    ports:
+      - '59092:9092'
+    volumes:
+      - /www/wwwroot/kafka.server/config/server.properties:/mnt/shared/config/server.properties
+    networks:
+      1panel-network:
+        ipv4_address: 172.18.0.34
+networks:
+  1panel-network:
+    external: true
