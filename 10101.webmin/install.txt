@@ -6,3 +6,42 @@ systemctl status webmin
 rpm --import http://www.webmin.com/jcameron-key.asc
 service webmin start
 
+
+方法2
+https://github.com/webmin/webmin/releases
+
+wget https://github.com/webmin/webmin/releases/download/2.105/webmin-2.105-1.noarch.rpm
+
+yum install webmin-2.105-1.noarch.rpm
+service webmin start
+systemctl status webmin
+
+方法3
+rpm -ivh webmin-2.105-1.noarch.rpm
+service webmin start
+systemctl status webmin
+
+访问：http://自己的IP地址：10000 
+
+
+
+修改 webmin 服务的端口号（默认是 10000 出于安全目的）
+vim /etc/webmin/miniserv.conf # 修改端口
+
+将 port=10000 修改为其他端口号，如 port=6666,listen=6666
+
+重启 webmin
+/etc/webmin/restart # 重启
+/etc/webmin/start # 启动
+/etc/webmin/stop # 停止
+
+防火墙放开 6666 端口
+service firewalld start
+firewall-cmd --zone=public --add-port=6666/tcp --permanent # 配置防火墙开放 6666 端口
+firewall-cmd --reload # 更新防火墙配置
+firewall-cmd --zone=public --list-ports # 查看已经开放的端口号
+
+
+修改密码：：
+webmin passwd root
+
