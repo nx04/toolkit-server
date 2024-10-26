@@ -16,8 +16,8 @@ yum -y install crontabs
 #systemctl enable crond.service
 
 # openssl
-# https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1o.tar.gz
-wget https://696e-infobird-4682b5-1302949103.tcb.qcloud.la/server/openssl-OpenSSL_1_1_1o.tar.gz -O openssl-release.tar.gz
+# https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz
+wget https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1w/openssl-1.1.1w.tar.gz -O openssl-release.tar.gz
 rm -rf openssl-release && mkdir -p openssl-release
 tar -zxvf openssl-release.tar.gz -C ./openssl-release --strip-components 1
 cd openssl-release
@@ -26,20 +26,20 @@ cd openssl-release
 make
 make install
 cd ../
-rm -rf openssl-release openssl-release.tar.gz
 ln -s -f /usr/local/openssl-release/bin/openssl /usr/bin/openssl
 ln -s -f /usr/local/openssl-release/include/openssl /usr/include/openssl
 #echo "/usr/local/openssl-release/lib">> /etc/ld.so.conf
 #ldconfig
 openssl version
-# 报错openssl: error while loading shared libraries: libssl.so.1.1
+# 报错 openssl: error while loading shared libraries: libssl.so.1.1: cannot open shared object file: No such file or directory
 find / -name libssl.so.1.1
 find / -name libcrypto.so.1.1
 ln -s /usr/local/openssl-release/lib/libssl.so.1.1 /usr/lib64/libssl.so.1.1
 ln -s /usr/local/openssl-release/lib/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
+rm -rf openssl-release openssl-release.tar.gz
 
 # python3
-# https://www.python.org/ftp/python/3.8.13/Python-3.12.5.tgz
+# https://www.python.org/ftp/python/3.12.5/Python-3.12.5.tgz
 rm -rf python3-release && mkdir -p python3-release
 tar -zxvf python3-release.tgz -C ./python3-release --strip-components 1
 cd python3-release
