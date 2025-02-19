@@ -13,7 +13,7 @@ yum install -y wget tar curl git unzip zip zlib zlib-devel pcre pcre-devel opens
 
 # nginx
 # https://nginx.org/download/nginx-1.24.0.tar.gz
-wget https://gitee.com/xiaonian0430/sources/raw/master/nginx-1.24.0.tar.gz -O nginx-release.tar.gz --no-check-certificate
+wget https://nginx.org/download/nginx-1.26.3.tar.gz -O nginx-release.tar.gz --no-check-certificate
 rm -rf nginx-release /usr/local/nginx-release
 mkdir -p nginx-release
 tar -zxvf nginx-release.tar.gz -C ./nginx-release --strip-components 1
