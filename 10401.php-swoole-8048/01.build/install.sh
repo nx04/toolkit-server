@@ -1,5 +1,17 @@
 #!/bin/bash
 # author: xiaonian #
+
+# 使用阿里云或其他国内镜像源
+#CentOS7的SCL源在2024年6月30日停止维护了。 当scl源里面默认使用了centos官方的地址，无法连接，需要替换为阿里云。
+
+#更新以下 文件中仓库地址http://mirror.centos.org为https://mirrors.aliyun.com
+#/etc/yum.repo.d/
+#CentOS-Base.repo
+#CentOS-SCLo-scl.repo
+#CentOS-SCLo-scl-rh.repo
+
+
+
 ##########安装 php8############
 # 时区
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
@@ -16,11 +28,12 @@ yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
 yum -y install mysql-devel
 
 # cmake3
-# https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-linux-x86_64.sh
+# https://github.com/Kitware/CMake/releases/download/v3.31.5/cmake-3.31.5-linux-x86_64.sh
 yum -y remove cmake
-wget https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
+wget https://github.com/Kitware/CMake/releases/download/v3.31.5/cmake-3.31.5-linux-x86_64.sh -O cmake3-release.sh --no-check-certificate
 sh cmake3-release.sh --prefix=/usr/local --exclude-subdir
 ln -s -f /usr/local/bin/cmake /usr/bin/cmake
+cmake -version
 
 # update g++ 7
 yum -y install centos-release-scl
@@ -42,8 +55,8 @@ ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gdb /usr/bin/gdb
 ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gdb-add-index /usr/bin/gdb-add-index
 
 # oniguruma
-# https://github.com/kkos/oniguruma/releases/download/v6.9.9/onig-6.9.9.tar.gz
-wget https://github.com/kkos/oniguruma/releases/download/v6.9.9/onig-6.9.9.tar.gz -O oniguruma-release.tar.gz --no-check-certificate
+# https://github.com/kkos/oniguruma/releases/download/v6.9.10/onig-6.9.10.tar.gz
+wget https://github.com/kkos/oniguruma/releases/download/v6.9.10/onig-6.9.10.tar.gz -O oniguruma-release.tar.gz --no-check-certificate
 rm -rf oniguruma-release /usr/local/oniguruma-release
 mkdir -p oniguruma-release
 tar -zxvf oniguruma-release.tar.gz -C ./oniguruma-release --strip-components 1
