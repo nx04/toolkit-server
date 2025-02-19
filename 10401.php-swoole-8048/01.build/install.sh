@@ -37,23 +37,23 @@ ln -s -f /usr/local/bin/cmake /usr/bin/cmake
 cmake -version
 
 # update g++ 7
-yum -y install centos-release-scl
-yum -y install devtoolset-8-gcc devtoolset-8-gdb devtoolset-8-gcc-c++ devtoolset-8-binutils
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/c++ /usr/bin/c++
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/c++filt /usr/bin/c++filt
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/cc /usr/bin/cc
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/cpp /usr/bin/cpp
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/g++ /usr/bin/g++
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcc /usr/bin/gcc
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcc-ar /usr/bin/gcc-ar
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcc-nm /usr/bin/gcc-nm
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcc-ranlib /usr/bin/gcc-ranlib
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcore /usr/bin/gcore
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcov /usr/bin/gcov
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcov-dump /usr/bin/gcov-dump
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcov-tool /usr/bin/gcov-tool
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gdb /usr/bin/gdb
-ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gdb-add-index /usr/bin/gdb-add-index
+#yum -y install centos-release-scl
+#yum -y install devtoolset-8-gcc devtoolset-8-gdb devtoolset-8-gcc-c++ devtoolset-8-binutils
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/c++ /usr/bin/c++
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/c++filt /usr/bin/c++filt
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/cc /usr/bin/cc
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/cpp /usr/bin/cpp
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/g++ /usr/bin/g++
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcc /usr/bin/gcc
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcc-ar /usr/bin/gcc-ar
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcc-nm /usr/bin/gcc-nm
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcc-ranlib /usr/bin/gcc-ranlib
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcore /usr/bin/gcore
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcov /usr/bin/gcov
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcov-dump /usr/bin/gcov-dump
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gcov-tool /usr/bin/gcov-tool
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gdb /usr/bin/gdb
+#ln -s -f /opt/rh/devtoolset-8/root/usr/bin/gdb-add-index /usr/bin/gdb-add-index
 
 # oniguruma
 # https://github.com/kkos/oniguruma/releases/download/v6.9.10/onig-6.9.10.tar.gz
