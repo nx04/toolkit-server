@@ -2,6 +2,10 @@
 
 ## 官网地址
 
+https://mirrors.huaweicloud.com/centos/7/isos/x86_64/
+dvd下载
+
+
 [https://www.centos.org/](https://www.centos.org/)
 
 ## 简介
