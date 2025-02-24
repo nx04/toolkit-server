@@ -37,7 +37,7 @@ yum -y install epel-release
 
 2、安装 certbot
 ```
-yum -y install certbot
+yum install certbot certbot-nginx python2-certbot-nginx openssl-devel zlib-devel bzip2-devel -y
 ```
 
 3、查看 certbot 版本，因为 ACME v2 要在 certbot 0.20.0 以后的版本支持。
@@ -52,7 +52,7 @@ certbot --version
 申请命令如下
 
 ```
-sudo certbot certonly -d test.yourdomain.com --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
+sudo certbot certonly -d 0851byby.com -d txysyy.com --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
 ```
 主要参数说明：
 
