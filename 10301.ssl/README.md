@@ -27,12 +27,17 @@ Certbot 是一个免费、开源的软件工具，用于从 Let’s Encrypt 等�
 1、先安装 EPEL 仓库（因为 certbot 在这个源里，目前还没在默认的源里）
 
 ```
-sudo yum install epel-release
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+yum clean all
+yum makecache
+yum -y update
+yum -y install epel-release
 ```
 
 2、安装 certbot
 ```
-sudo yum install certbot
+yum -y install certbot
 ```
 
 3、查看 certbot 版本，因为 ACME v2 要在 certbot 0.20.0 以后的版本支持。
