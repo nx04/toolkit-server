@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  mycat_node1:
+    image: nc/mycat:1.6.7.5
+    restart: always
+    container_name: mycat_node1
+    ports:
+      - 58066:8066
+      - 59066:9066
+    networks:
+      default:
+        ipv4_address: 172.19.60.1
+    volumes:
+      - /home/config/server.xml:/usr/local/mycat/conf/server.xml:ro
+      - /home/config/rule.xml:/usr/local/mycat/conf/rule.xml:ro
+      - /home/mycat/logs:/usr/local/mycat/logs
+networks:
+  default:
+    external:
+      name: docker_network

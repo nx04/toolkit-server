@@ -6,9 +6,9 @@ RUN cd /usr/local && tar -zxvf Mycat-server-1.6.7.5-release-20200422133810-linux
 
 ENV MYCAT_HOME=/usr/local/mycat
 WORKDIR /usr/local/mycat
-
+VOLUME ["/usr/local/mycat/conf","/usr/local/mycat/logs"]
 ENV TZ Asia/Shanghai
 
 EXPOSE 8066 9066
-
-CMD ["/usr/local/mycat/bin/mycat", "console","&"]
+RUN chmod -R 777 /usr/local/mycat/bin
+CMD ["/usr/local/mycat/bin/mycat", "console"]

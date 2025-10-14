@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mycat:server SYSTEM "server.dtd">
+<mycat:server xmlns:mycat="http://io.mycat/">
+    <system>
+        <!-- 配置MyCat ID自增方式，0 为本地文件方式，1 为数据库方式，2 为时间戳序列方式，3 为分布式 ZK ID 生成器，4 为 zk 递增 id 生成。 从 1.6 增加 两种 ZK 的全局 ID 生成算法。详细请参考：http://www.mycat.io/document/mycat-definitive-guide.pdf -->
+        <property name="sequnceHandlerType">1</property>
+    </system>
+    <!-- 配置逻辑数据库的读写都可用的用户，如果你是使用的1.7以后版本，请去掉defaultAccount属性 -->
+    <user name="root" defaultAccount="true">
+        <property name="password">123456</property>
+        <!-- 指定逻辑数据库-->
+        <property name="schemas">mycat_testdb</property>
+    </user>
+
+    <!-- 只读用户 -->
+    <user name="user">
+        <property name="password">user</property>
+        <property name="schemas">mycat_testdb</property>
+        <!-- 是否只读，用于实现读写分离 -->
+        <property name="readOnly">true</property>
+    </user>
+</mycat:server>
