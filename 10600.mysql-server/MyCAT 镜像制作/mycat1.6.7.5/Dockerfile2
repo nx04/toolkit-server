@@ -1,0 +1,14 @@
+
+FROM openjdk:8-jdk-stretch
+
+ADD https://github.com/MyCATApache/Mycat-Server/releases/download/Mycat-server-1675-release/Mycat-server-1.6.7.5-release-20200422133810-linux.tar.gz /usr/local
+RUN cd /usr/local && tar -zxvf Mycat-server-1.6.7.5-release-20200422133810-linux.tar.gz && ls -lna
+
+ENV MYCAT_HOME=/usr/local/mycat
+WORKDIR /usr/local/mycat
+
+ENV TZ Asia/Shanghai
+
+EXPOSE 8066 9066
+
+CMD ["/usr/local/mycat/bin/mycat", "console","&"]

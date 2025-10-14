@@ -18,7 +18,7 @@ yum install -y docker-ce docker-ce-cli containerd.io
 # start docker
 systemctl start docker
 systemctl enable  docker
-echo '{"registry-mirrors":["https://registry.docker-cn.com","https://docker.mirrors.ustc.edu.cn","https://hub-mirror.c.163.com"],"insecure-registries":[]}' > /etc/docker/daemon.json
+echo '{"registry-mirrors":["https://docker.1ms.run","https://docker.1panel.live","https://docker.1ms.run","https://mirror.ccs.tencentyun.com","https://docker.mirrors.ustc.edu.cn","https://hub-mirror.c.163.com"],"insecure-registries":[]}' > /etc/docker/daemon.json
 systemctl daemon-reload
 systemctl restart docker
 docker version

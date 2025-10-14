@@ -1,0 +1,1 @@
+docker build -t mycat2:1.22 .
