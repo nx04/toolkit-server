@@ -12,8 +12,7 @@ services:
       default:
         ipv4_address: 172.19.60.1
     volumes:
-      - /home/mycat/conf/server.xml:/usr/local/mycat/conf/server.xml:ro
-      - /home/mycat/conf/rule.xml:/usr/local/mycat/conf/rule.xml:ro
+      - /home/mycat/conf:/usr/local/mycat/conf
       - /home/mycat/logs:/usr/local/mycat/logs
 networks:
   default:

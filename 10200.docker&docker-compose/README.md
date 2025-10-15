@@ -25,6 +25,9 @@ docker-compose stop
 
 # 进入容器
 docker exec -it 容器id bash
+
+# 拷贝容器的文件到宿主机
+docker cp mycontainer:/app/data.txt /home
 ```
 
 docker至少有一个进程保持运行，否则会启动失败
