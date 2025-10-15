@@ -37,10 +37,10 @@ class ProductViewInserterWithFileId {
     public function __construct() {
         // 数据库配置
         $this->dbConfig = [
-            'host' => 'localhost',
-            'dbname' => 'test_db',
+            'host' => '192.168.109.129:58066',
+            'dbname' => 'mycat_testdb',
             'username' => 'root',
-            'password' => 'your_password',
+            'password' => '123456',
             'charset' => 'utf8mb4'
         ];
 
@@ -234,8 +234,8 @@ class ProductViewInserterWithFileId {
                         $userId = rand(1, $this->insertConfig['maxUserId']);
                         $productId = rand(1, $this->insertConfig['maxProductId']);
 
-                        // 生成随机时间（最近30天内的随机时间）
-                        $randomTimestamp = time() - rand(0, 30 * 24 * 60 * 60);
+                        // 生成随机时间（最近300天内的随机时间）
+                        $randomTimestamp = time() - rand(0, 300 * 24 * 60 * 60);
                         $viewTime = date('Y-m-d H:i:s', $randomTimestamp);
 
                         $batchRecords[] = "({$id}, {$userId}, {$productId}, '{$viewTime}')";
