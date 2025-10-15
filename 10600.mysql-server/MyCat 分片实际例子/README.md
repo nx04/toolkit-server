@@ -14,4 +14,8 @@ docker cp mycat_node1:/usr/local/mycat/conf /home/mycat
 # 修改成自己的配置文件后，重新启动容器
 docker restart mycat_node1
 
+# 对外端口防火墙
+firewall-cmd --permanent --add-port=58066/tcp
+firewall-cmd --permanent --add-port=59066/tcp
+firewall-cmd --reload
 ```
