@@ -16,7 +16,6 @@
         <table name="t_user"  primaryKey="id" autoIncrement="true" dataNode="dn1" subTables="t_user_0$0-2" rule="rule1"/>
 
         <!-- 以下为不进行分表的表配置 -->
-        <table name="t_no_database" dataNode="dn1" />
         <table name="t_order_201708" dataNode="dn1" />
         <table name="t_order_201709" dataNode="dn1" />
         <table name="t_stu" dataNode="dn1" />
@@ -46,9 +45,9 @@
     <dataHost name="localhost1" maxCon="1000" minCon="10" balance="3" writeType="0" dbType="mysql" dbDriver="native" switchType="1" slaveThreshold="100">
         <heartbeat>select user()</heartbeat>
         <!-- 可以配置多个主从 -->
-        <writeHost host="hostM1" url="127.0.0.1:3306" user="root" password="aa5626188">
+        <writeHost host="hostM1" url="192.168.109.129:50001" user="root" password="123456">
             <!-- 可以配置多个从库 -->
-            <readHost host="hostS2" url="127.0.0.1:3306" user="root" password="aa5626188" />
+            <readHost host="hostS2" url="192.168.109.129:50001" user="root" password="123456" />
         </writeHost>
     </dataHost>
 </mycat:schema>
