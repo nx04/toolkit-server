@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
+<mycat:schema xmlns:mycat="http://io.mycat/">
+    <!-- name：是mycat的逻辑库名称,必须保证和server.xml文件中配置的schemas一致，链接需要用的
+          checkSQLschema：是否检测SQL语句中的MyCat特殊语义，比如如果采用数据库方式实现自增ID，则SQL语句中ID字段的值需改成next value for MYCATSEQ_TEST，如果checkSQLschema为false则不会检测，按字段串处理，开启则会检测为MyCat语义进行ID生成。
+     -->
+    <schema name="mycat_testdb" checkSQLschema="false" sqlMaxLimit="100" dataNode="dn1">
+        <!-- name：逻辑表名
+            primaryKey：真实主键
+            autoIncrement：是否开启主键自增
+            dataNode：指定数据节点（绑定真实数据库）
+            subTables：指定所有真实分表，t_user_0$0-2为缩写，最终会被解析成t_user_00,t_user_01,t_user_02
+            role:指定路由策略
+        -->
+        <!--<table name="t_user"  primaryKey="id" autoIncrement="true" dataNode="dn1" subTables="t_user_00,t_user_01,t_user_02" rule="rule1"/> -->
+        <table name="t_user"  primaryKey="id" autoIncrement="true" dataNode="dn1" subTables="t_user_0$0-2" rule="rule1"/>
+
+        <!-- 以下为不进行分表的表配置 -->
+        <table name="t_order_201708" dataNode="dn1" />
+        <table name="t_order_201709" dataNode="dn1" />
+        <table name="t_stu" dataNode="dn1" />
+    </schema>
+    <!-- database 是MySQL数据库的库名 -->
+    <dataNode name="dn1" dataHost="localhost1" database="sharding_0" />
+    <!--
+    dataNode节点中各属性说明：
+    name：指定逻辑数据节点名称；
+    dataHost：指定逻辑数据节点物理主机节点名称；
+    database：指定物理主机节点上。如果一个节点上有多个库，可使用表达式db$0-99，     表示指定0-99这100个数据库；
+
+    dataHost 节点中各属性说明：
+        name：物理主机节点名称；
+        maxCon：指定物理主机服务最大支持1000个连接；
+        minCon：指定物理主机服务最小保持10个连接；
+        writeType：指定写入类型；
+            0，只在writeHost节点写入；
+            1，在所有节点都写入。慎重开启，多节点写入顺序为默认写入根据配置顺序，第一个挂掉切换另一个；
+        dbType：指定数据库类型；
+        dbDriver：指定数据库驱动；
+        balance：指定物理主机服务的负载模式。
+            0，不开启读写分离机制；
+            1，全部的readHost与stand by writeHost参与select语句的负载均衡，简单的说，当双主双从模式(M1->S1，M2->S2，并且M1与 M2互为主备)，正常情况下，M2,S1,S2都参与select语句的负载均衡；
+            2，所有的readHost与writeHost都参与select语句的负载均衡，也就是说，当系统的写操作压力不大的情况下，所有主机都可以承担负载均衡；
+    -->
+    <dataHost name="localhost1" maxCon="1000" minCon="10" balance="3" writeType="0" dbType="mysql" dbDriver="native" switchType="1" slaveThreshold="100">
+        <heartbeat>select user()</heartbeat>
+        <!-- 可以配置多个主从 -->
+        <writeHost host="hostM1" url="192.168.109.129:50001" user="root" password="123456">
+            <!-- 可以配置多个从库 -->
+            <readHost host="hostS2" url="192.168.109.129:50001" user="root" password="123456" />
+        </writeHost>
+    </dataHost>
+</mycat:schema>

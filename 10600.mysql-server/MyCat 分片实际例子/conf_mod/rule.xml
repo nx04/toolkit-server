@@ -1,53 +1,207 @@
-<?xml version="1.0"?>
-<!DOCTYPE mycat:schema SYSTEM "schema.dtd">
-<mycat:schema xmlns:mycat="http://io.mycat/">
-    <!-- name：是mycat的逻辑库名称,必须保证和server.xml文件中配置的schemas一致，链接需要用的
-          checkSQLschema：是否检测SQL语句中的MyCat特殊语义，比如如果采用数据库方式实现自增ID，则SQL语句中ID字段的值需改成next value for MYCATSEQ_TEST，如果checkSQLschema为false则不会检测，按字段串处理，开启则会检测为MyCat语义进行ID生成。
-     -->
-    <schema name="mycat_testdb" checkSQLschema="false" sqlMaxLimit="100" dataNode="dn1">
-        <!-- name：逻辑表名
-            primaryKey：真实主键
-            autoIncrement：是否开启主键自增
-            dataNode：指定数据节点（绑定真实数据库）
-            subTables：指定所有真实分表，t_user_0$0-2为缩写，最终会被解析成t_user_00,t_user_01,t_user_02
-            role:指定路由策略
-        -->
-        <!--<table name="t_user"  primaryKey="id" autoIncrement="true" dataNode="dn1" subTables="t_user_00,t_user_01,t_user_02" rule="rule1"/> -->
-        <table name="t_user"  primaryKey="id" autoIncrement="true" dataNode="dn1" subTables="t_user_0$0-2" rule="rule1"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mycat:rule SYSTEM "rule.dtd">
+<mycat:rule xmlns:mycat="http://io.mycat/">
 
-        <!-- 以下为不进行分表的表配置 -->
-        <table name="t_order_201708" dataNode="dn1" />
-        <table name="t_order_201709" dataNode="dn1" />
-        <table name="t_stu" dataNode="dn1" />
-    </schema>
-    <!-- database 是MySQL数据库的库名 -->
-    <dataNode name="dn1" dataHost="localhost1" database="sharding_0" />
-    <!--
-    dataNode节点中各属性说明：
-    name：指定逻辑数据节点名称；
-    dataHost：指定逻辑数据节点物理主机节点名称；
-    database：指定物理主机节点上。如果一个节点上有多个库，可使用表达式db$0-99，     表示指定0-99这100个数据库；
+	<tableRule name="rule1">
+		<rule>
+			<columns>id</columns>
+			<algorithm>func1</algorithm>
+		</rule>
+	</tableRule>
 
-    dataHost 节点中各属性说明：
-        name：物理主机节点名称；
-        maxCon：指定物理主机服务最大支持1000个连接；
-        minCon：指定物理主机服务最小保持10个连接；
-        writeType：指定写入类型；
-            0，只在writeHost节点写入；
-            1，在所有节点都写入。慎重开启，多节点写入顺序为默认写入根据配置顺序，第一个挂掉切换另一个；
-        dbType：指定数据库类型；
-        dbDriver：指定数据库驱动；
-        balance：指定物理主机服务的负载模式。
-            0，不开启读写分离机制；
-            1，全部的readHost与stand by writeHost参与select语句的负载均衡，简单的说，当双主双从模式(M1->S1，M2->S2，并且M1与 M2互为主备)，正常情况下，M2,S1,S2都参与select语句的负载均衡；
-            2，所有的readHost与writeHost都参与select语句的负载均衡，也就是说，当系统的写操作压力不大的情况下，所有主机都可以承担负载均衡；
-    -->
-    <dataHost name="localhost1" maxCon="1000" minCon="10" balance="3" writeType="0" dbType="mysql" dbDriver="native" switchType="1" slaveThreshold="100">
-        <heartbeat>select user()</heartbeat>
-        <!-- 可以配置多个主从 -->
-        <writeHost host="hostM1" url="192.168.109.129:50001" user="root" password="123456">
-            <!-- 可以配置多个从库 -->
-            <readHost host="hostS2" url="192.168.109.129:50001" user="root" password="123456" />
-        </writeHost>
-    </dataHost>
-</mycat:schema>
+	<tableRule name="rule2">
+		<rule>
+			<columns>user_id</columns>
+			<algorithm>func1</algorithm>
+		</rule>
+	</tableRule>
+
+	<tableRule name="sharding-by-intfile">
+		<rule>
+			<columns>area_id</columns>
+			<algorithm>hash-int</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="auto-sharding-long">
+		<rule>
+			<columns>id</columns>
+			<algorithm>rang-long</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="mod-long">
+		<rule>
+			<columns>id</columns>
+			<algorithm>mod-long</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="mod-hash">
+		<rule>
+			<columns>id</columns>
+			<algorithm>mod-hash</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="sharding-by-murmur">
+		<rule>
+			<columns>id</columns>
+			<algorithm>murmur</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="crc32slot">
+		<rule>
+			<columns>id</columns>
+			<algorithm>crc32slot</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="sharding-by-month">
+		<rule>
+			<columns>create_time</columns>
+			<algorithm>partbymonth</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="latest-month-calldate">
+		<rule>
+			<columns>calldate</columns>
+			<algorithm>latestMonth</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="auto-sharding-rang-mod">
+		<rule>
+			<columns>id</columns>
+			<algorithm>rang-mod</algorithm>
+		</rule>
+	</tableRule>
+	
+	<tableRule name="jch">
+		<rule>
+			<columns>id</columns>
+			<algorithm>jump-consistent-hash</algorithm>
+		</rule>
+	</tableRule>
+
+	<tableRule name="sharding-by-date">
+		<rule>
+			<columns>create_time</columns>
+			<algorithm>sharding-by-date</algorithm>
+	    </rule>
+    </tableRule>
+	
+	<tableRule name="direct-by-substring">  
+		<rule>  
+			<columns>user_id</columns>  
+			<algorithm>direct-by-substring</algorithm>  
+		</rule>  
+	</tableRule>
+	
+	<!--tableRule name="sharding-by-stringhash">  
+		<rule>  
+			<columns>order_no</columns>  
+			<algorithm>sharding-by-stringhash</algorithm>  
+		</rule>  
+	</tableRule-->
+	
+	<!-- #配置中配置了开始日期，分区天数，即默认从开始日期算起，分隔10天一个分区-->
+	<function name="sharding-by-date" class="io.mycat.route.function.PartitionByDate">
+		<property name="dateFormat">yyyy-MM-dd</property>
+	    <property name="sBeginDate">2018-01-01</property>
+	    <property name="sPartionDay">10</property>
+	</function>
+	
+	<!-- 一致性 hash：一致性 hash 预算有效解决了分布式数据的扩容问题 -->
+	<function name="murmur" class="io.mycat.route.function.PartitionByMurmurHash">
+		<!-- hash 种子值 -->
+		<property name="seed">0</property>
+		<!-- 要分片的数据库节点数量，必须指定，否则没法分片 -->
+		<property name="count">3</property>
+		<!-- 一个实际的数据库节点被映射为这么多虚拟节点，默认是160倍，也就是虚拟节点数是物理节点数的160倍 -->
+		<property name="virtualBucketTimes">160</property>
+		<!-- 节点的权重，没有指定权重的节点默认是1。以properties文件的格式填写，以从0开始到count-1的整数值也就是节点索引为key，以节点权重值为值。所有权重值必须是正整数，否则以1代替 -->
+		<!-- <property name="weightMapFile">weightMapFile</property> -->
+		<!-- 用于测试时观察各物理节点与虚拟节点的分布情况，如果指定了这个属性，会把虚拟节点的murmur hash值与物理节点的映射按行输出到这个文件，没有默认值，如果不指定，就不会输出任何东西 -->
+		<!-- <property name="bucketMapPath">/etc/mycat/bucketMapPath</property> -->
+	</function>
+	
+	<!-- 取模(crc32slot) -->
+	<function name="crc32slot" class="io.mycat.route.function.PartitionByCRC32PreSlot">
+		<!-- 要分片的数据库节点数量，必须指定，否则没法分片 -->
+		<property name="count">2</property>
+	</function>
+	
+	<!-- 枚举分片 -->
+	<function name="hash-int"
+		class="io.mycat.route.function.PartitionByFileMap">
+		<property name="mapFile">partition-hash-int.txt</property>
+	</function>
+	
+	<!-- 范围约定规则 -->
+	<function name="rang-long"
+		class="io.mycat.route.function.AutoPartitionByLong">
+		<property name="mapFile">autopartition-long.txt</property>
+	</function>
+	
+	<!-- 对 columnValue 处理后和 count 模运算得出存储数据的dataNode -->
+	<!-- PartitionByMod 由于是直接用 columnValue 创建 BigInteger，所以 配置的 column 的数据类型必须能够转换为数字，如果是普通字符型，会抛出 IllegalArgumentException 异常，异常信息：“columnValue:wcy Please eliminate any quote and non number within it.-->
+	<function name="mod-long" class="io.mycat.route.function.PartitionByMod">
+		<!-- how many data nodes -->
+		<property name="count">3</property>
+	</function>
+	
+	<!-- 对 columnValue 处理后和 count 模运算得出存储数据的dataNode -->
+	<!-- PartitionByHashMod由于会对columnValue 做 hash，所以并不强制要求 column 的数据类型是数字，也可以是字符型。-->
+	<function name="mod-hash" class="io.mycat.route.function.PartitionByHashMod">
+		<!-- how many data nodes -->
+		<property name="count">3</property>
+	</function>
+	
+	<!-- 该分片算法用根据提供的小时数进行分片，splitOneDay参数用于配置将一天分成多少个分片，最多24个，最少1个。该参数的合法值为0～24，否则抛出异常信息：invalid splitOnDay param -->
+	<function name="latestMonth"
+		class="io.mycat.route.function.LatestMonthPartion">
+		<property name="splitOneDay">3</property>
+	</function>
+	
+	<!-- #配置中配置了开始日期，即默认从开始日期算起，分隔1个月一个分区-->
+	<function name="partbymonth"
+		class="io.mycat.route.function.PartitionByMonth">
+		<property name="dateFormat">yyyy-MM-dd</property>
+		<property name="sBeginDate">2019-10-01</property>
+	</function>
+	
+	<!-- 范围求模分片 -->
+	<!-- 优点可以避免扩容时的数据迁移，又可以一定程度上避免范围分片的热点问题。综合了范围分片和求模分片的优点，分片组内使用求模可以保证组内数据比较均匀，分片组之间是范围分片，可以兼顾范围查询。 -->
+	<function name="rang-mod" class="io.mycat.route.function.PartitionByRangeMod">
+		<property name="mapFile">partition-range-mod.txt</property>
+		<property name="defaultNode">0</property>
+	</function>
+	
+	<!-- 跳增一致性哈希分片 -->
+	<!-- 思想源自Google公开论文，比传统一致性哈希更省资源速度更快数据迁移量更少 -->
+	<function name="jump-consistent-hash" class="io.mycat.route.function.PartitionByJumpConsistentHash">
+		<property name="totalBuckets">3</property>
+	</function>
+	
+	<function name="direct-by-substring" class="io.mycat.route.function.PartitionDirectBySubString">
+		<property name="startIndex">0</property>
+		<property name="size">2</property>
+		<property name="partitionCount">3</property>
+		<property name="defaultPartition">0</property>
+	</function>
+	
+	<!--function name="sharding-by-stringhash" class="io.mycat.route.function.PartitionByString">
+		<property name="partitionLength">512</property> 
+		<property name="partitionCount">3</property>
+		<property name="hashSlice">-6:0</property>
+	</function-->
+	
+	<function name="func1" class="io.mycat.route.function.PartitionByLong">
+		<property name="partitionCount">8</property>
+		<property name="partitionLength">128</property>
+	</function>
+	
+</mycat:rule>
