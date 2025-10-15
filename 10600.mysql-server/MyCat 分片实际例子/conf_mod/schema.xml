@@ -13,7 +13,7 @@
             role:指定路由策略
         -->
         <!--<table name="t_user"  primaryKey="id" autoIncrement="true" dataNode="dn1" subTables="t_user_00,t_user_01,t_user_02" rule="rule1"/> -->
-        <table name="t_user"  primaryKey="id" autoIncrement="true" dataNode="dn1" subTables="t_user_0$0-2" rule="rule1"/>
+        <table name="t_user"  primaryKey="id" autoIncrement="true" dataNode="dn1" subTables="t_user_0$0-2" rule="mod-long"/>
 
         <!-- 以下为不进行分表的表配置 -->
         <table name="t_order_201708" dataNode="dn1" />
