@@ -60,7 +60,7 @@
 	
 	<tableRule name="sharding-by-month">
 		<rule>
-			<columns>create_time</columns>
+			<columns>view_time</columns>
 			<algorithm>partbymonth</algorithm>
 		</rule>
 	</tableRule>
@@ -170,7 +170,7 @@
 	<function name="partbymonth"
 		class="io.mycat.route.function.PartitionByMonth">
 		<property name="dateFormat">yyyy-MM-dd</property>
-		<property name="sBeginDate">2019-10-01</property>
+		<property name="sBeginDate">2025-08-01</property>
 	</function>
 	
 	<!-- 范围求模分片 -->
