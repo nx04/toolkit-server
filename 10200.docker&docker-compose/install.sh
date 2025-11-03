@@ -24,9 +24,9 @@ systemctl restart docker
 docker version
 
 # docker-compose
-# https://github.com/docker/compose/releases/download/v2.32.4/docker-compose-linux-x86_64
+# https://github.com/docker/compose/releases/download/v2.40.2/docker-compose-linux-x86_64
 rm -rf /usr/local/bin/docker-compose
-wget https://github.com/docker/compose/releases/download/v2.32.4/docker-compose-linux-x86_64 -O /usr/local/bin/docker-compose --no-check-certificate
+wget https://github.com/docker/compose/releases/download/v2.40.2/docker-compose-linux-x86_64 -O /usr/local/bin/docker-compose --no-check-certificate
 chmod +x /usr/local/bin/docker-compose
 ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose --version
