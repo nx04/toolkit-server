@@ -31,3 +31,6 @@ docker cp mycontainer:/app/data.txt /home
 ```
 
 docker至少有一个进程保持运行，否则会启动失败
+
+
+# dockerd 也可以启动
