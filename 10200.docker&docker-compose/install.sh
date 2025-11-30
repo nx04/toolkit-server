@@ -4,16 +4,15 @@
 ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
 # build tools
-yum install -y yum-utils
-yum install -y gcc gcc-c++ make automake autoconf cmake 
-yum install -y lsof net-tools sysstat tree iotop
-yum install -y wget tar curl git unzip zip zlib zlib-devel
+sudo yum update -y
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
 
 # docker
 yum remove docker* -y
-#yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install -y docker-ce docker-ce-cli containerd.io
+sudo yum install -y docker-ce
+
 
 # start docker
 systemctl start docker
