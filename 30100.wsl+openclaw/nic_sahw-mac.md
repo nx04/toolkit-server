@@ -15,6 +15,7 @@ nvm use 22
 node --version
 
 npm install -g openclaw@latest
+npm install -g clawhub
 openclaw --version
 openclaw onboard --install-daemon
 
