@@ -50,8 +50,16 @@ channel 跳过
 ## 查看已启动 openclaw token
 openclaw dashboard --no-open
 
+## 重启 Gateway 服务使配置生效
+openclaw gateway restart
+
 ## 查看 openclaw 状态 
 openclaw status
+
+##  重启 Gateway 服务
+openclaw gateway stop
+openclaw gateway
+
 
 ## 肖念部署问题解决
 第一个问题：systemd user service 未启用
@@ -88,7 +96,7 @@ Main PID: node
 
 openclaw config set models.providers.deepseek '{
   "baseUrl": "https://api.deepseek.com/v1",
-  "apiKey": "sk-55f2**********",
+  "apiKey": "sk-55f2c00c3a364ac9b8076b848e44adf4",
   "api": "openai-completions",
   "models": [
     {
@@ -102,3 +110,38 @@ openclaw config set models.providers.deepseek '{
   ]
 }'
 
+## 设置默认交互模型
+openclaw config set agents.defaults.model.primary "deepseek/deepseek-chat"
+
+## 创建模型别名（可选）
+openclaw models aliases add deepseek-v3 "deepseek/deepseek-chat"
+openclaw models aliases add deepseek-r1 "deepseek/deepseek-reasoner"
+
+## 命令行快速测试
+openclaw agent --session-id test --message "你好，请介绍一下你自己"
+
+## 查看模型配置状态
+openclaw models status
+
+
+
+
+## 安装飞书 
+openclaw plugins install @m1heng-clawd/feishu
+
+## 交互式添加飞书渠道
+openclaw channels add
+
+提示「Configure chat channels now?」，选择「Yes」；
+
+渠道列表中，选择「Feishu/Lark (飞书)(needs app creds)」；
+
+输入步骤 4.3 获取的「Feishu App ID」和「Feishu App Secret」；
+
+飞书域名选择：「Feishu (feishu.cn) - China」（国内版飞书）；
+
+群聊策略选择：根据需求选择（推荐测试阶段选「Disabled - don\&#39;t respond in groups」，仅开启单聊）；
+
+后续提示「Configure DM access policies now?」「Add display names for these accounts?」，均选择「No」（后续按需配置）；
+
+最后选择「Finished (Done)」，完成飞书渠道添加。
