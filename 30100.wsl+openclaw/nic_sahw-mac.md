@@ -1,35 +1,17 @@
-## 先在 PowerShell 执行：
-
-wsl --update
-wsl --status
-wsl --version
-wsl --set-default-version 2
-wsl --list --verbose
-wsl --install Ubuntu-22.04
-
-## 更新软件
-sudo apt update && sudo apt upgrade -y
-
-sudo apt install -y build-essential curl git unzip zip ca-certificates jq
-
-## 其他
-额外安装 1Panel（解决 docker 环境问题）
-
-sudo bash -c "$(curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick_start.sh)"
 
 
 ## 安装 nodejs
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 
+source ~/.zshrc 
+## 或者
 source ~/.bashrc
 
 nvm --version
 
 nvm install 22
-
 nvm use 22
-
 node --version
 
 npm install -g openclaw@latest
