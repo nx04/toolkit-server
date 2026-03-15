@@ -1,4 +1,4 @@
-先在 PowerShell 执行：
+## 先在 PowerShell 执行：
 
 wsl --update
 wsl --status
@@ -7,12 +7,12 @@ wsl --set-default-version 2
 wsl --list --verbose
 wsl --install Ubuntu-22.04
 
-
+## 更新软件
 sudo apt update && sudo apt upgrade -y
 
 sudo apt install -y build-essential curl git unzip zip ca-certificates jq
 
-
+## 其他
 额外安装 1Panel（解决 docker 环境问题）
 
 sudo bash -c "$(curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick_start.sh)"
@@ -50,6 +50,10 @@ channel 跳过
 ## 查看已启动 openclaw token
 openclaw dashboard --no-open
 
+## 查看 openclaw 状态 
+openclaw status
+
+## 肖念部署问题解决
 第一个问题：systemd user service 未启用
 先检查 service 状态：
 
@@ -77,3 +81,24 @@ Active: active (running)
 Main PID: node
 
 说明服务已经正常运行。
+
+
+
+## 配置 deepseek
+
+openclaw config set models.providers.deepseek '{
+  "baseUrl": "https://api.deepseek.com/v1",
+  "apiKey": "sk-55f2**********",
+  "api": "openai-completions",
+  "models": [
+    {
+      "id": "deepseek-chat",
+      "name": "DeepSeek Chat (V3)"
+    },
+    {
+      "id": "deepseek-reasoner",
+      "name": "DeepSeek Reasoner (R1)"
+    }
+  ]
+}'
+
