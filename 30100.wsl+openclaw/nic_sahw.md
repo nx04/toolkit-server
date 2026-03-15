@@ -158,14 +158,20 @@ https://skillhub.tencent.com/#about
 curl -fsSL https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/install.sh | bash  -s -- --no-skills
 
 
-Skill Vette
+skill-vetter
 Tavily 搜索
 self-improving-agent
-Proactive Agent
-Find Skill
-Summarize
-Gog
-Agent Browser
-Github
+proactive-agent
+find-skills
+summarize
+gog
+agent-browser
+github
 ontology
-Nano Pdf
+nano-pdf
+multi-search-engine
+n8n-workflow-automation
+notion
+nano-banana-pro
+baidu-search
+humanizer
