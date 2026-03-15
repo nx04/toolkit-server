@@ -145,3 +145,18 @@ openclaw channels add
 后续提示「Configure DM access policies now?」「Add display names for these accounts?」，均选择「No」（后续按需配置）；
 
 最后选择「Finished (Done)」，完成飞书渠道添加。
+
+
+## 技能安装
+
+Skill Vette
+Tavily 搜索
+self-improving-agent
+Proactive Agent
+Find Skill
+Summarize
+Gog
+Agent Browser
+Github
+ontology
+Nano Pdf
