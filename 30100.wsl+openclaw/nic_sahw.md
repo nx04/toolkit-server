@@ -5,7 +5,6 @@ wsl --status
 wsl --version
 wsl --set-default-version 2
 wsl --list --verbose
-
 wsl --install Ubuntu-22.04
 
 
@@ -48,6 +47,8 @@ channel 跳过
 随后在控制台日志中的复制整串url（带token）
 
 
+## 查看已启动 openclaw token
+openclaw dashboard --no-open
 
 第一个问题：systemd user service 未启用
 先检查 service 状态：
