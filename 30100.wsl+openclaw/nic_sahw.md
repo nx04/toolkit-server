@@ -46,3 +46,33 @@ channel 跳过
 第四个保留对话上下文记忆，这个也要开（养龙虾）。
 网关页面的打开方式，webui比较方便
 随后在控制台日志中的复制整串url（带token）
+
+
+
+第一个问题：systemd user service 未启用
+先检查 service 状态：
+
+systemctl --user is-enabled openclaw-gateway.service
+
+输出：
+
+disabled
+
+启用 service：
+
+systemctl --user enable openclaw-gateway.service
+执行：
+
+systemctl --user daemon-reload
+systemctl --user restart openclaw-gateway
+
+检查状态：
+
+systemctl --user status openclaw-gateway
+
+输出：
+
+Active: active (running)
+Main PID: node
+
+说明服务已经正常运行。
