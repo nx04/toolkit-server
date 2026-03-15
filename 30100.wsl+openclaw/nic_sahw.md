@@ -153,6 +153,10 @@ openclaw channels add
 
 
 ## 技能安装
+腾讯 
+https://skillhub.tencent.com/#about
+curl -fsSL https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/install.sh | bash  -s -- --no-skills
+
 
 Skill Vette
 Tavily 搜索
