@@ -31,7 +31,9 @@ sudo bash -c "$(curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 
 source ~/.bashrc
+
 或者
+
 source ~/.profile
 
 nvm --version
@@ -43,8 +45,11 @@ nvm use 22
 node --version
 
 npm install -g openclaw@latest
+
 npm install -g clawhub
+
 openclaw --version
+
 openclaw onboard --install-daemon
 
 选yes
@@ -73,6 +78,7 @@ openclaw status
 
 ##  重启 Gateway 服务
 openclaw gateway stop
+
 openclaw gateway
 
 
@@ -130,6 +136,7 @@ openclaw config set agents.defaults.model.primary "deepseek/deepseek-chat"
 
 ## 创建模型别名（可选）
 openclaw models aliases add deepseek-v3 "deepseek/deepseek-chat"
+
 openclaw models aliases add deepseek-r1 "deepseek/deepseek-reasoner"
 
 ## 命令行快速测试
