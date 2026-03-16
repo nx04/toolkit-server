@@ -1,11 +1,18 @@
 ## 先在 PowerShell 执行：
 
 wsl --update
+
 wsl --status
+
 wsl --version
+
 wsl --set-default-version 2
+
 wsl --list --verbose
+
 wsl --install Ubuntu-22.04
+
+wsl --set-default Ubuntu-22.04
 
 ## 更新软件
 sudo apt update && sudo apt upgrade -y
