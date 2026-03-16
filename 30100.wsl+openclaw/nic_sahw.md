@@ -1,4 +1,5 @@
 ## 先在 PowerShell 执行：
+查看左侧菜单栏中“启用或关闭Windows功能”
 
 wsl --update
 
