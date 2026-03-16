@@ -224,6 +224,8 @@ openclaw channels add
 
 后续提示「Configure DM access policies now?」「Add display names for these accounts?」，均选择「No」（后续按需配置）；
 
+Bind configured channel accounts to agents now? → 将这个channel配置给某个agent，如果你有多个agent可以配置一下，这里我们选no跳过
+
 最后选择「Finished (Done)」，完成飞书渠道添加。
 
 
