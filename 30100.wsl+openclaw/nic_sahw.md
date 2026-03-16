@@ -148,8 +148,66 @@ openclaw models status
 
 
 
+飞书权限配置（注意先做好飞书机器人设置，再配置channel）
+
+导入权限：
+
+{
+  "scopes": {
+    "tenant": [
+      "aily:file:read",
+      "aily:file:write",
+      "application:application.app_message_stats.overview:readonly",
+      "application:application:self_manage",
+      "application:bot.menu:write",
+      "base:app:copy",
+      "base:app:create",
+      "base:app:read",
+      "base:app:update",
+      "bitable:app",
+      "bitable:app:readonly",
+      "contact:contact.base:readonly",
+      "contact:department.base:readonly",
+      "contact:user.base:readonly",
+      "contact:user.employee_id:readonly",
+      "corehr:file:download",
+      "event:ip_list",
+      "im:chat",
+      "im:chat.access_event.bot_p2p_chat:read",
+      "im:chat.members:bot_access",
+      "im:chat:read",
+      "im:chat:update",
+      "im:message",
+      "im:message.group_at_msg:readonly",
+      "im:message.p2p_msg:readonly",
+      "im:message:readonly",
+      "im:message:send_as_bot",
+      "im:resource",
+      "sheets:spreadsheet",
+      "sheets:spreadsheet.meta:read",
+      "sheets:spreadsheet.meta:write_only",
+      "sheets:spreadsheet:create",
+      "sheets:spreadsheet:read",
+      "sheets:spreadsheet:readonly",
+      "sheets:spreadsheet:write_only"
+    ],
+    "user": [
+      "aily:file:read",
+      "aily:file:write",
+      "im:chat.access_event.bot_p2p_chat:read"
+    ]
+  }
+}
+
+最后记得发布应用
+
 ## 安装飞书 
-openclaw plugins install @m1heng-clawd/feishu
+
+
+npm install -g @larksuiteoapi/node-sdk
+
+openclaw plugins install @openclaw/feishu
+
 
 ## 交互式添加飞书渠道
 openclaw channels add
