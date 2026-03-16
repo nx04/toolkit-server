@@ -23,6 +23,8 @@ sudo bash -c "$(curl -sSL https://resource.fit2cloud.com/1panel/package/v2/quick
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 
 source ~/.bashrc
+或者
+source ~/.profile
 
 nvm --version
 
