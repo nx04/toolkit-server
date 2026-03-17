@@ -232,9 +232,11 @@ Bind configured channel accounts to agents now? → 将这个channel配置给某
 ## 技能安装
 腾讯 
 https://skillhub.tencent.com/#about
+
 curl -fsSL https://skillhub-1388575217.cos.ap-guangzhou.myqcloud.com/install/install.sh | bash  -s -- --no-skills
 
-
+clawhub install xxxxx
+```
 skill-vetter
 Tavily 搜索
 self-improving-agent
@@ -252,3 +254,4 @@ notion
 nano-banana-pro
 baidu-search
 humanizer
+```
